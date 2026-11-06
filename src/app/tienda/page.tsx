@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { SiteShell } from "@/components/SiteShell";
+import { StoreContact } from "@/components/StoreContact";
 import { useAuth } from "@/context/AuthContext";
 import { apiJson } from "@/lib/api";
 import { CATEGORY_FILTER_ALL } from "@/lib/store-category-filter";
@@ -35,6 +36,7 @@ export default function ShopPage() {
   const { accessToken, isAuthReady } = useAuth();
   const router = useRouter();
   const [products, setProducts] = useState<Product[]>([]);
+  const [catalogLoading, setCatalogLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [busyId, setBusyId] = useState<number | null>(null);
   const [search, setSearch] = useState("");
@@ -51,11 +53,14 @@ export default function ShopPage() {
   useEffect(() => {
     if (!isAuthReady || !accessToken) return;
     (async () => {
+      setCatalogLoading(true);
       try {
         const r = await apiJson<ProductListResponse>("/api/v1/shop/products");
         setProducts(r.products);
       } catch (e) {
         setError(e instanceof Error ? e.message : t("common.error"));
+      } finally {
+        setCatalogLoading(false);
       }
     })();
   }, [isAuthReady, accessToken, t]);
@@ -132,9 +137,7 @@ export default function ShopPage() {
     <SiteShell>
       <div className="mx-auto max-w-5xl px-4 py-16">
         <Link href="/cuenta" className="account-back-link"><span aria-hidden="true">←</span> {t("nav.account")}</Link>
-        <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/70 p-6 md:p-8">
-
-          <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-black/70 via-black/55 to-black/72" />
+        <div className="store-introduction relative overflow-hidden border p-6 md:p-8">
           <div className="relative z-10">
           <h1 className="font-display text-3xl font-semibold text-zinc-50">
             {t("store.donation.title")}
@@ -216,7 +219,7 @@ export default function ShopPage() {
                     type="button"
                     disabled={busyId === p.id}
                     onClick={() => buy(p.id)}
-                    className="rounded bg-linear-to-r from-sky-600 to-cyan-500 px-4 py-2 text-sm font-semibold text-black hover:from-sky-500 hover:to-cyan-400 disabled:opacity-50"
+                    className="blackout-action rounded px-4 py-2 text-sm font-semibold disabled:opacity-50"
                   >
                     {busyId === p.id
                       ? t("store.donation.redirecting")
@@ -227,9 +230,9 @@ export default function ShopPage() {
             </div>
           ))}
         </div>
-        {!error && filtered.length === 0 && (
-          <p className="mt-8 text-center text-sm text-zinc-500">
-            {t("store.donation.noProducts")}
+        {!error && (catalogLoading || filtered.length === 0) && (
+          <p role="status" className="store-empty mt-8 text-center text-sm text-zinc-500">
+            {t(catalogLoading ? "store.donation.loadingCatalog" : products.length === 0 ? "store.donation.emptyCatalog" : "store.donation.noProducts")}
           </p>
         )}
         {filtered.length > ITEMS_PER_PAGE && (
@@ -238,7 +241,7 @@ export default function ShopPage() {
               type="button"
               disabled={page === 1}
               onClick={() => setPage((p) => Math.max(1, p - 1))}
-              className="rounded border border-white/15 px-3 py-1.5 text-sm text-zinc-200 disabled:opacity-50"
+              className="blackout-control rounded border px-3 py-1.5 text-sm disabled:opacity-50"
             >
               {t("store.donation.prev")}
             </button>
@@ -249,12 +252,13 @@ export default function ShopPage() {
               type="button"
               disabled={page === totalPages}
               onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-              className="rounded border border-white/15 px-3 py-1.5 text-sm text-zinc-200 disabled:opacity-50"
+              className="blackout-control rounded border px-3 py-1.5 text-sm disabled:opacity-50"
             >
               {t("store.donation.next")}
             </button>
           </div>
         )}
+        <StoreContact />
       </div>
     </SiteShell>
   );

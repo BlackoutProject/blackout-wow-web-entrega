@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { SiteShell } from "@/components/SiteShell";
+import { StoreContact } from "@/components/StoreContact";
 import { useAuth } from "@/context/AuthContext";
 import { apiJson } from "@/lib/api";
 import { CATEGORY_FILTER_ALL } from "@/lib/store-category-filter";
@@ -59,6 +60,7 @@ export default function RewardShopPage() {
   const { accessToken, isAuthReady } = useAuth();
   const router = useRouter();
   const [products, setProducts] = useState<RewardProduct[]>([]);
+  const [catalogLoading, setCatalogLoading] = useState(true);
   const [pointsBalance, setPointsBalance] = useState(0);
   const [error, setError] = useState<string | null>(null);
   const [busyId, setBusyId] = useState<number | null>(null);
@@ -76,6 +78,7 @@ export default function RewardShopPage() {
       return;
     }
     (async () => {
+      setCatalogLoading(true);
       try {
         const data = await apiJson<RewardCatalogResponse>("/api/v1/rewards/products", {
           token: accessToken,
@@ -89,6 +92,8 @@ export default function RewardShopPage() {
         setSelectedCharacterId(chars.length > 0 ? chars[0].id : null);
       } catch (e) {
         setError(e instanceof Error ? e.message : t("common.error"));
+      } finally {
+        setCatalogLoading(false);
       }
     })();
   }, [isAuthReady, accessToken, router, t]);
@@ -165,7 +170,7 @@ export default function RewardShopPage() {
     <SiteShell>
       <div className="mx-auto max-w-5xl px-4 py-16">
         <Link href="/cuenta" className="account-back-link"><span aria-hidden="true">←</span> {t("nav.account")}</Link>
-        <div className="rounded-2xl border border-white/10 bg-zinc-950/70 p-6 md:p-8">
+        <div className="store-introduction border p-6 md:p-8">
           <h1 className="font-display text-3xl font-semibold text-zinc-50">
             {t("store.redeem.title")}
           </h1>
@@ -257,7 +262,7 @@ export default function RewardShopPage() {
 
         {msg && <p className="mt-6 text-emerald-400">{msg}</p>}
         {error && <p className="mt-6 text-red-400">{error}</p>}
-        {!error && (
+        {!error && !catalogLoading && filtered.length > 0 && (
           <p className="mt-4 text-sm text-zinc-500">
             {t("store.redeem.showingLine", {
               count: filtered.length,
@@ -306,7 +311,7 @@ export default function RewardShopPage() {
                       type="button"
                       disabled={busyId === p.id || !canRedeem}
                       onClick={() => redeem(p.id)}
-                      className="rounded bg-linear-to-r from-amber-600 to-orange-500 px-4 py-2 text-sm font-semibold text-black disabled:opacity-50"
+                      className="blackout-action rounded px-4 py-2 text-sm font-semibold disabled:opacity-50"
                     >
                       {busyId === p.id
                         ? t("store.redeem.redeeming")
@@ -325,9 +330,9 @@ export default function RewardShopPage() {
             );
           })}
         </div>
-        {!error && filtered.length === 0 && (
-          <p className="mt-8 text-center text-sm text-zinc-500">
-            {t("store.redeem.noFilter")}
+        {!error && (catalogLoading || filtered.length === 0) && (
+          <p role="status" className="store-empty mt-8 text-center text-sm text-zinc-500">
+            {t(catalogLoading ? "store.donation.loadingCatalog" : products.length === 0 ? "store.redeem.emptyCatalog" : "store.redeem.noFilter")}
           </p>
         )}
         {filtered.length > ITEMS_PER_PAGE && (
@@ -336,7 +341,7 @@ export default function RewardShopPage() {
               type="button"
               disabled={page === 1}
               onClick={() => setPage((p) => Math.max(1, p - 1))}
-              className="rounded border border-white/15 px-3 py-1.5 text-sm text-zinc-200 disabled:opacity-50"
+              className="blackout-control rounded border px-3 py-1.5 text-sm disabled:opacity-50"
             >
               {t("store.donation.prev")}
             </button>
@@ -347,7 +352,7 @@ export default function RewardShopPage() {
               type="button"
               disabled={page === totalPages}
               onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-              className="rounded border border-white/15 px-3 py-1.5 text-sm text-zinc-200 disabled:opacity-50"
+              className="blackout-control rounded border px-3 py-1.5 text-sm disabled:opacity-50"
             >
               {t("store.donation.next")}
             </button>
@@ -359,6 +364,7 @@ export default function RewardShopPage() {
             {t("store.redeem.backShop")}
           </Link>
         </div>
+        <StoreContact />
       </div>
     </SiteShell>
   );

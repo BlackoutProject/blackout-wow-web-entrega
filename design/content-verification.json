@@ -11,18 +11,18 @@
       "ENUS client",
       "ESES client",
       "AIO addon",
-      "Druid C Fix addon"
-    ],
-    "notYetAvailable": [
+      "Druid C Fix addon",
       "patches and WoW.exe"
     ],
+    "notYetAvailable": [],
+    "downloadSourcesConfirmed": "2026-11-06: Patches + WoW.exe and AIO are available on both MEGA and Google Drive. Druid C Fix and the enUS and esES clients are available on Google Drive.",
     "customClasses": [
       "Evoker",
       "Demon Hunter",
       "Monk"
     ],
-    "morphs": "16 racial appearances, distinct from playable WotLK races",
-    "wotlkRaces": "Expanded customization with custom designs",
+    "morphs": "Owner clarified on 2026-10-21: morph items visually transform the existing character into other custom races, such as pandaren, allowing normal play with the chosen appearance. 16 racial appearances; separate from base race selection and expanded customization. Do not imply new racial abilities or a class change.",
+    "wotlkRaces": "Owner clarified on 2026-10-21: the original WotLK races have more character appearance customization options than the original client, with custom designs. This is separate from morph items.",
     "requiredClientVersion": "3.3.5a",
     "mandatoryComponents": [
       "Blackout patches",
@@ -53,6 +53,7 @@
       "Warlock"
     ],
     "customSpellCorrection": "Latest owner clarification replaces the previous up-to-15 announcement with 10 spells for each listed WotLK class.",
+    "customSpellOrigin": "Owner reconfirmed on 2026-10-21: 10 custom abilities adapted from later expansions for each of the ten original classes, not native WotLK spells and not a claim of ten extra spells for Evoker, Demon Hunter or Monk. Use Custom spells for navigation labels.",
     "highlightedSystems": [
       "AIO systems",
       "Custom shop",

@@ -62,7 +62,7 @@ function StatCard({
 }) {
   const a = statAccents[accent];
   return (
-    <div className="metal-border group relative w-full shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/75 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_12px_28px_rgba(2,6,23,0.42)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_16px_36px_rgba(2,6,23,0.5)] motion-reduce:hover:translate-y-0 sm:p-3.5">
+    <div className="account-stat metal-border group relative w-full shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/75 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_12px_28px_rgba(2,6,23,0.42)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_16px_36px_rgba(2,6,23,0.5)] motion-reduce:hover:translate-y-0 sm:p-3.5">
       <div
         className={`pointer-events-none absolute left-5 right-5 top-0 h-[2px] rounded-full bg-linear-to-r ${a.bar}`}
         aria-hidden
@@ -262,23 +262,10 @@ export default function AccountPage() {
 
   return (
     <SiteShell>
-      <div className="mx-auto max-w-6xl px-4 py-10 md:py-12">
-        {accessToken && <div className="account-toolbar">
-          <nav className="account-shortcuts" aria-label={t("account.navShortcuts")}>
-            <Link href="/tienda" className="account-donor-link">{t("nav.store")}</Link>
-            <Link href="/tienda/puntos" className="account-donor-link">{t("nav.redeem")}</Link>
-            <a className="account-donor-link" href="#donor">VIP &amp; DONOR<span aria-hidden="true">↓</span></a>
-          </nav>
-          <LogoutButton />
-        </div>}
+      <div className="account-content mx-auto max-w-6xl px-4 py-10 md:py-12">
         {/* Sin `home-card`: su regla "> * { z-index:1 }" anulaba z-20 y `absolute`, tapando texto y vídeo */}
-        <div className="metal-border relative isolate flex h-36 flex-col overflow-hidden rounded-xl border border-white/10 bg-zinc-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_12px_28px_rgba(2,6,23,0.4)] sm:h-40 md:h-44 md:rounded-2xl">
+        <div className="account-introduction relative isolate flex flex-col">
 
-          {/* Oscurece arriba hacia transparente abajo — texto superior legible sobre el vídeo */}
-          <div
-            className="pointer-events-none absolute inset-0 z-1 bg-linear-to-b from-black/70 via-black/35 via-45% to-black/55"
-            aria-hidden
-          />
           <div className="relative z-10 flex min-h-0 flex-1 flex-col items-center justify-center px-4 py-3 text-center sm:px-6">
             <h1 className="max-w-xl font-display text-base font-bold tracking-[0.08em] text-white [text-shadow:0_2px_12px_rgba(0,0,0,.95),0_0_28px_rgba(0,0,0,.5)] sm:text-lg md:text-xl">
               {t("account.title")}
@@ -288,6 +275,15 @@ export default function AccountPage() {
             </p>
           </div>
         </div>
+
+        {accessToken && <div className="account-toolbar">
+          <nav className="account-shortcuts" aria-label={t("account.navShortcuts")}>
+            <Link href="/tienda" className="account-donor-link">{t("nav.store")}</Link>
+            <Link href="/tienda/puntos" className="account-donor-link">{t("nav.redeem")}</Link>
+            <a className="account-donor-link" href="#donor">VIP &amp; DONOR<span aria-hidden="true">↓</span></a>
+          </nav>
+          <LogoutButton />
+        </div>}
 
         {!isAuthReady && (
           <p className="mt-8 text-zinc-400">{t("account.loadingSession")}</p>
@@ -299,7 +295,7 @@ export default function AccountPage() {
         {accessToken && data && (
           <>
             <div className="mt-8 flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-8">
-              <aside className="metal-border order-2 h-fit w-full shrink-0 rounded-2xl border border-white/10 bg-zinc-950/70 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_12px_28px_rgba(2,6,23,0.38)] lg:sticky lg:order-1 lg:top-24 lg:w-56 lg:self-start lg:p-5">
+              <aside className="account-navigation metal-border order-2 h-fit w-full shrink-0 rounded-2xl border border-white/10 bg-zinc-950/70 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_12px_28px_rgba(2,6,23,0.38)] lg:sticky lg:order-1 lg:top-24 lg:w-56 lg:self-start lg:p-5">
                 <p className="mb-3 font-display text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
                   {t("account.panelNavHint")}
                 </p>
@@ -310,6 +306,7 @@ export default function AccountPage() {
                   <button
                     type="button"
                     className={sidebarActionClass(openModal === "info")}
+                    aria-expanded={openModal === "info"}
                     onClick={() => setOpenModal("info")}
                   >
                     {t("account.navAccountInfo")}
@@ -317,6 +314,7 @@ export default function AccountPage() {
                   <button
                     type="button"
                     className={sidebarActionClass(openModal === "security")}
+                    aria-expanded={openModal === "security"}
                     onClick={() => setOpenModal("security")}
                   >
                     {t("account.navSecurity")}
@@ -324,6 +322,7 @@ export default function AccountPage() {
                   <button
                     type="button"
                     className={sidebarActionClass(openModal === "orders")}
+                    aria-expanded={openModal === "orders"}
                     onClick={() => setOpenModal("orders")}
                   >
                     {t("account.navPurchases")}
@@ -345,7 +344,7 @@ export default function AccountPage() {
               </aside>
 
               <div className="order-1 min-w-0 flex-1 space-y-6 lg:order-2">
-                <div className="grid grid-cols-1 items-start gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-4">
+                <div className="grid grid-cols-2 items-start gap-3 sm:gap-4 xl:grid-cols-4">
                   <StatCard label={t("account.statUser")} accent="amber">
                     <p className="truncate font-display text-xs font-medium tracking-tight text-amber-100 sm:text-sm">
                       {data.username}
@@ -380,7 +379,7 @@ export default function AccountPage() {
                   </StatCard>
                 </div>
 
-                <div className="metal-border relative shrink-0 overflow-hidden rounded-2xl border border-amber-400/35 bg-linear-to-br from-amber-950/45 via-zinc-950/85 to-zinc-950/90 px-4 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_12px_30px_rgba(2,6,23,0.42),0_0_28px_rgba(120,53,15,0.16)] md:flex md:items-center md:justify-between md:gap-8 md:px-5 md:py-3.5">
+                <div className="account-balance metal-border relative shrink-0 overflow-hidden rounded-2xl border border-amber-400/35 bg-linear-to-br from-amber-950/45 via-zinc-950/85 to-zinc-950/90 px-4 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_12px_30px_rgba(2,6,23,0.42),0_0_28px_rgba(120,53,15,0.16)] md:flex md:items-center md:justify-between md:gap-8 md:px-5 md:py-3.5">
                   <div
                     className="pointer-events-none absolute -right-8 top-1/2 h-28 w-28 -translate-y-1/2 rounded-full bg-amber-400/12 blur-2xl md:right-12 md:h-32 md:w-32"
                     aria-hidden

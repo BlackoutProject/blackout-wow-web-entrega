@@ -1,0 +1,286 @@
+/* The crest supplies the interface colors: ember, forged gold and ice-blue steel.
+   Warcraft artwork retains its native colors. */
+:root {
+  --blackout-ember: #ee904c;
+  --blackout-gold: #e9c58b;
+  --blackout-ice: #9bd4e8;
+  --blackout-silver: #f0e9dc;
+  --blackout-line: #aebbc333;
+  --blackout-rim: #c5ac7e70;
+  --blackout-metal: linear-gradient(115deg,#43362b 0%,#28303a 42%,#223743 100%);
+  --blackout-panel: radial-gradient(ellipse at 0% 0%,#bc864318,transparent 58%),linear-gradient(135deg,#29303a,#1b2530);
+  --blackout-bevel: inset 0 1px #fff2,inset 0 -2px #07101980,inset 0 0 0 3px #111a2266;
+  --blackout-depth: 0 16px 42px #080e184d;
+  --wc-canvas: #171c24;
+  --wc-ink: #171c24;
+  --wc-surface: #252d37;
+  --wc-line: var(--blackout-rim);
+  --wc-copy: #d0d6dc;
+  --wc-panel: var(--blackout-panel);
+  --wc-field: #151f2a;
+  --wc-action: linear-gradient(160deg,#b75e2c,#75331c 75%);
+  --portal-bg: var(--wc-canvas);
+  --portal-gold: var(--blackout-gold);
+  --portal-line: var(--blackout-rim);
+}
+.site-shell-home { --wc-canvas: #171c24; --wc-line: #bc946b66; }
+.site-shell .site-header { background: linear-gradient(180deg,#ffffff09,transparent 38%,#08101b24),var(--blackout-metal); border-bottom-color: #c99b5f99; }
+.site-shell .site-header:after,.site-shell .site-footer:before { background: linear-gradient(90deg,#d96e31aa,#eac382 42%,#9bc3d2 65%,#68bde4aa); }
+.site-header .site-register { background: linear-gradient(135deg,#a74920,#712a16); border-color: #f18b3e; color: #fff2d4; }
+.site-header .site-register:hover { background: linear-gradient(135deg,#bd5925,#85371b); }
+.site-shell-home .wc-kicker { color: #f4ba67; }
+.site-shell-home .wc-hero { background: radial-gradient(ellipse at 28% 45%,#653b25 0%,#2e231d 35%,#171c24 78%); }
+.wc-hero-video video,.wc-hero-video img { filter: saturate(1.13) contrast(1.04); }
+.wc-hero h1 em { color: #ffca6d; background: linear-gradient(#ffe8a5 15%,#ffc761 55%,#ed813d); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.wc-hero .wc-hero-intro { color: #f1e7e1; }
+.wc-hero .wc-hero-shade { background: linear-gradient(90deg,#281d1555,transparent 65%),linear-gradient(0deg,#171c24,transparent 26%); }
+.wc-hero > .wc-hero-fireflies { inset: 15% 0 0 auto; width: 58%; height: 85%; mask-image: linear-gradient(90deg,transparent,#000 30%,#000 90%,transparent); opacity: .8; }
+.wc-hero .wc-button:not(.wc-button-ghost),.site-shell-home .wc-server-invitation .wc-button,.wc-support .wc-button { background: linear-gradient(125deg,#a94b22,#713017); border-color: #ffba71; color: #fff4d8; box-shadow: inset 0 0 0 3px #42271088,0 6px 28px #ed8b2f33; }
+.wc-hero .wc-button:not(.wc-button-ghost):hover { background: linear-gradient(125deg,#bc5724,#893b1b); }
+.wc-hero .wc-button-ghost { background: linear-gradient(135deg,#283240e8,#192231e8); border-color: #a8a4a480; color: #f3e7d4; }
+.wc-hero .wc-button-ghost:last-child { background: linear-gradient(125deg,#245477,#17374e); border-color: #8bc7e2; color: #e9f6ff; }
+.wc-hero .wc-realm-profile { color: #ffe1a1; border-color: #d99d5055; background: linear-gradient(90deg,transparent,#f3923524,transparent); }
+.site-shell-home .wc-trailer-pending { padding-block: 40px; background: linear-gradient(90deg,#30241bf2 4%,#302015ba 50%,#252b3066),url('/warcraft/dark-portal.jpg') center 48% / cover; border-block-color: #d5a46780; }
+.wc-trailer-pending .wc-trailer-emblem { color: #ffe2a1; background: radial-gradient(ellipse,#f09e4a66,transparent 72%); }
+.wc-home-stage .wc-section-heading h2 { color: #fff2db; text-shadow: 0 3px 22px #111723; }
+.wc-home-stage .wc-section-heading > p:last-child { color: #e3e5eb; border-left-color: #ecae5d; }
+.wc-home-stage .wc-server-invitation { background: linear-gradient(110deg,#36281f,#1e3442); border-block-color: #c79a6277; }
+
+/* Two cinematic windows instead of two long, uniformly brown rows. */
+.wc-home-stage .wc-battlefields { gap: 28px; }
+.wc-home-stage .wc-battlefields .wc-path { --path-base: #32231e; border-color: #c87a4877; background: linear-gradient(130deg,#39291e,#272322); }
+.wc-home-stage .wc-battlefields .wc-path-pvp { --path-base: #172b3e; border-color: #70bbd888; background: linear-gradient(135deg,#18334a,#1c2434); }
+.wc-home-stage .wc-battlefields .wc-path-art img { filter: saturate(1.13) contrast(1.02); }
+.wc-home-stage .wc-battlefields .wc-path-art:after { background: linear-gradient(90deg,transparent 36%,#32231e33 54%,#32231ee8 83%,#32231e),linear-gradient(0deg,#32231e99,transparent 34%); }
+.wc-home-stage .wc-battlefields .wc-path-pvp .wc-path-art:after { background: linear-gradient(90deg,#172b3e,#172b3ede 16%,#172b3e22 47%,transparent 64%),linear-gradient(0deg,#172b3e88,transparent 40%); }
+.wc-home-stage .wc-battlefields .wc-path-pve .wc-path-tag { color: #ffbc72; }
+.wc-home-stage .wc-battlefields .wc-path-pvp .wc-path-tag { color: #8de1ff; }
+.wc-home-stage .wc-battlefields .wc-path h3 { color: #fff1dd; }
+.wc-home-stage .wc-battlefields .wc-path-pvp h3 { color: #e5f6ff; }
+.wc-home-stage .wc-battlefields .wc-path p { color: #e3dce1; }
+.wc-home-stage .wc-battlefields .wc-path .wc-text-link { border-color: #f3a35e88; background: #dc732d1c; color: #ffdcab; }
+.wc-home-stage .wc-battlefields .wc-path-pvp .wc-text-link { border-color: #82c9e888; background: #4987b324; color: #c2edff; }
+.wc-home-stage .wc-path-facts dd { color: #ffca7d; }
+.wc-home-stage .wc-path-facts dt { color: #dfc6b9; }
+@media (min-width: 1050px) {
+  .wc-home-stage .wc-battlefields { grid-template-columns: repeat(2,minmax(0,1fr)); align-items: stretch; }
+  .wc-home-stage .wc-battlefields .wc-path { display: flex; align-items: flex-start; min-height: 700px; }
+  .wc-home-stage .wc-battlefields .wc-path-art { inset: 0 0 auto; height: 390px; width: 100%; }
+  .wc-home-stage .wc-battlefields .wc-path-art img { object-position: 43% 25%; }
+  .wc-home-stage .wc-battlefields .wc-path-pvp .wc-path-art img { object-position: 66% 25%; }
+  .wc-home-stage .wc-battlefields .wc-path-art:after,.wc-home-stage .wc-battlefields .wc-path-pvp .wc-path-art:after { background: linear-gradient(0deg,var(--path-base),transparent 62%); }
+  .wc-home-stage .wc-battlefields .wc-path-content,.wc-home-stage .wc-battlefields .wc-path-pvp .wc-path-content { display: flex; flex-direction: column; align-items: flex-start; width: 100%; height: 100%; padding: 310px 34px 34px; }
+  .wc-home-stage .wc-battlefields h3 { font-size: 31px; min-height: 74px; }
+  .wc-home-stage .wc-battlefields .wc-path-tag { margin-bottom: 12px; }
+  .wc-home-stage .wc-battlefields p { font-size: 14px; margin-top: 16px; }
+  .wc-home-stage .wc-battlefields .wc-text-link { margin-top: auto; width: 100%; justify-content: space-between; }
+  .wc-home-stage .wc-path-facts { width: 100%; margin: 0 0 26px; }
+  .wc-home-stage .wc-battlefields .wc-path > .wc-scene-atmosphere { inset: 0 0 auto; width: 100%; height: 390px; mask-image: linear-gradient(#000,transparent); }
+}
+
+/* Discord remains a bright destination, with its illustration visible behind it. */
+.wc-community .wc-community-backdrop img { filter: saturate(1.12); }
+.wc-community .wc-community-backdrop:after { background: linear-gradient(180deg,#171c24,transparent 170px,transparent calc(100% - 140px),#171c24),linear-gradient(90deg,#30251c33,#142a3911); }
+.wc-community .wc-community-frame { background: linear-gradient(110deg,#35261feb,#142d40e8); border-color: #bc9a72; border-left-color: #ed9f59; border-right-color: #86d3f2; box-shadow: inset 0 0 0 4px #bfa78011,-12px 0 35px #d6751b1a,12px 0 35px #459dd92b,0 25px 75px #09061166; }
+.wc-community h2 em { color: #91d8f5; }
+.wc-community .wc-kicker { color: #eec27c; }
+.wc-community .wc-community-border { opacity: .8; filter: drop-shadow(0 0 5px #a7d9ef66); }
+.wc-community .wc-community-border rect { stroke: #d2d8cc; }
+.wc-community .wc-community-panel { background: radial-gradient(ellipse,#3c9ece29,transparent); }
+.wc-community .wc-community-ambience:before { background: radial-gradient(ellipse at 15% 80%,#d481323d,transparent 55%),radial-gradient(ellipse at 85% 15%,#3e9fd12e,transparent 58%); }
+.wc-community .wc-community-ambience i { background: #f5c387; box-shadow: 0 0 10px #d77936; }
+.wc-community .wc-community-badges li { border-color: #c69d6555; background: #b37b3620; color: #f1d7ac; }
+.wc-community .wc-community-badges li:nth-child(2) { border-color: #91c9df55; background: #467c9624; color: #c9e9f8; }
+.wc-community .wc-community-ambience i:nth-child(even) { background: #a6e3ff; box-shadow: 0 0 10px #62b6df; }
+.wc-community .wc-discord-crest { color: #f7d19b; border-color: #d89a60; background: linear-gradient(135deg,#603e27,#202f3a); }
+.wc-community .wc-discord-crest i { border-color: #d4ae7580; }
+
+/* Two intentional title lines, with the crest's fire / ice highlights. */
+.wc-heading-line { display: block; }
+.wc-heading-accent { color: var(--blackout-gold); }
+.wc-home-stage .wc-section-heading h2 .wc-heading-accent { background: linear-gradient(100deg,#f9c67b 10%,#efdfbd 65%,#b7e1ef); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.wc-home-stage .wc-path-pvp h3 .wc-heading-accent { color: #a2def7; }
+.wc-home-stage .wc-path-pve h3 .wc-heading-accent { color: #f4c68a; }
+.wc-trailer h2,.wc-server-invitation h3 { letter-spacing: -.025em; }
+.wc-hero-intro,.wc-section-intro,.wc-community-intro,.wc-battlefields p { text-wrap: pretty; }
+.wc-community .wc-community-help { color: #cfdae0; }
+.wc-community .wc-discord-button { background: linear-gradient(125deg,#285c7c,#183e5c); color: #fff; border-color: #98d9f5; box-shadow: 0 7px 24px #5196b92e; }
+.wc-support:before { background: linear-gradient(90deg,#202b33 5%,#202b33ed 33%,#202b3322 70%),linear-gradient(0deg,#171c24,transparent 40%,#171c24); }
+.wc-support .wc-join-film { opacity: 1; }
+.wc-support h2 em { color: #eec27c; }
+.site-shell-home .site-footer { background: linear-gradient(120deg,#2b241e,#192b38); }
+
+/* Shared materials: warm metal for actions, tempered steel for reading surfaces.
+   Native Warcraft trim is used only on edges; illustrations keep their color. */
+.site-shell .site-header:after,.site-shell .site-footer:before {
+  height: 5px;
+  background: url('/warcraft/native/metal-top-trim.png') center / auto 5px repeat-x;
+  opacity: .8;
+  filter: drop-shadow(0 1px 1px #070d16);
+}
+.site-shell .site-header { box-shadow: inset 0 1px #f5dca71a,0 5px 22px #080e1840; }
+.site-header .site-nav a { color: #e3ddd2; transition: color .2s,text-shadow .2s; }
+.site-header .site-nav a:is(:hover,[aria-current=page]) { color: #ffe1ac; text-shadow: 0 0 18px #d8a45933; }
+.site-header .site-account,.site-header .site-sound-toggle,.site-menu-button {
+  border-color: #b7a08070;
+  box-shadow: var(--blackout-bevel);
+}
+.site-header .site-account:not(.site-register),.site-header .site-sound-toggle,.site-menu-button {
+  background: linear-gradient(150deg,#34404b,#1b2935);
+  color: var(--blackout-silver);
+}
+.site-header .site-register { background: var(--wc-action); border-color: #db9d61; }
+.site-header .site-register:hover { border-color: #ffe0ac; box-shadow: var(--blackout-bevel),0 4px 20px #d77c2926; }
+.site-header .site-account:not(.site-register):hover,.site-header .site-sound-toggle:hover {
+  background: linear-gradient(150deg,#3b4b59,#233747);
+  border-color: var(--blackout-ice);
+}
+.site-header .site-sound-toggle[aria-checked=false] { color: #aab7c0; }
+.site-header .language-trigger { border: 1px solid transparent; transition: background .2s,border-color .2s; }
+.site-header .language-trigger:is(:hover,[aria-expanded=true]) { background: #a8c5d510; border-color: #a8c5d540; }
+.language-options,.site-header .site-mobile-menu:not([hidden]) { background: var(--blackout-panel); border-color: var(--blackout-rim); box-shadow: var(--blackout-bevel),var(--blackout-depth); }
+.language-options button[aria-checked=true] { background: linear-gradient(90deg,#d3a35e22,transparent); }
+
+.site-shell :is(.wc-button,.lore-button,.wc-discord-button) {
+  border-radius: 2px;
+  text-shadow: 0 1px 2px #17120c66;
+  box-shadow: var(--blackout-bevel),0 7px 20px #060c1533;
+}
+.site-shell .wc-button:not(.wc-button-ghost),.site-shell .lore-button {
+  background: linear-gradient(180deg,#ffd89a15,transparent 45%),var(--wc-action);
+  color: #fff3dc;
+  border-color: #dfa666;
+}
+.site-shell .wc-button:not(.wc-button-ghost):hover,.site-shell .lore-button:hover {
+  background: linear-gradient(160deg,#c56b34,#8b411f 75%);
+  border-color: #ffdfab;
+  box-shadow: var(--blackout-bevel),0 8px 24px #dd83312b;
+}
+.wc-community .wc-discord-button { background: linear-gradient(155deg,#367495,#234e6a); box-shadow: var(--blackout-bevel),0 8px 25px #448db72b; }
+.wc-community .wc-discord-button:hover { background: linear-gradient(155deg,#4183a5,#2b5e7b); border-color: #cbecf7; box-shadow: var(--blackout-bevel),0 9px 28px #448db740; }
+.wc-hero .wc-button-ghost { box-shadow: var(--blackout-bevel),0 7px 20px #060c1533; }
+.wc-hero .wc-button-ghost:hover { border-color: #dce0df; box-shadow: var(--blackout-bevel),0 8px 25px #508ba72b; }
+.wc-hero .wc-button-ghost:last-child { background: linear-gradient(155deg,#326986,#1d445c); }
+.wc-hero .wc-button-ghost:last-child:hover { background: linear-gradient(155deg,#3c7b99,#275871); border-color: #c0e8f5; }
+
+/* The same machined rim connects the feature tabs, battlefields and invitations. */
+.wc-home-stage .wc-battlefields .wc-path { box-shadow: var(--blackout-depth),inset 0 0 0 1px #f6d49b14; border-color: #c997647d; }
+.wc-home-stage .wc-battlefields .wc-path-pvp { border-color: #8fbdcf80; }
+.wc-home-stage .wc-battlefields .wc-corners i { width: 21px; height: 21px; opacity: .9; }
+.wc-home-stage .wc-battlefields .wc-path .wc-path-tag {
+  background: linear-gradient(145deg,#252d36f2,#19232de8);
+  border-color: #c999637d;
+  box-shadow: var(--blackout-bevel),0 6px 18px #050d164d;
+}
+.wc-home-stage .wc-battlefields .wc-path-pvp .wc-path-tag { border-color: #8fc9dc80; }
+.wc-home-stage .wc-battlefields .wc-path .wc-text-link { padding: 15px 18px; box-shadow: inset 0 1px #f7d8a512,inset 0 -1px #080d1540; transition: background .2s,border-color .2s; }
+.wc-home-stage .wc-battlefields .wc-path:hover .wc-text-link { background: #dd94562b; border-color: #f4bd84; }
+.wc-home-stage .wc-battlefields .wc-path-pvp:hover .wc-text-link { background: #5499bd33; border-color: #b5e4f6; }
+.wc-home-stage .wc-path-facts { border-block-color: #d5bb8e3d; }
+.wc-home-stage .wc-path-facts > div + div { border-color: #d5bb8e2b; }
+.wc-home-stage .wc-server-invitation {
+  border: 1px solid var(--blackout-rim);
+  background: radial-gradient(ellipse at 100% 0%,#69a5bf17,transparent 60%),var(--blackout-panel);
+  box-shadow: var(--blackout-bevel),var(--blackout-depth);
+}
+.wc-community .wc-community-frame { border-radius: 3px; box-shadow: inset 0 1px #f6e2be38,inset 0 -1px #050b16cc,inset 0 0 0 4px #bec1bb0c,0 24px 65px #070c1859; }
+.wc-community .wc-community-panel { border-left-color: #a9cbd72b; }
+.wc-community .wc-community-badges li { border-radius: 2px; box-shadow: inset 0 1px #eed9b80a; }
+.site-shell .site-footer { background: radial-gradient(ellipse at 0% 0%,#bf7c2922,transparent 55%),linear-gradient(115deg,#24272d,#1d303e); }
+.site-footer .site-footer-links,.site-footer .site-footer-bottom { border-color: var(--blackout-line); }
+.site-footer .site-community { padding: 9px 12px; border: 1px solid #b7c3ca33; border-radius: 2px; background: #b2c1cd06; }
+.site-footer .site-community:hover { border-color: #d6b07a99; background: #e0b36d0d; }
+.site-footer .site-footer-bottom > a { border: 1px solid var(--blackout-rim); background: var(--blackout-panel); box-shadow: var(--blackout-bevel); }
+
+/* Interior pages use the same steel base, rather than unrelated brown panels. */
+.portal-page .portal-shade { background: linear-gradient(0deg,#171c24,transparent 68%),linear-gradient(90deg,#171c24f5 9%,#171c2480 48%,#171c2414 84%); }
+.portal-page .portal-backdrop .wc-ambient { opacity: .9; }
+.portal-page .portal-dust { background: radial-gradient(ellipse at 18% 8%,#d8a15c15,transparent 55%); }
+.portal-page .lore-kicker { color: var(--blackout-gold); }
+.portal-page .lore-hero h1 { color: var(--blackout-silver); }
+.portal-page .page-section-nav { background: linear-gradient(180deg,#2e3642fa,#202c38fa); border-block-color: #b4c3cd45; box-shadow: inset 0 1px #fff1,0 8px 24px #080d174d; }
+.portal-page .page-section-links a[aria-current=location] { color: #f8dca8; background: linear-gradient(0deg,#d7a35726,transparent); }
+.portal-page :is(.metal-border,.home-card,.server-progression-grid article,.connection-guided-downloads article,.connection-filemap,.server-collections,.wc-store-plan,.wc-store-individual,.wc-store-fair) {
+  border-color: var(--blackout-rim);
+  background: var(--blackout-panel);
+  box-shadow: inset 0 1px #e3e7e51a,inset 0 0 0 4px #0c172333,var(--blackout-depth);
+}
+.portal-page .server-overview .lore-stats { background: radial-gradient(ellipse at 50% 0%,#d5ab5c17,transparent 70%),var(--blackout-panel); border-color: #b5b5a966; }
+.portal-page .server-overview .lore-stats strong { color: #f3d5a2; }
+.portal-page .server-progression-grid article { border-top-color: #c5a7779c; }
+.portal-page .server-progression-grid article h3 { color: var(--blackout-silver); }
+.portal-page .server-emblem,.portal-page .connection-option-icon { border-color: #baa57e80; background: linear-gradient(145deg,#43403a,#233442); box-shadow: var(--blackout-bevel); }
+.portal-page .class-spells { background: radial-gradient(ellipse at 90% 10%,#6b9bbc22,transparent 65%),var(--blackout-panel); border-color: #a9c1cc66; }
+.portal-page .class-spells-classes li { background: linear-gradient(155deg,#3a434b,#222e3b); border-color: #c4b28d4d; box-shadow: inset 0 1px #fff1; }
+.portal-page .class-spells h2 em,.portal-page .class-spells-classes li span { color: var(--blackout-ice); }
+.portal-page .wc-spell-seal { color: #96c5db; }
+.portal-page .server-experience .lore-feature:before { background: linear-gradient(0deg,#202a36 9%,#202a36f5 35%,#202a3640 68%,transparent); }
+.portal-page .server-experience .lore-feature { border-color: #b7997370; box-shadow: var(--blackout-depth); }
+.portal-page .server-experience .lore-feature:nth-child(2) { border-color: #9bc7d470; }
+.portal-page .server-systems:before { background: linear-gradient(0deg,#171c24,#171c2477 40%,#171c2455 75%,#171c24); }
+.portal-page .wc-system-tabs button { border-color: #a9c1cf38; background: linear-gradient(135deg,#29333fe8,#1d2834e8); box-shadow: inset 0 1px #dde7ed0d; }
+.portal-page .wc-system-tabs button:is(:hover,[aria-selected=true]) { border-color: rgba(var(--system-rgb),.65); background: linear-gradient(100deg,rgba(var(--system-rgb),.17),transparent),#26333e; }
+.portal-page .wc-system-panels { background: radial-gradient(ellipse at 100% 0%,rgba(var(--system-rgb),.12),transparent 68%),var(--blackout-panel); box-shadow: var(--blackout-bevel),var(--blackout-depth); }
+.portal-page .lore-customization article { background: var(--blackout-panel); border-color: #b0bec666; }
+.portal-page .lore-customization article + article { background: radial-gradient(ellipse at 100% 0%,#79bddc1f,transparent 65%),var(--blackout-panel); }
+.portal-page .lore-customization article + article .server-emblem { --emblem-color: #b7dbeb; }
+.portal-page .lore-customization li { background: #233748; border-color: #96bcd54d; color: #d7e5ed; }
+.portal-page .server-faq details { background: linear-gradient(110deg,#2a333f,#1d2834); border-color: var(--blackout-line); }
+.portal-page .server-faq details[open] { background: linear-gradient(110deg,#333a42,#223340); border-color: #bdab8266; }
+.portal-page .server-faq summary { color: #e9e0d0; }
+.portal-page .wc-store-plan-plus { border-color: #d9b579a6; background: radial-gradient(ellipse at 0% 0%,#d59d402b,transparent 58%),var(--blackout-panel); }
+.portal-page .wc-store-commands code { background: #142535; border-color: #a2bdcb55; color: #cfebf5; }
+.portal-page .wc-store-individual li { border-top-color: var(--blackout-line); }
+
+/* Downloads, forms and rules retain a quiet reading surface and clear states. */
+.portal-page .connection-guided-downloads article { --download-accent: #e9c58b; border-top-color: var(--download-accent); }
+.portal-page .connection-guided-downloads article:nth-child(2) { --download-accent: #a0d5e9; }
+.portal-page .connection-guided-downloads article:nth-child(2) .connection-option-icon { color: var(--download-accent); border-color: #9acddd80; background: linear-gradient(145deg,#314956,#22313e); }
+.portal-page .connection-option { color: var(--download-accent); }
+.portal-page .connection-download-actions a { background: linear-gradient(150deg,#384956,#233342); color: #f3e7d4; border-color: #bfa37780; box-shadow: var(--blackout-bevel); }
+.portal-page .connection-download-actions a:hover { background: linear-gradient(150deg,#455b69,#2b4254); border-color: var(--download-accent); color: #fff4df; }
+.portal-page .connection-download-pending { border-color: #83929d66; background: #1c2632; }
+.portal-page .connection-download-pending span { color: #c1cbd3; }
+.portal-page .connection-availability { border-color: #c5985d70; background: linear-gradient(100deg,#8e612523,#24303d); }
+.portal-page .connection-filemap dt code,.portal-page .connect-realmlist { background: #182633; border-color: #98b9cc55; color: #e4d4b5; box-shadow: inset 0 1px #e0edfa0a; }
+.portal-page .connection-tutorial-play { background: var(--blackout-panel); border-color: var(--blackout-rim); box-shadow: var(--blackout-bevel); }
+.portal-page .portal-main label { color: #d5dadd; }
+.portal-page .portal-main .text-zinc-500 { color: #b8c4ce; }
+.portal-page .portal-main :is(input:not([type=checkbox]):not([type=radio]),select,textarea) { background: linear-gradient(180deg,#15212d,#1b2a38); border-color: #9baeb952; color: #f1eee5; border-radius: 2px; box-shadow: inset 0 2px 5px #070d1640; }
+.portal-page .portal-main :is(input,textarea)::placeholder { color: #95a7b6; }
+.portal-page .portal-main :is(input,select,textarea):focus { border-color: #dfbc80; box-shadow: 0 0 0 3px #d2aa6326,inset 0 2px 5px #070d1640; }
+.portal-page .portal-main button[type=submit]:not(:disabled) { background: var(--wc-action); color: #fff2d9; border: 1px solid #e0ab6d; border-radius: 2px; box-shadow: var(--blackout-bevel),0 7px 20px #060c1533; }
+.portal-page .rules-scope { background: var(--blackout-panel); border-left-color: #d9b574; }
+.portal-page .rules-card { background: linear-gradient(115deg,#29323de8,#202b37eb); border-bottom-color: #a8b9c333; }
+.portal-page .rules-card:target { background: linear-gradient(115deg,#3c3d3bf2,#243c4bf2); border-bottom-color: #e2bd7d99; }
+.portal-page .rules-sanctions { background: linear-gradient(115deg,#49352be6,#28313deb); border-color: #c4966666; box-shadow: inset 3px 0 #c28d57; }
+.portal-page .rules-card h3 { color: #f0e5d0; }
+.portal-page .rules-directory a:hover { background: #a6c6d510; color: #f8dca8; }
+
+@media (max-width: 600px) {
+  .portal-page .portal-shade { background: linear-gradient(90deg,#171c24e6,#171c2466),linear-gradient(0deg,#171c24,transparent 65%); }
+  .site-footer .site-socials { gap: 8px; }
+  .site-footer .site-community { padding-inline: 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-shell :is(.wc-button,.lore-button,.wc-discord-button,.site-account,.language-trigger) { transition: none; }
+}
+
+@keyframes blackout-battle-depth { 50% { scale: 1.045; translate: -3px 2px; } }
+@keyframes blackout-community-depth { 50% { transform: scale(1.05) translate3d(-5px,0,0); } }
+@media (prefers-reduced-motion: no-preference) {
+  .wc-battlefields .wc-path-art img { animation: blackout-battle-depth 22s ease-in-out infinite paused; }
+  .wc-battlefields .wc-path-pvp .wc-path-art img { animation-delay: -11s; }
+  .wc-battlefields .wc-path[data-in-view=true] .wc-path-art img { animation-play-state: running; }
+  .wc-community-backdrop img { animation: blackout-community-depth 28s ease-in-out infinite paused; }
+  .wc-community[data-active=true] .wc-community-backdrop img { animation-play-state: running; }
+}
+@media (max-width: 760px) {
+  .wc-home-stage .wc-battlefields .wc-path-art:after,.wc-home-stage .wc-battlefields .wc-path-pvp .wc-path-art:after { background: linear-gradient(0deg,var(--path-base),transparent 75%); }
+}
+@media (max-width: 600px) {
+  .wc-hero .wc-hero-shade { background: linear-gradient(0deg,#171c24 0%,#2b241e 43%,#2b241e66 68%,transparent 85%); }
+  .wc-hero > .wc-hero-fireflies { inset: 0; width: 100%; height: 330px; }
+  .wc-overview-backdrop > span:before { opacity: .5; }
+  .wc-community .wc-community-frame { background: linear-gradient(145deg,#35291fed,#183447ed); }
+}

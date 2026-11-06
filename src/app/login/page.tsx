@@ -13,7 +13,6 @@ import {
   IconSpark,
   IconUser,
 } from "@/components/AuthFormUi";
-import { AuthHeroLogoLink } from "@/components/AuthHeroLogoLink";
 import { SiteShell } from "@/components/SiteShell";
 import { useAuth } from "@/context/AuthContext";
 import { ApiError } from "@/lib/api";
@@ -106,16 +105,15 @@ function LoginPageContent() {
   }
 
   return (
-    <div className="relative isolate min-h-[min(820px,calc(100dvh-180px))] overflow-hidden bg-[#030306]">
+    <div className="auth-page relative isolate min-h-[min(820px,calc(100dvh-180px))] overflow-hidden bg-[#030306]">
 
       <div className="pointer-events-none absolute inset-0 z-0 bg-linear-to-br from-black/88 via-black/72 to-[#0a1628]/90" />
       <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_110%_70%_at_50%_-10%,rgba(251,191,36,0.12),transparent_52%),radial-gradient(ellipse_at_80%_70%,rgba(56,189,248,0.09),transparent_45%)]" />
       <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(105deg,transparent_0%,rgba(0,0,0,0.2)_40%,transparent_65%)]" />
 
-      <div className="relative z-10 mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
-        <div className="grid items-stretch gap-10 lg:grid-cols-[minmax(0,1fr)_min(100%,420px)] lg:gap-16 xl:grid-cols-[minmax(0,1.15fr)_440px]">
-          <header className="flex flex-col justify-center space-y-8 text-center lg:text-left">
-            <AuthHeroLogoLink />
+      <div className="auth-layout relative z-10 mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
+        <div className="auth-grid grid items-stretch gap-10 lg:grid-cols-[minmax(0,1fr)_min(100%,420px)] lg:gap-16 xl:grid-cols-[minmax(0,1.15fr)_440px]">
+          <header className="auth-introduction flex flex-col justify-center space-y-8 text-center lg:text-left">
             <div className="lg:pr-4">
               <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-amber-400/95">
                 {t("auth.login.panelKicker")}
@@ -143,7 +141,7 @@ function LoginPageContent() {
             </ul>
           </header>
 
-          <div className="metal-border relative flex flex-col rounded-2xl border border-white/10 bg-zinc-950/75 p-6 shadow-[0_28px_90px_-20px_rgba(0,0,0,0.85),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-[18px] sm:p-8">
+          <div className="auth-form-panel metal-border relative flex flex-col rounded-2xl border border-white/10 bg-zinc-950/75 p-6 shadow-[0_28px_90px_-20px_rgba(0,0,0,0.85),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-[18px] sm:p-8">
             <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-amber-500/15 blur-3xl" />
             <div className="pointer-events-none absolute -bottom-12 -left-10 h-36 w-36 rounded-full bg-sky-500/10 blur-3xl" />
 

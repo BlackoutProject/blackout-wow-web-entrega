@@ -1,0 +1,196 @@
+/* Interaction palette shared by the approved Home and interior pages.
+   Keep this after the scenery styles: state changes must not change material. */
+:root {
+  --ui-gold: #e5bd80;
+  --ui-gold-bright: #f5d6a5;
+  --ui-rim: #a39173;
+  --ui-steel-rim: #72777f;
+  --ui-ink: #f4e9d7;
+  --ui-muted: #c5c7cc;
+  --ui-error: #ed9385;
+  --ui-primary: linear-gradient(180deg, #903b25, #61271f);
+  --ui-primary-hover: linear-gradient(180deg, #a74a2d, #783024);
+  --ui-secondary: linear-gradient(180deg, #34383e, #25282e);
+  --ui-secondary-hover: linear-gradient(180deg, #41454b, #303339);
+  --ui-bevel: inset 0 1px #ffffff14, inset 0 -1px #08090c70;
+  --ui-shadow: 0 5px 16px #08090d40;
+  --ui-state-time: 180ms;
+}
+
+/* An outline belongs to keyboard focus, not to every mouse hover. */
+.site-shell :where(a[href], button, input, select, textarea, summary, [tabindex="0"]):focus-visible {
+  outline: 2px solid var(--ui-gold);
+  outline-offset: 4px;
+}
+.site-shell :where(a, button, summary) {
+  -webkit-tap-highlight-color: #e5bd801f;
+}
+
+.site-shell :is(.wc-button, .lore-button, .blackout-action),
+.site-shell .portal-main button[type="submit"]:not(:disabled) {
+  border: 1px solid #bc8854;
+  border-radius: 2px;
+  background: var(--ui-primary);
+  color: var(--ui-ink);
+  box-shadow: var(--ui-bevel), var(--ui-shadow);
+  filter: none;
+  clip-path: none;
+  transition: background var(--ui-state-time), border-color var(--ui-state-time),
+    color var(--ui-state-time), box-shadow var(--ui-state-time), transform var(--ui-state-time);
+}
+.site-shell .wc-button:not(.wc-button-ghost):where(:not(:disabled):not([aria-disabled="true"])):is(:hover, :focus-visible),
+.site-shell :is(.lore-button, .blackout-action):not(:disabled):is(:hover, :focus-visible),
+.site-shell .portal-main button[type="submit"]:not(:disabled):is(:hover, :focus-visible) {
+  background: var(--ui-primary-hover);
+  border-color: var(--ui-gold);
+  color: #fff3df;
+  box-shadow: var(--ui-bevel), 0 5px 20px #9a45272b;
+  filter: none;
+  transform: translateY(-1px);
+}
+.site-shell .wc-button.wc-button-ghost,
+.site-shell .wc-hero .wc-button-ghost:last-child {
+  border-color: var(--ui-steel-rim);
+  background: var(--ui-secondary);
+  color: var(--ui-ink);
+  box-shadow: var(--ui-bevel), var(--ui-shadow);
+}
+.site-shell .wc-button.wc-button-ghost:is(:hover, :focus-visible),
+.site-shell .wc-hero .wc-button-ghost:last-child:is(:hover, :focus-visible) {
+  border-color: var(--ui-gold);
+  background: var(--ui-secondary-hover);
+  box-shadow: var(--ui-bevel), var(--ui-shadow);
+  filter: none;
+  transform: translateY(-1px);
+}
+.site-shell :is(.wc-button, .lore-button, .blackout-action):active,
+.site-shell .portal-main button[type="submit"]:not(:disabled):active {
+  transform: translateY(0);
+  box-shadow: inset 0 2px 5px #09090c55;
+}
+.site-shell button:disabled,
+.site-shell .blackout-action:disabled,
+.site-shell .wc-button[aria-disabled="true"],
+.site-shell .wc-button:is(:disabled, [aria-disabled="true"]):is(:hover, :focus-visible, :active) {
+  border-color: #64666d;
+  background: #2b2d32;
+  color: #adb0b7;
+  box-shadow: none;
+  filter: none;
+  transform: none;
+}
+
+/* Header controls all use the same steel, except the registration action. */
+.site-shell .site-header :is(.site-account, .site-sound-toggle, .site-menu-button, .language-trigger) {
+  border: 1px solid var(--ui-steel-rim);
+  border-radius: 2px;
+  background: var(--ui-secondary);
+  color: var(--ui-ink);
+  box-shadow: var(--ui-bevel);
+  filter: none;
+  transition: background var(--ui-state-time), border-color var(--ui-state-time),
+    color var(--ui-state-time), box-shadow var(--ui-state-time);
+}
+.site-shell .site-header .site-account:not(.site-register):is(:hover, :focus-visible),
+.site-shell .site-header :is(.site-sound-toggle, .site-menu-button, .language-trigger):is(:hover, :focus-visible, [aria-expanded="true"]) {
+  background: var(--ui-secondary-hover);
+  border-color: var(--ui-gold);
+  color: var(--ui-gold-bright);
+  box-shadow: var(--ui-bevel);
+}
+.site-shell .site-header .site-register { background: var(--ui-primary); border-color: #bc8854; }
+.site-shell .site-header .site-register:is(:hover, :focus-visible) {
+  background: var(--ui-primary-hover); border-color: var(--ui-gold); box-shadow: var(--ui-bevel);
+}
+.site-shell .site-header .site-sound-toggle[aria-pressed="false"] { color: #aeb2ba; }
+.site-shell .site-header .site-nav a:is(:hover, :focus-visible, [aria-current="page"]) {
+  color: var(--ui-gold-bright); text-shadow: none;
+}
+.site-shell .site-mobile-menu :is(a, button):is(:hover, :focus-visible) {
+  color: var(--ui-gold-bright); background: #e5bd800a; border-color: #a3917380;
+}
+.site-shell .language-options { background: #24272dfc; border-color: #a3917380; box-shadow: 0 12px 30px #08090c66; }
+.site-shell .language-options button { border: 1px solid transparent; border-radius: 2px; transition: background var(--ui-state-time), border-color var(--ui-state-time); }
+.site-shell .language-options button:hover { background: #e5bd8010; border-color: #a3917370; outline: none; }
+.site-shell .language-options button:focus-visible { background: #e5bd8010; outline: 2px solid var(--ui-gold); outline-offset: -2px; }
+.site-shell .language-options button[aria-checked="true"] { background: #e5bd8017; color: var(--ui-gold-bright); }
+
+/* Discord retains its own blue family, including its border and focus ring. */
+.site-shell .wc-community a.wc-discord-button {
+  background: linear-gradient(135deg, #5865d5, #414cae);
+  border-color: #99a9f0; color: #fff; filter: none;
+  box-shadow: inset 0 1px #ffffff26, 0 5px 18px #202b7455;
+}
+.site-shell .wc-community a.wc-discord-button:is(:hover, :focus-visible) {
+  background: linear-gradient(135deg, #6977e8, #505fc5);
+  border-color: #c1ccff; color: #fff; filter: none;
+  box-shadow: inset 0 1px #ffffff26, 0 6px 20px #4e5fbd33;
+}
+.site-shell .wc-community a.wc-discord-button:focus-visible { outline-color: #c1ccff; }
+.site-shell .site-socials .site-community { transition: color var(--ui-state-time), background var(--ui-state-time), border-color var(--ui-state-time); }
+.site-shell .site-socials .site-community:is(:hover, :focus-visible) { background: #e5bd800d; border-color: #bba17a; color: var(--ui-gold-bright); }
+.site-shell .site-socials .site-community[href*="discord.gg"]:is(:hover, :focus-visible) { background: #5865d51a; border-color: #99a9f0; color: #d5ddff; outline-color: #c1ccff; }
+.site-shell .site-footer-links :is(a, button):is(:hover, :focus-visible) { color: var(--ui-gold-bright); text-decoration: underline; text-underline-offset: 5px; }
+
+/* Guides, downloads, rules and account shortcuts share a quiet neutral hover. */
+.site-shell .portal-main :is(.connection-download-actions a, .connect-realmlist, .account-shortcuts a, .account-logout, .blackout-control) {
+  background: var(--ui-secondary); border: 1px solid var(--ui-steel-rim);
+  border-radius: 2px; color: var(--ui-ink); box-shadow: var(--ui-bevel);
+  transition: background var(--ui-state-time), border-color var(--ui-state-time), color var(--ui-state-time);
+}
+.site-shell .portal-main :is(.connection-download-actions a, .connect-realmlist, .account-shortcuts a, .account-logout, .blackout-control):not(:disabled):is(:hover, :focus-visible) {
+  background: var(--ui-secondary-hover); border-color: var(--ui-gold); color: var(--ui-gold-bright);
+  filter: none; transform: none;
+}
+.site-shell .portal-main .blackout-control:disabled { background: #2b2d32; border-color: #64666d; color: #adb0b7; box-shadow: none; }
+.site-shell .portal-main .account-navigation :is(button, a):is(:hover, :focus-visible) {
+  background: var(--ui-secondary-hover); border-color: var(--ui-rim); color: var(--ui-gold-bright);
+}
+.site-shell .portal-main .account-navigation button[aria-expanded="true"] {
+  background: #e5bd8017; border-color: var(--ui-rim); color: var(--ui-gold-bright);
+}
+.site-shell :is(.rules-directory a, .server-faq summary, .connection-filemap summary) {
+  transition: color var(--ui-state-time), background var(--ui-state-time), border-color var(--ui-state-time);
+}
+.site-shell :is(.rules-directory a, .server-faq summary, .connection-filemap summary):is(:hover, :focus-visible) {
+  background: #e5bd800a; color: var(--ui-gold-bright);
+}
+.site-shell :is(.server-faq summary, .connection-filemap summary):focus-visible { outline-offset: -4px; }
+.site-shell .page-section-nav .page-section-links a:is(:hover, :focus-visible) { color: var(--ui-gold-bright); background: #e5bd800d; }
+.site-shell .page-section-nav .page-section-links a:focus-visible { outline-offset: -4px; }
+.site-shell .page-section-nav .page-section-links a[aria-current="location"] { color: var(--ui-gold-bright); background: linear-gradient(0deg, #e5bd801a, transparent); }
+.site-shell .page-section-nav .page-section-links a[aria-current="location"]:after { background: var(--ui-gold); box-shadow: none; }
+.site-shell .page-section-nav .page-section-mobile select { background: #292c32; border: 1px solid var(--ui-steel-rim); color: var(--ui-ink); }
+.site-shell .portal-main .wc-system-tabs button:is(:hover, :focus-visible) { border-color: var(--ui-rim); background: #36383e; color: var(--ui-ink); }
+.site-shell .portal-main .wc-system-tabs button[aria-selected="true"] { border-color: #bca174; background: linear-gradient(90deg, #80624033, #303339); box-shadow: inset 3px 0 var(--ui-gold); color: #fae5c5; }
+.site-shell .wc-class-0 { --class-accent: #a6dce9; --class-rgb: 105, 201, 227; }
+.site-shell .wc-class-1 { --class-accent: #b7d789; --class-rgb: 146, 204, 91; }
+.site-shell .wc-class-2 { --class-accent: #a7ddc4; --class-rgb: 126, 217, 174; }
+.site-shell .wc-class-item > span { color: var(--class-accent); filter: none; }
+.site-shell .wc-class-item:is(:hover, :focus-visible) { border-color: var(--class-accent); background: linear-gradient(120deg, rgba(var(--class-rgb), .12), #292c32); }
+.site-shell .wc-class-item:focus-visible { outline-color: var(--class-accent); }
+.site-shell .wc-class-item[aria-selected="true"] { border-color: var(--class-accent); background: linear-gradient(120deg, rgba(var(--class-rgb), .2), #292c32); box-shadow: inset 0 0 0 3px #20232880, inset 0 -2px 0 var(--class-accent); }
+
+/* Form validation keeps its meaning even when a field has keyboard focus. */
+.site-shell .portal-main :is(input:not([type="checkbox"]):not([type="radio"]), select, textarea) {
+  border-color: var(--ui-steel-rim); color: #e9e7e1;
+  transition: border-color var(--ui-state-time), box-shadow var(--ui-state-time);
+}
+.site-shell .portal-main :is(input:not([type="checkbox"]):not([type="radio"]), select, textarea):focus {
+  border-color: var(--ui-gold); outline: 2px solid #e5bd8066; outline-offset: 2px; box-shadow: none;
+}
+.site-shell .portal-main :is(input:not([type="checkbox"]):not([type="radio"]), select, textarea)[aria-invalid="true"],
+.site-shell .portal-main :is(input:not([type="checkbox"]):not([type="radio"]), select, textarea)[aria-invalid="true"]:focus {
+  border-color: var(--ui-error); outline-color: #ed938580;
+}
+.site-shell .portal-main :is(input[type="checkbox"], input[type="radio"]) { accent-color: #c59457; }
+.site-shell .portal-main input:-webkit-autofill {
+  -webkit-text-fill-color: #e9e7e1; caret-color: #e9e7e1;
+  -webkit-box-shadow: 0 0 0 1000px #202328 inset;
+}
+
+@media (prefers-reduced-motion: reduce), (hover: none) {
+  .site-shell :is(.wc-button, .lore-button, .blackout-action):is(:hover, :focus-visible, :active),
+  .site-shell .wc-button.wc-button-ghost:is(:hover, :focus-visible),
+  .site-shell .portal-main button[type="submit"]:not(:disabled):is(:hover, :focus-visible) { transform: none; }
+}

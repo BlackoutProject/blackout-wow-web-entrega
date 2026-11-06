@@ -1,0 +1,122 @@
+export const serverGuideCopy = {
+  es: {
+    progressionTag: "EQUIPO Y DESAFÍOS",
+    progressionTitle: "De Tier 1 a Tier 35.",
+    progressionIntro: "Mejora tu equipo, completa tu build y prepárate para el siguiente desafío. Sets, armas y llaves acompañan el avance de tu personaje.",
+    progressionItems: [
+      { title: "Equipo T1–T35", text: "Recorre los 35 tiers de equipo y refuerza tu personaje a lo largo de la progresión." },
+      { title: "Legendarias V1–V10", text: "Diez versiones de armas legendarias que complementan la progresión de tus sets." },
+      { title: "Llaves de acceso", text: "Usa las llaves de progresión para acceder al contenido de cada etapa." },
+    ],
+    pveIntro: "Reúne a tu hermandad para superar 35 raids, de las cuales 19 son totalmente custom. Enfréntate a más de 45 World Bosses y explora más de 30 mapas custom.",
+    pvpIntro: "Lleva tu build al combate contra otros jugadores, con clases rebalanceadas para nivel 255 y distintas formas de competir.",
+    systemsIntro: "Desarrolla tu build, amplía tu colección y personaliza tu personaje con los sistemas de Blackout.",
+    systems: [
+      { title: "AIO y sistemas integrados", text: "Interfaces custom dentro del juego mediante AIO, uno de los addons obligatorios del servidor." },
+      { title: "Pasivas Paragon", text: "Consigue Passive Tokens en los World Bosses e inviértelos en Paragon. Cada nivel permite aumentar un 1% cada estadística, hasta un máximo de 20 niveles.", facts: [{ value: "+1%", label: "Por estadística y nivel" }, { value: "20", label: "Niveles de Paragon" }], steps: [
+        { title: "Derrota World Bosses", text: "Consigue Passive Tokens en estos encuentros." },
+        { title: "Reúne los tokens", text: "Alcanza la cantidad necesaria para el siguiente nivel." },
+        { title: "Mejora tus estadísticas", text: "Invierte los tokens y avanza en las pasivas Paragon." },
+      ] },
+      { title: "Battle Pass", text: "Completa los objetivos del Battle Pass para desbloquear sus recompensas a medida que avanzas.", steps: [
+        { title: "Completa los objetivos", text: "Consulta los objetivos del pase y avanza con tu personaje." },
+        { title: "Desbloquea recompensas", text: "El progreso en los objetivos desbloquea las recompensas del pase." },
+      ] },
+      { title: "Transmog custom y colecciones", text: "Dale tu estilo al equipo con apariencias de transmog custom. Amplía tu colección con monturas, mascotas y morphs custom." },
+      { title: "Formas de druida", text: "Personaliza los colores de las formas y morphs de tu druida con su sistema dedicado." },
+      { title: "Mall y contenido custom", text: "Un nuevo Mall, teletransportador, zonas de progresión, misiones, vendedores, tienda custom y tokens propios." },
+      { title: "Comodidad dentro del juego", text: "Profesiones instantáneas, buffs y comandos útiles, junto a una interfaz y pantallas de acceso y carga de Blackout." },
+    ],
+    collections: [
+      { value: "100.000+", label: "Apariencias de transmog custom" },
+      { value: "500+", label: "Monturas, mascotas y morphs custom" },
+    ],
+    faqTag: "ANTES DE EMPEZAR",
+    faqTitle: "Lo que necesitas saber.",
+    faq: [
+      { question: "¿Para qué clases son los 10 hechizos custom?", answer: "Para cada una de las diez clases originales: Paladín, Guerrero, Caballero de la Muerte, Mago, Pícaro, Sacerdote, Chamán, Druida, Cazador y Brujo. Son habilidades de expansiones posteriores adaptadas a Blackout y añadidas a esas clases. Evocador, Cazador de demonios y Monje son las tres clases custom adicionales del servidor.", link: "EXPLORAR LOS HECHIZOS CUSTOM", href: "#hechizos-custom" },
+      { question: "¿Cómo funcionan la personalización y los morphs?", answer: "Son dos sistemas distintos. La personalización ampliada ofrece más opciones para modificar las razas originales que las disponibles en WotLK. Los objetos de morph transforman visualmente a tu personaje en otras razas custom, como pandaren, y te permiten jugar con esa apariencia.", link: "EXPLORAR LA PERSONALIZACIÓN", href: "#razas-y-morphs" },
+      { question: "¿Puedo usar mi cliente de WoW?", answer: "Sí, si es la versión 3.3.5a. Necesitas los parches y WoW.exe de Blackout, los addons AIO y Druid C Fix y el realmlist oficial. La guía indica dónde instalar cada archivo y qué descargas están disponibles.", link: "PREPARAR MI CLIENTE", href: "/como-conectarme" },
+    ],
+  },
+  en: {
+    progressionTag: "GEAR AND CHALLENGES",
+    progressionTitle: "From Tier 1 to Tier 35.",
+    progressionIntro: "Improve your gear, complete your build and prepare for the next challenge. Sets, weapons and keys support your character’s progression.",
+    progressionItems: [
+      { title: "T1–T35 gear", text: "Work through 35 gear tiers, strengthening your character as you progress." },
+      { title: "V1–V10 legendaries", text: "Ten versions of legendary weapons that complement your set progression." },
+      { title: "Access keys", text: "Use progression keys to access the content at each stage." },
+    ],
+    pveIntro: "Gather your guild to take on 35 raids, including 19 fully custom raids. Face over 45 World Bosses and explore more than 30 custom maps.",
+    pvpIntro: "Take your build into battle against other players, with classes rebalanced for level 255 and different ways to compete.",
+    systemsIntro: "Develop your build, expand your collection and customize your character with Blackout’s systems.",
+    systems: [
+      { title: "AIO and integrated systems", text: "Custom in-game interfaces powered by AIO, one of the server’s required addons." },
+      { title: "Paragon passives", text: "Earn Passive Tokens from World Bosses and invest them in Paragon. Each level lets you increase every stat by 1%, across a total of 20 levels.", facts: [{ value: "+1%", label: "Per stat, per level" }, { value: "20", label: "Paragon levels" }], steps: [
+        { title: "Defeat World Bosses", text: "Earn Passive Tokens from these encounters." },
+        { title: "Gather the tokens", text: "Collect the amount required for the next level." },
+        { title: "Improve your stats", text: "Invest your tokens to advance your Paragon passives." },
+      ] },
+      { title: "Battle Pass", text: "Complete Battle Pass objectives to unlock rewards as you progress.", steps: [
+        { title: "Complete objectives", text: "Check the pass objectives and work through them with your character." },
+        { title: "Unlock rewards", text: "Progress through the objectives to unlock the pass rewards." },
+      ] },
+      { title: "Custom transmog and collections", text: "Give your gear a personal touch with custom transmog appearances. Expand your collection with custom mounts, pets and morphs." },
+      { title: "Druid forms", text: "Customize the colors of your Druid’s forms and morphs with a dedicated system." },
+      { title: "Mall and custom content", text: "A new Mall, teleporter, progression zones, quests, vendors, custom shop and server-specific tokens." },
+      { title: "In-game convenience", text: "Instant professions, buffs and useful commands, alongside Blackout’s interface, login and loading screens." },
+    ],
+    collections: [
+      { value: "100,000+", label: "Custom transmog appearances" },
+      { value: "500+", label: "Custom mounts, pets and morphs" },
+    ],
+    faqTag: "BEFORE YOU START",
+    faqTitle: "What you need to know.",
+    faq: [
+      { question: "Which classes get the 10 custom spells?", answer: "Each of the ten original classes: Paladin, Warrior, Death Knight, Mage, Rogue, Priest, Shaman, Druid, Hunter and Warlock. These are abilities from later expansions adapted for Blackout and added to those classes. Evoker, Demon Hunter and Monk are the server’s three additional custom classes.", link: "EXPLORE CUSTOM SPELLS", href: "#hechizos-custom" },
+      { question: "How do customization and morphs work?", answer: "They are two separate systems. Expanded customization provides more options for the original races than WotLK offers. Morph items visually transform your character into other custom races, such as pandaren, and let you play with that appearance.", link: "EXPLORE CUSTOMIZATION", href: "#razas-y-morphs" },
+      { question: "Can I use my own WoW client?", answer: "Yes, if it is version 3.3.5a. You need the Blackout patches and WoW.exe, the AIO and Druid C Fix addons, and the official realmlist. The guide explains where to install each file and which downloads are available.", link: "PREPARE MY CLIENT", href: "/como-conectarme" },
+    ],
+  },
+  pt: {
+    progressionTag: "EQUIPAMENTO E DESAFIOS",
+    progressionTitle: "Do Tier 1 ao Tier 35.",
+    progressionIntro: "Melhore seu equipamento, complete sua build e prepare-se para o próximo desafio. Sets, armas e chaves acompanham a progressão do seu personagem.",
+    progressionItems: [
+      { title: "Equipamento T1–T35", text: "Avance pelos 35 tiers de equipamento e fortaleça seu personagem ao longo da progressão." },
+      { title: "Lendárias V1–V10", text: "Dez versões de armas lendárias que complementam a progressão dos seus sets." },
+      { title: "Chaves de acesso", text: "Use as chaves de progressão para acessar o conteúdo de cada etapa." },
+    ],
+    pveIntro: "Reúna sua guilda para enfrentar 35 raids, das quais 19 são totalmente custom. Enfrente mais de 45 World Bosses e explore mais de 30 mapas custom.",
+    pvpIntro: "Leve sua build para o combate contra outros jogadores, com classes rebalanceadas para o nível 255 e diferentes formas de competir.",
+    systemsIntro: "Desenvolva sua build, amplie sua coleção e personalize seu personagem com os sistemas do Blackout.",
+    systems: [
+      { title: "AIO e sistemas integrados", text: "Interfaces custom dentro do jogo por meio do AIO, um dos addons obrigatórios do servidor." },
+      { title: "Passivas Paragon", text: "Consiga Passive Tokens nos World Bosses e invista em Paragon. Cada nível permite aumentar cada atributo em 1%, até o máximo de 20 níveis.", facts: [{ value: "+1%", label: "Por atributo, por nível" }, { value: "20", label: "Níveis de Paragon" }], steps: [
+        { title: "Derrote World Bosses", text: "Consiga Passive Tokens nesses encontros." },
+        { title: "Reúna os tokens", text: "Junte a quantidade necessária para o próximo nível." },
+        { title: "Melhore seus atributos", text: "Invista os tokens e avance nas passivas Paragon." },
+      ] },
+      { title: "Battle Pass", text: "Complete os objetivos do Battle Pass para desbloquear recompensas à medida que avança.", steps: [
+        { title: "Complete os objetivos", text: "Confira os objetivos do passe e avance com seu personagem." },
+        { title: "Desbloqueie recompensas", text: "O progresso nos objetivos desbloqueia as recompensas do passe." },
+      ] },
+      { title: "Transmog custom e coleções", text: "Dê seu estilo ao equipamento com aparências de transmog custom. Amplie sua coleção com montarias, mascotes e morphs custom." },
+      { title: "Formas de Druida", text: "Personalize as cores das formas e morphs do seu Druida com um sistema dedicado." },
+      { title: "Mall e conteúdo custom", text: "Um novo Mall, teletransportador, zonas de progressão, missões, vendedores, loja custom e tokens próprios." },
+      { title: "Praticidade dentro do jogo", text: "Profissões instantâneas, buffs e comandos úteis, além da interface e das telas de acesso e carregamento do Blackout." },
+    ],
+    collections: [
+      { value: "100.000+", label: "Aparências de transmog custom" },
+      { value: "500+", label: "Montarias, mascotes e morphs custom" },
+    ],
+    faqTag: "ANTES DE COMEÇAR",
+    faqTitle: "O que você precisa saber.",
+    faq: [
+      { question: "Quais classes recebem os 10 feitiços custom?", answer: "Cada uma das dez classes originais: Paladino, Guerreiro, Cavaleiro da Morte, Mago, Ladino, Sacerdote, Xamã, Druida, Caçador e Bruxo. São habilidades de expansões posteriores adaptadas ao Blackout e adicionadas a essas classes. Conjurante, Caçador de Demônios e Monge são as três classes custom adicionais do servidor.", link: "EXPLORAR OS FEITIÇOS CUSTOM", href: "#hechizos-custom" },
+      { question: "Como funcionam a personalização e os morphs?", answer: "São dois sistemas distintos. A personalização ampliada oferece mais opções para modificar as raças originais do que as disponíveis no WotLK. Os itens de morph transformam visualmente seu personagem em outras raças custom, como pandaren, e permitem jogar com essa aparência.", link: "EXPLORAR A PERSONALIZAÇÃO", href: "#razas-y-morphs" },
+      { question: "Posso usar meu próprio cliente de WoW?", answer: "Sim, se for a versão 3.3.5a. Você precisa dos patches e do WoW.exe do Blackout, dos addons AIO e Druid C Fix e do realmlist oficial. O guia explica onde instalar cada arquivo e quais downloads estão disponíveis.", link: "PREPARAR MEU CLIENTE", href: "/como-conectarme" },
+    ],
+  },
+};

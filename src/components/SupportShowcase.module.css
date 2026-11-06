@@ -1,0 +1,23 @@
+.support:global(.wc-support) { min-height:430px; padding:70px 0; isolation:isolate; background:#191b1f; }
+.support:global(.wc-support) :global(.wc-join-copy) { width:55%; max-width:650px; }
+.support:global(.wc-support) h2 { font-size:clamp(34px,3.6vw,48px); line-height:1.15; margin-top:15px; }
+.support:global(.wc-support) h2 br { display:block; }
+.support:global(.wc-support) h2 em:before { content:none; }
+.support:global(.wc-support) :global(.wc-section-intro) { font-size:16px; line-height:1.8; max-width:51ch; margin:20px 0 22px; color:#d0cfca; }
+.support:global(.wc-support) :global(.wc-join-film) { left:38%; width:62%; opacity:1; z-index:0; mask-image:linear-gradient(90deg,transparent,#000 30%); }
+.support:global(.wc-support) :global(.wc-join-film img),.support:global(.wc-support) :global(.wc-join-film video) { object-position:65% 15%; }
+.support:global(.wc-support) :global(.wc-button) { font-size:12px; min-height:51px; }
+.support:global(.wc-support) :global(.wc-text-link) { font-size:12px; margin-top:20px; }
+@media(max-width:760px) {
+ .support:global(.wc-support) { min-height:0; padding:245px 0 48px; }
+ .support:global(.wc-support) :global(.wc-join-copy) { width:100%; max-width:510px; }
+ .support:global(.wc-support) h2 { font-size:34px; }
+ .support:global(.wc-support) :global(.wc-join-film) { left:0; width:100%; height:390px; opacity:1; mask-image:linear-gradient(#000 55%,transparent); }
+ .support:global(.wc-support) :global(.wc-join-film img),.support:global(.wc-support) :global(.wc-join-film video) { object-position:50% 22%; }
+ .support:global(.wc-support) :global(.wc-button) { width:100%; font-size:10px; }
+}
+.support:global(.wc-support):before { z-index:1; background:linear-gradient(90deg,#191b1f 5%,#191b1fdb 35%,#191b1f10 80%),linear-gradient(0deg,#191b1f,transparent 35%,#191b1f); }
+.support:global(.wc-support) > :global(.wc-wrap) { position:relative; z-index:2; }
+@media(max-width:760px) {
+ .support:global(.wc-support):before { background:linear-gradient(0deg,#191b1f 38%,#191b1fb3 56%,transparent 83%); }
+}

@@ -1,0 +1,21 @@
+.root { margin-top: 30px; }
+.featured { margin: 64px auto 0; }
+.featured header { margin-bottom: 26px; }
+.featured h2 { color: #f0e6d5; font: 600 clamp(28px,3vw,42px)/1.25 var(--font-cinzel),Georgia,serif; margin-top: 12px; text-wrap: balance; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,260px),1fr)); gap: 20px; }
+.card { position: relative; overflow: hidden; text-align: left; border: 1px solid #b79a6659; background: #1a1d20; color: #eddfc6; }
+.card img { display: block; width: 100%; aspect-ratio: 16/10; object-fit: cover; transition: transform .5s; }
+.card:hover img { transform: scale(1.025); }
+.caption { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 18px 22px; font-size: 13px; line-height: 1.65; }
+.caption b { color: #dfbd81; font-size: 21px; }
+.card:focus-visible,.dialog button:focus-visible { outline: 2px solid #f1cd8d; outline-offset: 4px; }
+.backdrop { position: fixed; z-index: 10000; inset: 0; display: grid; place-items: center; padding: 28px; background: #090b0ef2; backdrop-filter: blur(12px); }
+.dialog { width: min(1200px,100%); position: relative; border: 1px solid #b79a6666; background: #1a1d20; box-shadow: 0 25px 100px #0009; }
+.close { position: absolute; z-index: 2; right: 12px; top: 12px; width: 44px; height: 44px; border: 1px solid #b79a6680; background: #171b1cf2; color: #f0dfc0; font: 28px/1 sans-serif; }
+.media { display: grid; place-items: center; padding: 6px; }
+.media img,.media video { display: block; max-height: 75vh; width: 100%; object-fit: contain; }
+.toolbar { display: flex; align-items: center; gap: 20px; padding: 15px 20px; border-top: 1px solid #b79a6633; }
+.toolbar p { flex: 1; text-align: center; color: #e1d5c2; font-size: 14px; line-height: 1.65; margin: 0; }
+.toolbar button { flex: 0 0 44px; height: 44px; color: #dfbd81; border: 1px solid #b79a6659; font-size: 22px; }
+@media(max-width:600px) { .backdrop { padding: 12px; } .toolbar { padding: 12px; gap: 12px; } .toolbar p { font-size: 12px; } }
+@media(prefers-reduced-motion:reduce) { .card img { transition: none; } .card:hover img { transform: none; } }

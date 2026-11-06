@@ -45,10 +45,13 @@ next-env.d.ts
 /design/*.png
 /design/*.zip
 /design/qa/
+/.qa/
 
 /design/*.py
 /design/media-sources.json
 /public/cinematic/*
+!/public/cinematic/scene-02-fel-kling.mp4
+!/public/cinematic/warrior.jpg
 !/public/cinematic/scene-03-shadow-kling.mp4
 !/public/cinematic/sylvanas.jpg
 /public/warcraft/illidan.jpg

@@ -1,0 +1,9 @@
+.grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px; }
+.card { composes:card from './CardFrame.module.css'; min-width:0; position:relative; isolation:isolate; scroll-margin-top:150px; background:linear-gradient(125deg,#303137,#22252b 80%); }
+.art { height:clamp(270px,25vw,350px); margin:5px; position:relative; overflow:hidden; border-bottom:1px solid #b2946366; }
+.copy { padding:28px 31px 32px; }
+.copy h3 { margin:10px 0 15px; color:#f5e6cd; font:600 clamp(24px,2.4vw,33px)/1.16 var(--font-cinzel),Georgia,serif; text-wrap:balance; }
+.copy p { margin:0; color:#c6c5c1; font-size:16px; line-height:1.8; }
+.copy ul { display:flex; flex-wrap:wrap; gap:8px; padding:0; margin:22px 0 0; list-style:none; }
+.copy li { padding:8px 11px; border:1px solid #a58a6044; color:#ddd2bf; background:#11151a33; font-size:12px; line-height:1.5; }
+@media(max-width:760px) { .grid { grid-template-columns:1fr;gap:24px; } .art { height:auto;aspect-ratio:1.58; } .copy { padding:22px 23px 26px; } .copy p { font-size:15px; } .copy h3 { font-size:28px; } }

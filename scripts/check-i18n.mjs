@@ -13,6 +13,7 @@ function flatten(value,prefix='') {
 }
 const {resources}=await load('src/i18n/resources.ts');
 const {warcraftCopy}=await load('src/lib/warcraft-copy.ts');
+const {homeOverviewCopy}=await load('src/lib/home-overview-copy.ts');
 const {interfaceCopy}=await load('src/lib/interface-copy.ts');
 const {rulesCopy}=await load('src/lib/rules-copy.ts');
 const {connectionCopy}=await load('src/lib/connection-copy.ts');
@@ -21,10 +22,12 @@ const {supportCopy}=await load('src/lib/support-copy.ts');
 const {communityCopy}=await load('src/lib/community-copy.ts');
 const {serverCopy}=await load('src/lib/server-copy.ts');
 const {classSpellsCopy}=await load('src/lib/class-spells-copy.ts');
+const {serverGuideCopy}=await load('src/lib/server-guide-copy.ts');
+const {steelHomeCopy}=await load('src/lib/steel-home-copy.ts');
 function leaves(value,prefix=''){
  return Object.fromEntries(Object.entries(value).flatMap(([key,item])=>item!==null&&typeof item==='object'?Object.entries(leaves(item,prefix+key+'.')):[[prefix+key,item]]));
 }
-for(const [name,copy] of Object.entries({rules:rulesCopy,connection:connectionCopy,store:storeShowcaseCopy,support:supportCopy,community:communityCopy,server:serverCopy,spells:classSpellsCopy})){
+for(const [name,copy] of Object.entries({warcraft:warcraftCopy,overview:homeOverviewCopy,steel:steelHomeCopy,rules:rulesCopy,connection:connectionCopy,store:storeShowcaseCopy,support:supportCopy,community:communityCopy,server:serverCopy,spells:classSpellsCopy,guide:serverGuideCopy})){
  const expected=Object.keys(leaves(copy.es)).sort();
  for(const lang of ['es','en','pt']){
   const entries=leaves(copy[lang]);

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const SITE_NAME = "Blackout-WoW";
-export const SITE_TITLE = "Blackout-WoW | WoW 3.3.5a Custom 255 · Experiencia aumentada";
+export const SITE_TITLE = "Blackout-WoW | WoW 3.3.5a Custom 255 · PvE y PvP";
 export const SITE_DESCRIPTION =
-  "Servidor WoW 3.3.5a custom nivel 255, con experiencia aumentada para subir de nivel y estadísticas altas. 35 raids, 19 totalmente custom, más de 30 mapas custom y PvE + PvP sin Pay to Win.";
+  "WoW 3.3.5a nivel 255: 3 clases custom, 35 raids —19 custom— y más de 30 mapas custom. Subida de nivel rápida, estadísticas altas y progresión PvE/PvP T1–T35.";
 export const SITE_LOCALE = "es_CL";
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
@@ -19,7 +19,6 @@ export const SITE_KEYWORDS = [
   "servidor custom",
   "WoW nivel 255",
   "WoW Tier 35",
-  "servidor WoW sin pay to win",
   "WoW Latinoamérica",
   "private WoW server",
   "custom WoW server level 255",

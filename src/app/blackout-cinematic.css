@@ -1,0 +1,225 @@
+/* Scene lighting and input polish. Original artwork and copy remain intact. */
+.blackout-cursor { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .blackout-cursor { display: block; position: fixed; top: 0; left: 0; width: 32px; height: 32px; z-index: 2147483647; pointer-events: none; opacity: 0; transform: translate3d(-100px,-100px,0); contain: layout style paint; }
+  .blackout-cursor[data-visible=true] { opacity: 1; }
+  .blackout-cursor svg { display: block; transform-origin: 5px 4px; }
+  .blackout-cursor[data-interactive=true] svg { filter: drop-shadow(0 0 2px #e64b3566); }
+  .blackout-cursor[data-pressed=true] svg { transform: scale(.92); }
+  html[data-blackout-cursor=painted], html[data-blackout-cursor=painted] *, html[data-blackout-cursor=painted] *:before, html[data-blackout-cursor=painted] *:after { cursor: none !important; }
+}
+@media (forced-colors: active) { .blackout-cursor { display: none; } }
+.site-brand img,.wc-crest,.wc-home-highlight img,.wc-path img,.wc-class-figure img { -webkit-user-drag: none; }
+.wc-scene-atmosphere { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+
+/* The hero moves in separate depth planes; the reading area stays still. */
+.wc-hero { --scene-x: 0px; --scene-y: 0px; }
+.wc-hero-video { transform: translate3d(calc(var(--scene-x) * -.4),calc(var(--scene-y) * -.3),0) scale(1.025); transition: transform .65s ease-out; }
+.wc-hero-layout { z-index: 1; }
+.wc-crest-forged { position: relative; width: fit-content; max-width: 100%; margin-inline: auto; isolation: isolate; }
+.wc-crest-forged .wc-crest { position: relative; z-index: 1; }
+.wc-crest-forged > span { position: absolute; inset: 17% 8% 20%; z-index: 0; border-radius: 50%; background: radial-gradient(ellipse,#d7873440,transparent 65%); filter: blur(18px); animation: blackout-crest-fire 7s ease-in-out infinite paused; }
+.wc-hero[data-in-view=true] .wc-crest-forged > span { animation-play-state: running; }
+.wc-hero h1 em { text-shadow: none; filter: drop-shadow(0 3px 5px #0008); }
+
+/* Forged controls: etched inner border and a single light sweep on intent. */
+.wc-button,.lore-button,.wc-discord-button { position: relative; isolation: isolate; overflow: hidden; transition: border-color .25s, box-shadow .25s, background .25s, transform .18s; }
+.wc-button:after,.lore-button:after,.wc-discord-button:after { content: ''; position: absolute; pointer-events: none; inset: -70% auto -70% -70%; width: 45%; height: auto; right: auto; border: 0; background: linear-gradient(90deg,transparent,#fff2,transparent); transform: skewX(-22deg); }
+.wc-button:is(:hover,:focus-visible):after,.lore-button:is(:hover,:focus-visible):after,.wc-discord-button:is(:hover,:focus-visible):after { animation: blackout-metal-pass .65s ease-out; }
+.wc-button:active,.lore-button:active,.wc-discord-button:active { transform: translateY(1px); }
+.wc-button:hover { box-shadow: inset 0 0 0 3px #160b0966, 0 9px 30px #d1722426; }
+
+/* Illustrated windows with moving weather and a deliberate, dimensional rim. */
+.wc-home-stage .wc-highlight-0 { box-shadow: 0 35px 75px #0009, inset 0 0 0 5px #0005, 0 -1px 0 #c1d7a41c; }
+.wc-highlight-atmosphere { left: 44%; width: 56%; mask-image: linear-gradient(90deg,transparent,#000 30%,#000 75%,transparent); }
+.wc-home-stage .wc-highlight-0 .wc-highlight-art { transform: translate3d(var(--scene-x,0px),var(--scene-y,0px),0); transition: transform .7s ease-out; }
+.wc-home-stage .wc-path { --scene-rgb: 233,135,65; border-color: #b68c555c; box-shadow: 0 30px 75px #0009, 0 0 0 1px #000, inset 0 0 0 5px #0005; }
+.wc-home-stage .wc-path-pvp { --scene-rgb: 139,185,219; border-color: #6c9cb15c; }
+.wc-home-stage .wc-path-art { overflow: hidden; }
+.wc-home-stage .wc-path-art img { transform: scale(1.075) translate3d(calc(var(--scene-x,0px) * -.6),calc(var(--scene-y,0px) * -.6),0); transition: transform .8s ease-out, filter .6s; }
+.wc-home-stage .wc-path:is(:hover,:focus-visible) { border-color: rgba(var(--scene-rgb), .72); box-shadow: 0 30px 75px #0009, 0 0 35px rgba(var(--scene-rgb),.08); }
+.wc-home-stage .wc-path:is(:hover,:focus-visible) .wc-path-art img { filter: saturate(1.04) brightness(1.07); }
+.wc-path > .wc-scene-atmosphere { height: 75%; mask-image: linear-gradient(#000 55%, transparent); }
+.wc-scene-mist { position: absolute; inset: 30% -20% 20%; pointer-events: none; background: radial-gradient(ellipse,rgba(var(--scene-rgb),.11),transparent 60%); filter: blur(25px); animation: blackout-fog 14s ease-in-out infinite paused; }
+.wc-path[data-in-view=true] .wc-scene-mist { animation-play-state: running; }
+.wc-home-stage .wc-path-content { z-index: 1; }
+.wc-home-stage .wc-path-tag { backdrop-filter: blur(10px); }
+.wc-home-stage .wc-path .wc-text-link b { transition: transform .25s; }
+.wc-home-stage .wc-path:hover .wc-text-link b { transform: translateX(5px); }
+
+/* A different magical stage for each class; original transparent art is retained. */
+.wc-class-figure { --scene-x: 0px; --scene-y: 0px; }
+.wc-official-character { transform: translate3d(calc(var(--scene-x) * .65),calc(var(--scene-y) * .65),0); transition: transform .7s ease-out, opacity .38s ease; }
+.wc-official-character[data-selected=false] { opacity: 0; pointer-events: none; }
+.wc-official-character[data-selected=true] { opacity: 1; }
+.wc-class-rift { position: absolute; inset: 7% 8% 15%; z-index: -1; pointer-events: none; transform: translate3d(calc(var(--scene-x) * -.5),calc(var(--scene-y) * -.5),0); transition: transform .7s ease-out; }
+.wc-class-rift:before { content: ''; position: absolute; inset: 6%; background: radial-gradient(ellipse at 50% 62%,rgba(var(--class-rgb),.25),transparent 66%); filter: blur(18px); }
+.wc-class-rift i { position: absolute; inset: 5% 12%; border: 1px solid rgba(var(--class-rgb),.26); border-radius: 50%; box-shadow: 0 0 30px rgba(var(--class-rgb),.06), inset 0 0 30px rgba(var(--class-rgb),.06); transform: rotate(-28deg); }
+.wc-class-rift i:nth-child(2) { inset: 12% 5%; transform: rotate(28deg); border-style: dashed; opacity: .55; }
+.wc-class-rift i:nth-child(3) { inset: -5% 38% -8%; background: linear-gradient(transparent,rgba(var(--class-rgb),.13),transparent); border: 0; filter: blur(20px); transform: rotate(30deg); }
+.wc-class-rift b { position: absolute; inset: 0; background: radial-gradient(ellipse,rgba(var(--class-rgb),.26),transparent 65%); animation: blackout-summon 1.1s ease-out both; }
+.wc-selected-class-1 .wc-class-rift i { border-radius: 4%; transform: rotate(45deg) scale(.8); }
+.wc-selected-class-1 .wc-class-rift i:nth-child(2) { transform: rotate(58deg) scale(.7); }
+.wc-selected-class-2 .wc-class-rift i { inset: 12% 0%; transform: rotateX(36deg) rotateZ(-20deg); }
+.wc-selected-class-2 .wc-class-rift i:nth-child(2) { inset: 18% 5%; transform: rotateX(36deg) rotateZ(20deg); }
+.wc-class-figure > .wc-scene-atmosphere { mask-image: radial-gradient(ellipse,#000 25%,transparent 70%); }
+.wc-class-energy { position: absolute; inset: 4% -2% 12%; width: 104%; height: 84%; z-index: -1; overflow: visible; pointer-events: none; color: var(--class-accent); }
+.wc-energy-track { stroke: currentColor; stroke-width: .7; opacity: .12; }
+.wc-energy-current { stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-dasharray: 10 90; opacity: .55; filter: drop-shadow(0 0 4px rgba(var(--class-rgb),.7)); animation: blackout-energy-flow 9s linear infinite paused; }
+.wc-class-energy g:nth-child(2) .wc-energy-current { animation-delay: -4.5s; animation-direction: reverse; }
+.wc-classes[data-in-view=true] .wc-energy-current { animation-play-state: running; }
+.wc-class-list .wc-sigil { display: block; width: 32px; height: 32px; margin: auto; }
+.wc-class-list .wc-class-item > span { flex: 0 0 32px; }
+.wc-class-rift { opacity: .6; }
+.wc-class-story { min-height: 220px; }
+.wc-class-story-content { animation-timing-function: cubic-bezier(.2,.7,.2,1); }
+.wc-character-caption { text-wrap: balance; }
+.wc-character-caption { z-index: 3; }
+.wc-class-platform { width: 94%; bottom: 38px; background: radial-gradient(ellipse,rgba(var(--class-rgb),.22),#05090d88 45%,transparent 70%); }
+.wc-class-item { overflow: hidden; }
+.wc-class-item:before { content: ''; position: absolute; inset: auto 0 0; height: 2px; background: linear-gradient(90deg,transparent,var(--class-accent),transparent); opacity: 0; transition: opacity .3s; }
+.wc-class-item[aria-selected=true]:before { opacity: 1; }
+
+/* The chosen system illuminates its own carved panel. */
+.wc-system-panels { background: radial-gradient(ellipse at var(--light-x,80%) var(--light-y,15%),rgba(var(--system-rgb),.08),transparent 60%),linear-gradient(130deg,#302923,#211d1a); }
+.wc-system-insignia { width: 114px; height: 114px; padding: 23px; transform: rotate(-4deg); transition: color .3s; }
+.wc-system-insignia svg { transform: rotate(4deg); filter: drop-shadow(0 0 12px rgba(var(--system-rgb),.23)); }
+.wc-system-insignia:after { content: ''; position: absolute; inset: -14px; border: 1px solid rgba(var(--system-rgb),.16); transform: rotate(8deg); }
+.wc-system-tabs button[aria-selected=true] .wc-system-tab-icon { filter: drop-shadow(0 0 7px rgba(var(--system-rgb),.32)); }
+
+/* Discord: a warm gathering light around the live community window. */
+.wc-community-frame { isolation: isolate; border-color: #c5995e80; background: linear-gradient(110deg,#30261de8,#211d1af0); }
+.wc-community-frame > .wc-scene-atmosphere { z-index: -1; }
+.wc-community-panel { position: relative; }
+.wc-community-panel:before { content: ''; position: absolute; inset: 19px; pointer-events: none; border: 1px solid #b39b7126; box-shadow: 0 8px 30px #0002; }
+.wc-community-panel iframe { position: relative; }
+
+/* Continuous scene edges and a consistent editorial rhythm in all locales. */
+.wc-trailer-pending { border-block: 1px solid var(--wc-line); background: linear-gradient(90deg,#2f211ce8 7%,#2f211cb8 50%,#211c1ac9),url('/warcraft/dark-portal.jpg') center 48% / cover; }
+.wc-support { background: var(--wc-canvas); }
+.wc-support:before { background: linear-gradient(90deg,#211c1a 10%,#211c1ad9 43%,#211c1a33 72%),linear-gradient(0deg,#211c1a,transparent 40%,#211c1a); }
+.wc-home-stage:before,.wc-home-stage:after { content: none; }
+/* Slow scenic depth, with motion restricted to artwork rather than reading surfaces. */
+@keyframes blackout-fortress-depth { 50% { transform: scale(1.045) translate3d(-5px,3px,0); } }
+@media (prefers-reduced-motion: no-preference) {
+  .wc-overview-backdrop > span:before { animation: blackout-fortress-depth 38s ease-in-out infinite paused; }
+  .wc-home-stage[data-in-view=true] .wc-overview-backdrop > span:before { animation-play-state: running; }
+  #site-main[data-effects-paused=true] .wc-overview-backdrop > span:before { animation-play-state: paused; }
+}
+.wc-home-stage .wc-corners { transition: filter .3s ease; }
+.wc-home-stage :is(.wc-home-highlight,.wc-path):is(:hover,:focus-visible) .wc-corners { filter: brightness(1.3) drop-shadow(0 0 4px #d0ad6d33); }
+.wc-home-stage :is(.wc-home-highlight,.wc-path):after { background: radial-gradient(ellipse at var(--light-x,50%) var(--light-y,30%),#eae3d21a,transparent 58%); }
+.wc-home-stage .wc-section-heading h2 { max-width: 20ch; line-height: 1.18; letter-spacing: -.025em; }
+.wc-home-stage .wc-home-highlight h3,.wc-trailer h2,.wc-server-invitation h3 { text-wrap: balance; }
+.wc-home-stage .wc-highlight-copy p,.wc-battlefields p { line-height: 1.8; }
+.wc-home-stage .wc-server-invitation h3 { max-width: 30ch; line-height: 1.3; }
+.wc-community h2 { max-width: 21ch; line-height: 1.2; letter-spacing: -.025em; }
+
+/* Two illustrated battlefronts, with the original art given its own space. */
+.wc-home-stage .wc-battlefields { grid-template-columns: minmax(0,1fr); gap: 42px; margin-top: 64px; }
+.wc-home-stage .wc-battlefields .wc-path { --path-base: #2b201b; min-height: 460px; margin-top: 0; align-items: center; overflow: hidden; border-color: var(--wc-line); background: var(--path-base); }
+.wc-home-stage .wc-battlefields .wc-path-pvp { --path-base: #242829; min-height: 430px; background: var(--path-base); }
+.wc-home-stage .wc-battlefields .wc-path-art { inset: 0 auto 0 0; width: 76%; }
+.wc-home-stage .wc-battlefields .wc-path-pvp .wc-path-art { left: auto; right: 0; }
+.wc-home-stage .wc-battlefields .wc-path-art img { object-position: 56% 46%; transform: scale(1.025) translate3d(calc(var(--scene-x,0px) * -.5),calc(var(--scene-y,0px) * -.5),0); }
+.wc-home-stage .wc-battlefields .wc-path-art:after { background: linear-gradient(90deg,transparent 36%,#2b201b33 54%,#2b201be8 83%,#2b201b),linear-gradient(0deg,#2b201b99,transparent 34%); }
+.wc-home-stage .wc-battlefields .wc-path-pvp .wc-path-art:after { background: linear-gradient(90deg,#242829,#242829de 16%,#24282922 47%,transparent 64%),linear-gradient(0deg,#24282988,transparent 40%); }
+.wc-home-stage .wc-battlefields p { color: #e0d5c9; font-size: 15px; }
+.wc-home-stage .wc-battlefields .wc-path-tag,.wc-home-stage .wc-battlefields .wc-text-link { color: #dfbd81; border-color: #b79a6645; }
+.wc-home-stage .wc-battlefields .wc-path-content { width: 44%; margin-left: auto; padding: 38px 36px 36px 16px; }
+.wc-home-stage .wc-battlefields .wc-path-pvp .wc-path-content { margin-left: 0; padding: 38px 16px 38px 36px; }
+.wc-home-stage .wc-battlefields .wc-path-tag { position: static; display: inline-flex; align-items: center; gap: 10px; padding: 0; margin-bottom: 18px; border: 0; background: none; box-shadow: none; font-size: 11px; backdrop-filter: none; }
+.wc-battlefields .wc-path-tag .wc-sigil { width: 32px; height: 32px; }
+.wc-home-stage .wc-battlefields h3 { font-size: clamp(28px,3vw,42px); line-height: 1.17; letter-spacing: -.025em; max-width: 18ch; white-space: pre-line; }
+.wc-home-stage .wc-battlefields p { max-width: 43ch; margin-block: 18px 24px; }
+.wc-home-stage .wc-battlefields .wc-text-link { display: inline-flex; align-items: center; gap: 28px; margin-top: 24px; padding: 13px 17px; min-height: 46px; border: 1px solid #bd9a6266; background: #b89a6210; font-size: 11px; letter-spacing: .9px; }
+.wc-path-facts { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; margin: 0; padding: 0; }
+.wc-path-facts > div { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: 8px; padding-left: 14px; border-left: 1px solid #d8ae6d40; }
+.wc-path-facts > div:first-child { padding-left: 0; border: 0; }
+.wc-path-facts dt { color: #c2b7a7; font-size: 10px; line-height: 1.5; text-wrap: balance; }
+.wc-path-facts dd { margin: 0; font-family: var(--font-cinzel),Georgia,serif; color: #f0cf94; font-weight: 600; font-size: clamp(28px,3vw,38px); line-height: 1; font-variant-numeric: lining-nums tabular-nums; }
+.wc-battlefields .wc-path > .wc-scene-atmosphere { width: 57%; height: 100%; mask-image: linear-gradient(90deg,#000 50%,transparent); }
+.wc-battlefields .wc-path-pvp > .wc-scene-atmosphere { left: auto; right: 0; mask-image: linear-gradient(90deg,transparent,#000 50%); }
+
+@media (max-width: 1000px) and (min-width: 761px) {
+  .wc-home-stage .wc-battlefields .wc-path-content { width: 52%; padding: 28px 26px; }
+  .wc-home-stage .wc-battlefields .wc-path-pvp .wc-path-content { padding: 28px 26px; }
+  .wc-home-stage .wc-battlefields p { font-size: 13px; }
+  .wc-path-facts { gap: 8px; }
+  .wc-path-facts > div { padding-left: 10px; }
+}
+@media (max-width: 760px) {
+  .wc-home-stage .wc-battlefields { gap: 32px; margin-top: 40px; }
+  .wc-home-stage .wc-battlefields .wc-path,.wc-home-stage .wc-battlefields .wc-path-pvp { min-height: 0; display: block; }
+  .wc-home-stage .wc-battlefields .wc-path-art { inset: 0 0 auto; width: 100%; height: clamp(225px,46vw,340px); }
+  .wc-home-stage .wc-battlefields .wc-path-art:after,.wc-home-stage .wc-battlefields .wc-path-pvp .wc-path-art:after { background: linear-gradient(0deg,var(--path-base),transparent 75%); }
+  .wc-home-stage .wc-battlefields .wc-path-art img { object-position: center 38%; }
+  .wc-home-stage .wc-battlefields .wc-path-content,.wc-home-stage .wc-battlefields .wc-path-pvp .wc-path-content { width: 100%; padding: calc(clamp(225px,46vw,340px) - 12px) 26px 30px; }
+  .wc-home-stage .wc-battlefields h3 { font-size: clamp(27px,6vw,36px); }
+  .wc-home-stage .wc-battlefields .wc-path-tag { margin-bottom: 14px; }
+  .wc-home-stage .wc-battlefields .wc-path-tag .wc-sigil { width: 26px; height: 26px; }
+  .wc-home-stage .wc-battlefields p { font-size: 14px; margin-block: 16px 22px; }
+  .wc-home-stage .wc-battlefields .wc-text-link { font-size: 10px; width: 100%; justify-content: space-between; }
+  .wc-battlefields .wc-path > .wc-scene-atmosphere { width: 100%; height: 300px; mask-image: linear-gradient(#000 40%,transparent); }
+}
+
+@keyframes blackout-metal-pass { to { left: 140%; } }
+@keyframes blackout-fog { 50% { transform: translate3d(5%,-3%,0) scale(1.12); opacity: .55; } }
+@keyframes blackout-crest-fire { 50% { opacity: .35; transform: scale(.94); } }
+@keyframes blackout-summon { from { opacity: .8; transform: scale(.55); } to { opacity: 0; transform: scale(1.15); } }
+@keyframes blackout-energy-flow { to { stroke-dashoffset: -100; } }
+@keyframes blackout-heading-arrive { from { opacity: .5; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: no-preference) {
+  .wc-home-overview[data-revealed=true] > .wc-wrap > .wc-section-heading,
+  .server-systems[data-revealed=true] .server-systems-heading,
+  .wc-community[data-revealed=true] .wc-community-copy { animation: blackout-heading-arrive .65s cubic-bezier(.2,.7,.2,1) both; }
+}
+@media (min-width: 601px) and (max-width: 900px) {
+  .wc-class-story { min-height: 300px; }
+}
+@media (max-width: 700px) {
+  .wc-crest-forged { margin-inline: auto; }
+  .wc-highlight-atmosphere { left: 15%; width: 85%; height: 50%; }
+  .wc-class-rift { inset: 10% 7% 15%; }
+  .wc-system-insignia { width: 90px; height: 90px; padding: 17px; }
+  .wc-community-panel:before { inset: 12px; }
+}
+@media (max-width: 600px) {
+  .wc-class-story { min-height: 0; }
+  .wc-class-list .wc-sigil { width: 28px; height: 28px; }
+  .wc-class-energy { inset: 0 0 14%; width: 100%; height: 86%; }
+}
+@media (max-width: 600px) {
+  .wc-hero { min-height: 0; }
+  .wc-hero-layout { padding: 200px 6% 70px; }
+  .wc-hero-video,.wc-hero-video img,.wc-hero-video video { height: 360px; }
+  .wc-hero-video img,.wc-hero-video video { object-position: 50% 32%; }
+  .wc-hero-video { mask-image: linear-gradient(#000 50%,transparent); -webkit-mask-image: linear-gradient(#000 50%,transparent); }
+  .wc-hero-shade { background: linear-gradient(0deg,#211c1a 0%,#100c0b 45%,#100c0b66 68%,transparent 85%); }
+  .wc-hero-copy { display: flex; flex-direction: column; align-items: stretch; }
+  .wc-hero .wc-crest { position: relative; top: 0; left: 0; transform: none; width: 160px; margin: 0 auto 8px; }
+  .wc-hero .wc-crest-forged { order: 0; }
+  .wc-hero .wc-soon { order: 1; }
+  .wc-hero h1 { order: 2; font-size: clamp(36px,10.5vw,48px); line-height: 1.05; margin-block: 12px; }
+  .wc-hero .wc-hero-intro { order: 3; font-size: 12px; line-height: 1.7; margin-bottom: 16px; }
+  .wc-hero .wc-actions { order: 4; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; }
+  .wc-hero .wc-button { min-height: 48px; padding: 12px 8px; gap: 8px; font-size: 9px; letter-spacing: .25px; }
+  .wc-hero .wc-actions .wc-button:last-child { grid-column: 1 / -1; min-height: 44px; }
+  .wc-hero .wc-realm-profile { order: 5; font-size: 9px; letter-spacing: .75px; margin-block: 14px 0; padding: 8px 0; }
+  .wc-hero .wc-fair-line { order: 6; font-size: 8px; margin-top: 12px; line-height: 1.6; }
+  .wc-hero .wc-scroll { bottom: 23px; }
+  .wc-trailer-pending .wc-wrap { grid-template-columns: 36px minmax(0,1fr); gap: 12px; }
+  .wc-trailer-pending h2 { font-size: 20px; line-height: 1.3; }
+  .wc-trailer-emblem,.wc-trailer-emblem svg { width: 34px; }
+  .wc-trailer-pending .wc-text-link { line-height: 1.7; }
+  .wc-home-stage .wc-section-heading h2 { font-size: clamp(29px,8vw,39px); line-height: 1.2; }
+  .wc-path-facts { gap: 8px; }
+  .wc-path-facts > div { padding-left: 10px; }
+  .wc-path-facts dt { font-size: 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wc-scene-atmosphere { display: none; }
+  .wc-scene-mist,.wc-crest-forged > span,.wc-class-rift b,.wc-energy-current,.wc-button:after,.lore-button:after,.wc-discord-button:after { animation: none !important; }
+  .wc-class-rift b { display: none; }
+  .wc-hero-video,.wc-official-character,.wc-class-rift,.wc-home-stage .wc-highlight-0 .wc-highlight-art,.wc-home-stage .wc-path-art img { transform: none; transition: none; }
+}

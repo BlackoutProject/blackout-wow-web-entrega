@@ -1,0 +1,60 @@
+.backdrop { position:absolute; inset:78px 0 auto; height:730px; z-index:0; overflow:hidden; pointer-events:none; background:#191b1f; mask-image:linear-gradient(#000 62%,transparent 100%); }
+.art { position:absolute; inset:0; }
+.art > img { object-fit:cover; object-position:70% 30%; }
+.art :global(.wc-ambient) { inset:0; width:100%; height:100%; }
+.art :global(.wc-ambient) :is(img,video) { object-fit:cover; object-position:72% 25%; }
+.shade { position:absolute; inset:0; background:linear-gradient(90deg,#191b1fee 0%,#191b1fc9 27%,#191b1f88 47%,#191b1f10 72%),linear-gradient(0deg,#191b1f 0%,transparent 50%); }
+.server .art { left:25%; mask-image:linear-gradient(90deg,transparent,#000 24%); }
+.server .art :is(img,video) { object-position:55% 28%; }
+.connect .art :is(img,video) { object-position:72% 34%; }
+.connect .shade { background:linear-gradient(90deg,#191b1fee,#191b1fb5 30%,#191b1f66 54%,#191b1f12 80%),linear-gradient(0deg,#191b1f,transparent 55%); }
+.rules .art :is(img,video) { object-position:75% 28%; }
+.rules .shade { background:linear-gradient(90deg,#191b1ff5,#191b1fa3 32%,#191b1f22 65%,transparent),linear-gradient(0deg,#191b1f,transparent 55%); }
+.register,.login { height:950px; }
+.register .art { right:28%; }
+.login .art { right:0; }
+.register .art :is(img,video) { object-position:56% 22%; }
+.login .art :is(img,video) { object-position:42% 40%; }
+.register .shade,.login .shade { background:linear-gradient(90deg,#191b1f55,#191b1f3d 36%,#191b1fc9 72%,#191b1f),linear-gradient(0deg,#191b1f 2%,#191b1f88 38%,transparent 75%); }
+.register .shade { background:radial-gradient(ellipse at 20% 65%,#191b1fb3,transparent 58%),linear-gradient(90deg,#191b1f55,#191b1f3d 36%,#191b1fc9 72%,#191b1f),linear-gradient(0deg,#191b1f 2%,#191b1f88 38%,transparent 75%); }
+.recover .art { left:38%; mask-image:linear-gradient(90deg,transparent,#000 22%); }
+.recover .art :is(img,video) { object-position:50% 75%; }
+.account { height:720px; }
+.account .art { left:38%; mask-image:linear-gradient(90deg,transparent,#000 24%); }
+.account .art :is(img,video) { object-position:50% 29%; }
+.account .shade { background:linear-gradient(90deg,#191b1ff2,#191b1fc7 31%,#191b1f35 68%,#191b1f15),linear-gradient(0deg,#191b1f,transparent 65%); }
+.atmosphere { opacity:.45; mask-image:linear-gradient(90deg,transparent 25%,#000 60%); }
+.store .art > img { object-position:70% 32%; }
+.points .art > img { object-position:70% 30%; }
+.store .shade,.points .shade { background:linear-gradient(90deg,#191b1fee,#191b1f99 55%,#191b1f55),linear-gradient(0deg,#191b1f,transparent 70%); }
+@media(prefers-reduced-motion:no-preference) {
+ .backdrop.store .art,.backdrop.points .art { animation:scene-breathe 18s ease-in-out infinite alternate; }
+ @keyframes scene-breathe { to { transform:scale(1.035) translateY(-5px); } }
+}
+@media(max-width:1000px) { .backdrop { inset-block-start:76px; } }
+@media(max-width:760px) {
+ .backdrop { inset-block-start:108px; height:690px; mask-image:linear-gradient(#000 62%,transparent); }
+ .backdrop .art { inset:0; }
+ .server .art { mask-image:none; }
+ .backdrop .art :is(img,video) { object-position:72% top; }
+ .server .art :is(img,video) { object-position:55% 26%; }
+ .rules .art :is(img,video) { object-position:84% top; }
+ .backdrop .shade { background:linear-gradient(0deg,#191b1f 2%,#191b1fee 31%,#191b1f50 70%,#191b1f22); }
+ .register,.login { height:850px; }
+ .register .art,.login .art,.recover .art { inset:0; }
+ .recover .art { mask-image:none; }
+ .register .art :is(img,video),.login .art :is(img,video) { object-position:50% top; }
+ .login .art :is(img,video) { object-position:50% top; }
+ .login .art { height:285px; }
+ .account { height:600px; }
+ .account .art { inset:0; mask-image:none; }
+ .account .art :is(img,video) { object-position:50% 25%; }
+ .register .shade,.login .shade { background:linear-gradient(0deg,#191b1f 8%,#191b1fed 50%,#191b1f33 100%); }
+ .login .shade { background:linear-gradient(180deg,transparent 0,transparent 160px,#191b1f 295px); }
+ /* Keep the moving subject in the mobile frame, not a magnified fragment of scenery. */
+ .rules .art,.connect .art,.register .art { height:340px; }
+ .rules .art :is(img,video) { object-position:78% top; }
+ .connect .art :is(img,video) { object-position:66% top; }
+ .register .art :is(img,video) { object-position:50% top; }
+ .rules .shade,.connect .shade,.register .shade { background:linear-gradient(180deg,transparent 0,transparent 140px,#191b1fdd 270px,#191b1f 340px); }
+}

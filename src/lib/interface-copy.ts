@@ -21,7 +21,7 @@ export const interfaceCopy: Record<string, [string, string]> = {
   'Actualizar trazabilidad': ['Refresh order tracking', 'Atualizar rastreamento'], 'Estado de canjes': ['Redemption status', 'Status dos resgates'],
   'Pendiente entrega': ['Awaiting delivery', 'Aguardando entrega'], 'Entrega fallida': ['Delivery failed', 'Falha na entrega'], 'Entregado': ['Delivered', 'Entregue'],
   'Falló débito': ['Debit failed', 'Falha no débito'], 'Completado': ['Completed', 'Concluído'], 'Actualizar canjes': ['Refresh redemptions', 'Atualizar resgates'],
-  'Analítica general': ['Analytics overview', 'Visão geral da análise'], 'Resumen global del servidor y la economía del portal.': ['An overview of the realm and portal economy.', 'Visão geral do reino e da economia do portal.'],
+  'Analítica general': ['Analytics overview', 'Visão geral da análise'], 'Resumen global del servidor y la economía del portal.': ['An overview of the server and portal economy.', 'Visão geral do servidor e da economia do portal.'],
   'Actualizar analítica': ['Refresh analytics', 'Atualizar análise'], 'Cargando...': ['Loading...', 'Carregando...'], 'Cargando…': ['Loading…', 'Carregando…'],
   'Estado': ['Status', 'Status'], 'Acción': ['Action', 'Ação'], 'Editar': ['Edit', 'Editar'], 'No hay productos creados.': ['No products have been created.', 'Nenhum produto foi criado.'],
   'Anterior': ['Previous', 'Anterior'], 'Página': ['Page', 'Página'], 'de': ['of', 'de'], 'Siguiente': ['Next', 'Próxima'], 'Costo': ['Cost', 'Custo'],

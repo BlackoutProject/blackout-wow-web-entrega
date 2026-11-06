@@ -3,7 +3,7 @@ import { localizedPageMetadata } from "@/lib/page-metadata";
 export function generateMetadata() { return localizedPageMetadata({
   title: "Cómo conectarme al servidor",
   description:
-    "Guía oficial BLACKOUT WOW 3.3.5a: crear cuenta, descargar cliente, configurar realmlist (logon.blackout-wow.com) e iniciar sesión en el reino WotLK custom.",
+    "Juega en Blackout-WoW con WoW 3.3.5a: crea tu cuenta, prepara el cliente e instala los parches, WoW.exe y los addons obligatorios AIO y Druid C Fix.",
   pathname: "/como-conectarme",
   keywords: [
     "realmlist Blackout WoW",

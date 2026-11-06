@@ -30,12 +30,14 @@ export function LanguageSwitcher() {
   const choose=(code:AppLanguage)=>{
     document.cookie=`${languageCookieName}=${code}; path=/; max-age=31536000; samesite=lax`;
     void i18n.changeLanguage(code);
+    // Preserve native section links when the server refreshes translated metadata.
+    window.history.replaceState(null,"",window.location.href);
     router.refresh();
-    setOpen(false);trigger.current?.focus();
+    setOpen(false);trigger.current?.focus({preventScroll:true});
   };
   const focusItem=(index:number)=>root.current?.querySelectorAll<HTMLButtonElement>('[role="menuitemradio"]')[index]?.focus();
   return <div className="site-language language-picker" ref={root} onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget as Node))setOpen(false);}} onKeyDown={e=>{
-    if(e.key==="Escape"){setOpen(false);trigger.current?.focus();}
+    if(e.key==="Escape"){setOpen(false);trigger.current?.focus({preventScroll:true});}
   }}>
     <button ref={trigger} type="button" className="language-trigger" aria-label={label} aria-expanded={open} aria-haspopup="menu" aria-controls="language-options" onClick={()=>setOpen(value=>!value)} onKeyDown={e=>{
       if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();setOpen(true);requestAnimationFrame(()=>focusItem(e.key==="ArrowUp"?2:0));}

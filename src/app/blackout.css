@@ -16,24 +16,27 @@
 @keyframes wc-class-motes{to{background-position:0 -240px}}
 @media(prefers-reduced-motion:reduce){.wc-character-motion,.wc-character-motes,.wc-official-character:before{animation:none}}
 @media (hover:hover) and (pointer:fine){
-  body{cursor:url('/warcraft/cursor-red.svg') 5 4,default}
-  a,button:not(:disabled),[role="button"],[role="tab"],select,summary,input[type="checkbox"],input[type="radio"]{cursor:url('/warcraft/cursor-red.svg') 5 4,pointer}
-  input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]),textarea,[contenteditable="true"]{cursor:text}
-  button:disabled,input:disabled,[aria-disabled="true"]{cursor:not-allowed}
+  /* 32px PNG rendered from public/warcraft/cursor-red.svg. Embed the native cursor
+     so navigation never waits for a separate image request. Use one complete
+     cursor value for backgrounds, controls and their children, including :active. */
+  html{--blackout-cursor:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAACtElEQVR4nO1Xz2vTYBj+dA4PbqPZOu1g6tgPu61k6fhaa7OsX5K5/kg9eOlB8E/Qk8JuCqIHxYt3D+JBUBQUBI8ePKqIMoIImsV2HjZsm25H6StvupUusq3dkuJhD7wQ0pLn+Z4n35OEkP8JkCMdJSb4DEHwAWNH2k5uinTEiNNxnILIB/Nn+cFFNtnVFgGmxHNIbKWV5xVNeV9OJxYKLBrGcyhsmVK/p66YGwIqGeXTWlYFnEpWtcoZ+fHKnHTBc1eA0k4kKafZXST/oopQSLFqXYymfGx05ee56dFfUrj/A6WdrokwYsLQ6tyMXMmq1XezMQh098DloVPwRqToxqYra1ZGfrqqShddd0WPjvfZMWjKZyTk+3qBO9ZlD/X74R4/AWYyUXfF0tTFYjJxw0jEp11xBRwxLIyP1QVsjueuGI4YnAIapxlXcAd9xR2Uy3XsOwZum2nGFRSCXeNKDNwOEzveDw/CoS07qJxWXtoiJJ5rPgYlrjYTg3MGe3rg2pkR0NUZqAvIyK9aEqDvIYYgx8GtUBDyqdr9YGlK1dLktyvnpUstRdBqDInACXgUmYKiptjEFU1ex/ZEB/Ea+Vh47JsU7n/WLHkrMSBxQ1PmS0l2x1RidMPuYbT8JiGHyV6g/xND3xZyeSBQI87IS8WkdNWciYbw/z/i06dXRbGb7BewSwxPooItoJicvYLFs0TpAKRHjxI3YWxTSpO9vXbmVkYu4MqRnHgBfZvdcH9qwl59KcVu4++ur3ynGHCfL6dYFe92k4mRQiR0kngJwxHD9eBorVxS7CGK8/yVTXfE8H1+FkvmD4oyI/ww8RrgiKFWrcpr++VVEHykHTAaSgkF/J6XcthwQMihtgjQN2Kw0vKLzScb1itpFyCX2/LNgMctd7tbX00lJviafqod4ABkd/wFX4VujATVrmQAAAAASUVORK5CYII=") 5 4,default}
+  html,body,html body .site-shell,html body .site-shell *{cursor:var(--blackout-cursor)}
+  html body .site-shell :where(input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="range"]),textarea,[contenteditable="true"],[contenteditable="true"] *){cursor:text}
+  html body .site-shell :where(button:disabled,input:disabled,select:disabled,textarea:disabled,[aria-disabled="true"],[aria-disabled="true"] *,button:disabled *){cursor:not-allowed}
 }
 .connection-paths ol{margin:20px 0 0;padding-left:21px;display:grid;gap:14px;color:#c2c5ca;font-size:13px;line-height:1.9;list-style:decimal}
 .connection-paths li{padding-left:7px}.connection-paths li::marker{color:#d9b578;font-weight:600}
 .connection-realm{max-width:700px}.connection-copy-status{min-height:23px;margin-top:8px!important}
 .language-picker{position:relative;flex-shrink:0}.language-trigger{display:flex;align-items:center;gap:8px;min-height:42px;padding:8px;color:#e9d9b9;font-size:11px;letter-spacing:.5px}
 .language-flag{display:block;width:23px;height:16px;flex-shrink:0;border-radius:2px;box-shadow:0 0 0 1px #fff2;overflow:hidden}
-.language-chevron{font-size:14px;color:#bbaa8e}.language-options{position:absolute;z-index:80;right:0;top:calc(100% + 12px);min-width:180px;padding:6px;background:#10131cf7;border:1px solid #8c7656;box-shadow:0 12px 35px #000a}
+.language-chevron{font-size:14px;color:#bbaa8e}.language-options{position:absolute;z-index:80;right:0;top:calc(100% + 12px);min-width:180px;padding:6px;background:#29221ff7;border:1px solid #8c7656;box-shadow:0 12px 35px #000a}
 .language-options:not([hidden]){display:grid;gap:3px}.language-options button{display:flex;align-items:center;gap:12px;text-align:left;padding:12px;color:#ddd4c6;font-size:12px}.language-options button>span:last-child{margin-left:auto;color:#edc583}
 .language-options button:hover,.language-options button:focus-visible{background:#b8813222;outline:1px solid #b8813277}.language-options button[aria-checked=true]{background:#b8813214;color:#f5d49f}
 @media(max-width:600px){.language-trigger{gap:5px;padding:8px 4px;font-size:9px}.language-flag{width:20px;height:14px}.language-chevron{font-size:12px}.connection-paths ol{font-size:12px;padding-left:18px}}
 .wc-hero{background:linear-gradient(90deg,#0c0908eb 4%,#180d0be3 44%,#09080977),url('/warcraft/native/outland-scene.webp') center/cover no-repeat}
 .wc-hero-video{left:39%;width:61%;mask-image:linear-gradient(90deg,transparent,#000 22%);-webkit-mask-image:linear-gradient(90deg,transparent,#000 22%)}
 .wc-hero-video img,.wc-hero-video video{object-position:50% 30%}
-.wc-hero-shade{background:linear-gradient(90deg,#08090855 0%,#0b080824 44%,transparent 72%),linear-gradient(0deg,#0b1018 0%,#100b0940 20%,transparent 60%)}
+.wc-hero-shade{background:linear-gradient(90deg,#08090855 0%,#0b080824 44%,transparent 72%),linear-gradient(0deg,#211c1a 0%,#100b0940 20%,transparent 60%)}
 .wc-hero:after{content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 38% 75%,#a73f1520,transparent 55%)}
 .wc-hero .wc-button:not(.wc-button-ghost){background:linear-gradient(#973e20,#4b1d13);box-shadow:inset 0 0 0 3px #1c100c,inset 0 0 0 4px #d4a16a55,0 4px 30px #d4441825}
 .wc-hero .wc-button-ghost{background:linear-gradient(#302019d9,#130e0de8)}
@@ -44,8 +47,8 @@
 
 .portal-backdrop.portal-frost .wc-ambient img,.portal-backdrop.portal-frost .wc-ambient video{object-position:50% 28%}
 @media(max-width:1180px) and (min-width:901px){.wc-hero-video{left:37%;width:63%}.wc-hero-video img,.wc-hero-video video{object-position:55% 25%}.wc-hero-copy{width:450px}}
-@media(max-width:900px) and (min-width:601px){.wc-hero-video{left:26%;width:74%;opacity:.86}.wc-hero-video img,.wc-hero-video video{object-position:55% 17%}.wc-hero-shade{background:linear-gradient(90deg,#100b0ae0,#100b0a77 45%,transparent 85%),linear-gradient(0deg,#0b1018,transparent 40%)}}
-@media(max-width:600px){.wc-hero{background:#100b0b}.wc-hero-video{left:0;width:100%;height:530px;opacity:1;mask-image:linear-gradient(#000 65%,transparent);-webkit-mask-image:linear-gradient(#000 65%,transparent)}.wc-hero-video img,.wc-hero-video video{height:530px;width:100%;object-position:50% 25%}.wc-hero-shade{background:linear-gradient(0deg,#0b1018 0%,#110c0b 29%,#110c0bb3 49%,transparent 74%)}.wc-hero-layout{padding-top:365px}.wc-hero .wc-crest{top:-135px;width:225px}.wc-hero h1{font-size:49px}.wc-embers{opacity:.6}}
+@media(max-width:900px) and (min-width:601px){.wc-hero-video{left:26%;width:74%;opacity:.86}.wc-hero-video img,.wc-hero-video video{object-position:55% 17%}.wc-hero-shade{background:linear-gradient(90deg,#100b0ae0,#100b0a77 45%,transparent 85%),linear-gradient(0deg,#211c1a,transparent 40%)}}
+@media(max-width:600px){.wc-hero{background:#100b0b}.wc-hero-video{left:0;width:100%;height:530px;opacity:1;mask-image:linear-gradient(#000 65%,transparent);-webkit-mask-image:linear-gradient(#000 65%,transparent)}.wc-hero-video img,.wc-hero-video video{height:530px;width:100%;object-position:50% 25%}.wc-hero-shade{background:linear-gradient(0deg,#211c1a 0%,#110c0b 29%,#110c0bb3 49%,transparent 74%)}.wc-hero-layout{padding-top:365px}.wc-hero .wc-crest{top:-135px;width:225px}.wc-hero h1{font-size:49px}.wc-embers{opacity:.6}}
 
 /* Let translated hero content set its height without pushing the crest under the header. */
 @media(min-width:601px){
@@ -91,16 +94,14 @@
 @media(max-width:900px){.wc-store-individual ul{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.wc-store-individual ul{grid-template-columns:1fr}}
 .wc-community{background:radial-gradient(ellipse at 50% 50%,#29180d44,transparent 72%),#0b0f16}
-.wc-community-frame{display:grid;grid-template-columns:1.05fr 1fr;border:1px solid #ef8a35;border-radius:18px;box-shadow:inset 0 0 0 3px #090b10,inset 0 0 0 4px #a85a2b80,0 0 0 3px #ef8a3520,0 0 32px #e764171a;background:radial-gradient(ellipse at 20% 100%,#301c1066,transparent 70%),linear-gradient(#0b0c10f2,#0c0c10f2),url('/warcraft/native/stone.png');overflow:hidden}
+.wc-community-frame{display:grid;grid-template-columns:1.05fr 1fr;border:1px solid #ef8a35;border-radius:18px;box-shadow:inset 0 0 0 3px #090b10,inset 0 0 0 4px #a85a2b80,0 0 0 3px #ef8a3520,0 0 32px #e764171a;background:radial-gradient(ellipse at 20% 100%,#301c1066,transparent 70%),linear-gradient(#0b0c10f2,#0c0c10f2);overflow:hidden}
 .wc-community-copy{padding:52px 44px;align-self:center}
-.wc-community .wc-kicker{color:#94b9d8}
+.wc-community .wc-kicker{color:#c9ad7c}
 .wc-community h2{font-size:clamp(30px,3vw,42px);line-height:1.25;letter-spacing:-.5px}
 .wc-community h2 em{color:#d8bc88;font-style:normal}
 .wc-community-intro{max-width:480px;margin:23px 0;color:#c4c6cd;font-size:13px;line-height:1.95}
 .wc-community-badges{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0 0 30px}
-.wc-community-badges li{padding:7px 10px;border:1px solid #608c7866;border-radius:5px;background:#16413033;color:#b4d7c8;font-size:9px;font-weight:600;line-height:1.6;letter-spacing:.5px;text-transform:uppercase}
-.wc-community-badges li:nth-child(2){color:#bad5e4;border-color:#477e9b66;background:#16354b55}
-.wc-community-badges li:nth-child(3){color:#e4c991;border-color:#9a773d66;background:#4d350f44}
+.wc-community-badges li{padding:7px 10px;border:1px solid #b18b5538;border-radius:3px;background:#b18b550c;color:#d6c8af;font-size:9px;font-weight:600;line-height:1.6;letter-spacing:.5px;text-transform:uppercase}
 .wc-discord-button{display:inline-flex;align-items:center;justify-content:center;gap:13px;min-height:54px;padding:14px 24px;border:1px solid #8990ff;border-radius:6px;background:linear-gradient(135deg,#6268f5,#4d54dc);box-shadow:0 8px 28px #5865f233,inset 0 1px #ffffff26;color:#fff;font-size:12px;font-weight:700;letter-spacing:.6px;transition:background .2s,box-shadow .2s,transform .2s}
 .wc-discord-button:hover{background:#6b73ff;box-shadow:0 8px 32px #5865f266;transform:translateY(-2px)}
 .wc-discord-button>span{margin-left:12px;font-size:17px}

@@ -6,6 +6,15 @@ import "./globals.css";
 import "./portal.css";
 import "./warcraft.css";
 import "./blackout.css";
+import "./visual-refinements.css";
+import "./cinematic-polish.css";
+import "./warcraft-scenes.css";
+import "./blackout-cinematic.css";
+import "./information-design.css";
+import "./blackout-color.css";
+import "./blackout-steel.css";
+import "./interaction-states.css";
+import { BlackoutCursor } from "@/components/BlackoutCursor";
 import { AuthProvider } from "@/context/AuthContext";
 import { InterfaceSoundProvider } from "@/components/InterfaceSound";
 import { LanguageProvider } from "@/components/LanguageProvider";
@@ -116,6 +125,7 @@ export default async function RootLayout({
           <AuthProvider><InterfaceSoundProvider>{children}</InterfaceSoundProvider></AuthProvider>
         </LanguageProvider>
         <Analytics />
+        <BlackoutCursor />
       </body>
     </html>
   );

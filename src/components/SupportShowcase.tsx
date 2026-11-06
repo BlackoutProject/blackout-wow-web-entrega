@@ -6,6 +6,7 @@ import { useAuth } from "@/context/AuthContext";
 import { DISCORD_INVITE_URL } from "@/lib/site-config";
 import { supportCopy } from "@/lib/support-copy";
 import { AmbientVideo } from "./WarcraftMotion";
+import styles from "./SupportShowcase.module.css";
 
 export function SupportShowcase() {
   const { i18n } = useTranslation();
@@ -13,7 +14,7 @@ export function SupportShowcase() {
   const c = supportCopy[i18n.language as keyof typeof supportCopy] ?? supportCopy.es;
 
   return (
-    <section className="wc-join wc-section wc-support" id="tienda" aria-labelledby="support-title">
+    <section className={`${styles.support} wc-join wc-section wc-support`} id="tienda" aria-labelledby="support-title">
       <AmbientVideo className="wc-join-film" src="/cinematic/scene-03-shadow-kling.mp4" poster="/cinematic/sylvanas.jpg" />
       <div className="wc-wrap">
         <div className="wc-join-copy">

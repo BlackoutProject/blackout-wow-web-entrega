@@ -56,21 +56,54 @@ assert.ok(!sitemap.includes('/tienda'), 'Shop must not appear in the public site
 assert.ok(home.match(/<header class="site-header">([\s\S]*?)<\/header>/)?.[1].includes('class="site-sound-toggle"'), 'Sound control must be visible in the header');
 assert.ok(!home.match(/<footer class="site-footer">([\s\S]*?)<\/footer>/)?.[1].includes('class="site-sound-toggle"'), 'Sound control must not be duplicated in the footer');
 console.log('PASS: account-only shop navigation, signed-out catalog guards, private search metadata and sound control');
-for(const fact of ['255','35','45+','T1','T35','V1–V10','100K+','500+','Evocador','Cazador de demonios','Monje','10 hechizos custom por clase','NUEVA ERA','No Pay to Win'])assert.ok(home.includes(fact),'Missing home fact: '+fact);
+// Headings may split their visible text across decorative spans.
+const homeSummary = home.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+for(const fact of ['255','45 World Bosses','Evocador','Cazador de demonios','Monje','10 hechizos custom','Sistemas custom','Desata el caos.'])assert.ok(homeSummary.includes(fact),'Missing home summary fact: '+fact);
+const pveFacts = home.match(/<dl class="[^"]*\bwc-path-facts\b[^"]*">([\s\S]*?)<\/dl>/)?.[1] || '';
+assert.deepEqual([...pveFacts.matchAll(/<dt>([^<]+)(?:<small>[^<]+<\/small>)?<\/dt><dd>([^<]+)<\/dd>/g)].map(match=>[match[1],match[2]]), [['Raids en total','35'],['Raids custom','19'],['Mapas custom','30+']], 'Keep the total, custom raid subset and separate custom maps clear on Home');
+assert.match(pveFacts, /Raids custom<small>De las 35 raids del servidor<\/small><\/dt><dd>19<\/dd>/, 'State explicitly that the 19 custom raids are included in the total of 35');
+assert.ok(!/no pay to win|sin pay to win/i.test(home), 'Public claims must match confirmed mechanics');
+assert.ok(!/\bVIP\b|\bDonor\b/.test(home.replace(/<script[\s\S]*?<\/script>/g,'')), 'Public homepage must only describe general server support');
 assert.ok(!/players online|jugadores conectados|playersOnline/i.test(home),'Unexpected activity counter');
 const server=pages.get('/servidor');
+for(const fact of ['T1','T35','V1–V10','100.000','500','10 HECHIZOS CUSTOM POR CLASE','Pasivas Paragon','Battle Pass'])assert.ok(server.includes(fact),'Missing relocated server detail: '+fact);
+const homeSections = [...home.matchAll(/<section\b[^>]*\bid="([^"]+)"/g)].map(match => match[1]);
+assert.deepEqual(homeSections, ['trailer','reino','comunidad','tienda'], 'Homepage must present trailer, overview, community and support in order');
+assert.ok(!home.includes('class="wc-class-list"') && server.includes('class="wc-class-list"'), 'Detailed class selector belongs on the server page');
+assert.ok(home.includes('https://www.youtube.com/@Blackout-WoW-255'), 'Trailer must link to the real channel');
+assert.ok(!/youtube(?:-nocookie)?\.com\/embed\//.test(home), 'Video must not load before the visitor chooses to play');
+assert.ok(home.includes('href="#reino"'), 'Explore should lead to server highlights');
+const trailerSection = home.match(/<section\b[^>]*\bid="trailer"[^>]*>[\s\S]*?<\/section>/)?.[0] ?? '';
+assert.match(trailerSection, /class="wc-trailer-play"/, 'Visitors can start the trailer on Home');
+assert.match(trailerSection, /href="https:\/\/www\.youtube\.com\/watch\?v=[A-Za-z0-9_-]{11}"/, 'The trailer also links directly to the video on YouTube');
+for(const id of ['progresion','preguntas']) assert.ok(server.includes('id="'+id+'"'), 'Missing progression or new-player help');
+assert.equal((server.match(/<details>/g)||[]).length,3,'Server must offer three focused new-player questions');
 for(const fact of ['Paladín','Guerrero','Caballero de la Muerte','Mago','Pícaro','Sacerdote','Chamán','Druida','Cazador','Brujo','Cataclysm','MoP','WoD','Legion','BfA','Shadowlands','Dragonflight','The War Within'])assert.ok(server.includes(fact),'Missing spell detail: '+fact);
-for(const fact of ['Void Elf','Mechagnome','Dracthyr','Kul Tiran','Pandaren','Dark Iron Dwarf','Lightforged Draenei','Nightborne','Vulpera','Zandalari Troll','Mag’har Orc','Highmountain Tauren','Razas de WotLK','16 apariencias raciales'])assert.ok(server.includes(fact),'Missing race/morph detail: '+fact);
+for(const fact of ['Elfo del Vacío','Mecagnomo','Dracthyr','Humano de Kul Tiras','Pandaren','Enano Hierro Negro','Draenei forjado por la Luz','Nocheterna','Vulpera','Trol Zandalari','Orco Mag’har','Tauren Monte Alto','razas de WotLK','16 apariencias raciales'])assert.ok(server.includes(fact),'Missing race/morph detail: '+fact);
 assert.ok(!server.includes('16 razas jugables'),'Morphs must not be presented as playable races');
 for(const id of ['pve','pvp','hechizos-custom','razas-y-morphs'])assert.ok(server.includes('id="'+id+'"'),'Broken section anchor '+id);
 console.log('PASS: announced facts, 10 classes, expansion sources, section anchors, no online counter');
 assert.ok(!home.includes('15+'), 'Outdated raid count');
 const downloads=pages.get('/como-conectarme');
 for(const id of ['1_3-KSxI1XKdsgpOJwkeKi6gboDQ1M1Mg','15eqo-VXNtD-8JelsrHfoPnogeNKddJKE','1-w4jnu1TxzwASASyO-qEkN_JURE8NPk-','1_lURvxnmrZYuwzT5L7uGLgRV4G0CzIjd'])assert.ok(downloads.includes(id),'Missing confirmed download: '+id);
-assert.ok(downloads.includes('AIO — obligatorio') && downloads.includes('Druid C Fix — obligatorio'),'Required addons missing');
+assert.ok(downloads.includes('Instala los dos addons obligatorios'),'Required addons missing');
 assert.ok(!downloads.includes('1YXqxzPbBd5TAyLZ1yu0c0o64X8UGOtxi'),'Obsolete patch link present');
 console.log('PASS: both clients and both required addons linked; obsolete patch link removed');
-assert.ok(downloads.includes('Parches + WoW.exe — obligatorios'), 'Patch requirement must remain visible while its link is pending');
+const freshClientPath=downloads.match(/<article[^>]+id="instalacion-nuevo"[^>]*>([\s\S]*?)<\/article>/)?.[1];
+const existingClientPath=downloads.match(/<article[^>]+id="instalacion-existente"[^>]*>([\s\S]*?)<\/article>/)?.[1];
+assert.ok(freshClientPath && existingClientPath, 'Both guided installation choices must render');
+for(const id of ['1_3-KSxI1XKdsgpOJwkeKi6gboDQ1M1Mg','15eqo-VXNtD-8JelsrHfoPnogeNKddJKE'])assert.ok(freshClientPath.includes(id) && !existingClientPath.includes(id), 'Client download must stay inside the new-client option: '+id);
+for(const id of ['1-w4jnu1TxzwASASyO-qEkN_JURE8NPk-','1_lURvxnmrZYuwzT5L7uGLgRV4G0CzIjd','KshwXbJZ#4v_D_CDfwYPKqNu4KgWGRhK45HSp_9yhv8sjTgDe2F4'])assert.ok(existingClientPath.includes(id) && !freshClientPath.includes(id), 'Separate addon download must stay inside the existing-client option: '+id);
+for (const path of [freshClientPath, existingClientPath]) {
+  for (const url of [
+    'https://mega.nz/file/Ds4T0KaR#tvx9ZKoLGR2ibW2YqNHM9rjxDxkw4tQtyulxLf5YpYY',
+    'https://drive.google.com/file/d/18zFPYn4CBTduIFF0bO-Of_nSxX6P6nCL/view?usp=sharing'
+  ]) assert.ok(path.includes('href="'+url+'"'), 'Missing patch download: '+url);
+}
+assert.ok(!downloads.includes('class="connect-downloads"'), 'Downloads must be attached to their installation option, not a separate list');
+console.log('PASS: client and addon downloads appear only in the relevant installation choice; patches appear in both');
+assert.ok(downloads.includes('Ambas opciones requieren los parches y WoW.exe'), 'Required installation components must remain explicit');
+assert.doesNotMatch(downloads, /connection-download-pending|Enlace pendiente de publicación/);
 assert.ok(downloads.includes('Ambos ya incluyen el realmlist de Blackout y los dos addons'), 'Both official clients include both addons and the realmlist');
 assert.ok(home.includes('/warcraft/blackout-orc-poster.webp') && !home.includes('/warcraft/icecrown.mp4'), 'Blackout orc must replace the Lich King hero');
 const policyChecks = {
@@ -87,7 +120,7 @@ for(const [lang,phrases] of Object.entries(policyChecks)){
 }
 console.log('PASS: seven rule categories and sanctions in ES/EN/PT; mandatory patches and both installation paths');
 
-const languages={es:'NUEVA ERA',en:'NEW ERA',pt:'NOVA ERA'};
+const languages={es:'Desata el',en:'Unleash',pt:'Liberte o'};
 await Promise.all(Array.from({length:4},()=>Object.entries(languages)).flat().map(async([lang,label])=>{
   const response=await fetch(base+'/',{headers:{cookie:'lang='+lang},signal:AbortSignal.timeout(60000)});
   const html=await response.text();
@@ -100,11 +133,12 @@ for(const html of pages.values())for(const match of html.matchAll(/(?:src|poster
   const path=match[1];
   if(path.startsWith('/') && /\.(?:webp|png|jpe?g|mp4|mp3|css|js|woff2?|ttf)(?:\?|$)/.test(path) && !path.includes('&amp;'))assets.add(path);
 }
-for(const css of ['src/app/warcraft.css','src/app/portal.css','src/app/blackout.css']){
+for(const css of ['src/app/warcraft.css','src/app/portal.css','src/app/blackout.css','src/app/visual-refinements.css','src/app/cinematic-polish.css','src/app/blackout-steel.css','src/components/HomeWorld.module.css']){
   const text=await readFile(resolve(css),'utf8');
   for(const match of text.matchAll(/url\(['"]?(\/[^'")]+)['"]?\)/g))assets.add(match[1]);
 }
 for(const path of ['/warcraft/classes/evoker.png','/warcraft/classes/demon-hunter.png','/warcraft/classes/monk.png','/warcraft/blackout-orc.mp4','/warcraft/illidan.mp4','/cinematic/scene-03-shadow-kling.mp4'])assets.add(path);
+for(const asset of JSON.parse(await readFile('design/high-resolution-art.json','utf8')).assets)assets.add('/'+asset.file.replaceAll('\\','/').replace(/^public\//,''));
 const array=[...assets];
 for(let start=0;start<array.length;start+=8){
  const results=await Promise.allSettled(array.slice(start,start+8).map(async path=>{
