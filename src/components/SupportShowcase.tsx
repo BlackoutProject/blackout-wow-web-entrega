@@ -15,7 +15,7 @@ export function SupportShowcase() {
 
   return (
     <section className={`${styles.support} wc-join wc-section wc-support`} id="tienda" aria-labelledby="support-title">
-      <AmbientVideo className="wc-join-film" src="/cinematic/scene-03-shadow-kling.mp4" poster="/cinematic/sylvanas.jpg" />
+      <AmbientVideo className="wc-join-film" src="/cinematic/scene-03-shadow-kling.mp4" poster="/cinematic/sylvanas.jpg" preloadDistance={100} />
       <div className="wc-wrap">
         <div className="wc-join-copy">
           <p className="wc-kicker">{c.eyebrow}</p>

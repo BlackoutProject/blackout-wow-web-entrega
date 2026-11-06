@@ -14,11 +14,12 @@ export function WarcraftMotion({ children }: { children: React.ReactNode }) {
   return <MotionContext.Provider value={{ paused }}><div className="warcraft-motion-root" data-motion={paused ? "paused" : "playing"}>{children}</div></MotionContext.Provider>;
 }
 /** Prepare nearby scenes before they enter the viewport; only play visible scenes. */
-export function AmbientVideo({ src, poster, className = "", priority = false }: { src: string; poster: string; className?: string; priority?: boolean }) {
+type AmbientVideoProps = { src: string; poster: string; className?: string; priority?: boolean; preloadDistance?: number };
+export function AmbientVideo({ src, poster, className = "", priority = false, preloadDistance = 650 }: AmbientVideoProps) {
   // A route or class change gets fresh playback state, never the previous scene's opacity.
-  return <AmbientScene key={src} src={src} poster={poster} className={className} priority={priority}/>;
+  return <AmbientScene key={src} src={src} poster={poster} className={className} priority={priority} preloadDistance={preloadDistance}/>;
 }
-function AmbientScene({ src, poster, className, priority }: { src: string; poster: string; className: string; priority: boolean }) {
+function AmbientScene({ src, poster, className, priority, preloadDistance }: Required<AmbientVideoProps>) {
   const { paused } = useContext(MotionContext);
   const ref = useRef<HTMLVideoElement>(null);
   const [visible, setVisible] = useState(false);
@@ -32,10 +33,10 @@ function AmbientScene({ src, poster, className, priority }: { src: string; poste
     // A separate observer warms only the next screenful, without playing offscreen video.
     const prepare = new IntersectionObserver(entries => {
       if (entries.some(entry => entry.isIntersecting)) { setLoaded(true); prepare.disconnect(); }
-    }, { rootMargin: "650px 0px", threshold: 0 });
+    }, { rootMargin: `${preloadDistance}px 0px`, threshold: 0 });
     if (!paused) prepare.observe(element);
     return () => { observer.disconnect(); prepare.disconnect(); };
-  }, [paused]);
+  }, [paused, preloadDistance]);
   useEffect(() => {
     const element = ref.current;
     const sync = () => {

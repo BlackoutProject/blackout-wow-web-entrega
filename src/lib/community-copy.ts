@@ -8,7 +8,8 @@ export const communityCopy = {
     join: "UNIRME A DISCORD",
     help: "¿Necesitas ayuda? Contacta con Blackout-WoW o abre un ticket en nuestro Discord.",
     widget: "Comunidad oficial de Blackout-WoW en Discord",
-    open: "ABRIR DISCORD",
+    showChannels: "Ver canales de Discord",
+    hideChannels: "Cerrar panel de canales",
   },
   en: {
     eyebrow: "THE HEART OF BLACKOUT",
@@ -19,7 +20,8 @@ export const communityCopy = {
     join: "JOIN DISCORD",
     help: "Need help? Contact Blackout-WoW or open a ticket on our Discord.",
     widget: "Official Blackout-WoW Discord community",
-    open: "OPEN DISCORD",
+    showChannels: "View Discord channels",
+    hideChannels: "Close channel panel",
   },
   pt: {
     eyebrow: "O CORAÇÃO DE BLACKOUT",
@@ -30,6 +32,7 @@ export const communityCopy = {
     join: "ENTRAR NO DISCORD",
     help: "Precisa de ajuda? Fale com Blackout-WoW ou abra um ticket no nosso Discord.",
     widget: "Comunidade oficial de Blackout-WoW no Discord",
-    open: "ABRIR DISCORD",
+    showChannels: "Ver canais do Discord",
+    hideChannels: "Fechar painel de canais",
   },
 };

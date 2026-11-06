@@ -267,13 +267,10 @@
 }
 
 @keyframes blackout-battle-depth { 50% { scale: 1.045; translate: -3px 2px; } }
-@keyframes blackout-community-depth { 50% { transform: scale(1.05) translate3d(-5px,0,0); } }
 @media (prefers-reduced-motion: no-preference) {
   .wc-battlefields .wc-path-art img { animation: blackout-battle-depth 22s ease-in-out infinite paused; }
   .wc-battlefields .wc-path-pvp .wc-path-art img { animation-delay: -11s; }
   .wc-battlefields .wc-path[data-in-view=true] .wc-path-art img { animation-play-state: running; }
-  .wc-community-backdrop img { animation: blackout-community-depth 28s ease-in-out infinite paused; }
-  .wc-community[data-active=true] .wc-community-backdrop img { animation-play-state: running; }
 }
 @media (max-width: 760px) {
   .wc-home-stage .wc-battlefields .wc-path-art:after,.wc-home-stage .wc-battlefields .wc-path-pvp .wc-path-art:after { background: linear-gradient(0deg,var(--path-base),transparent 75%); }

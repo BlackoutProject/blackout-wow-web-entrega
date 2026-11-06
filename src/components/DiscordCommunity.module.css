@@ -1,13 +1,22 @@
 .community:global(.wc-community) { position:relative; isolation:isolate; padding-block:90px; background:#191b1f; }
-.embers { opacity:.3; mask-image:linear-gradient(transparent,#000 30%,#000 70%,transparent); }
 .community:global(.wc-community) :global(.wc-community-backdrop) { inset:0; overflow:hidden; }
-.community:global(.wc-community) :global(.wc-community-backdrop img) { object-position:center 48%; opacity:.65; filter:saturate(.65); }
+.community:global(.wc-community) :global(.wc-community-backdrop img) { object-position:center 48%; opacity:.65; filter:none; }
 .community:global(.wc-community) :global(.wc-community-backdrop:after) { background:linear-gradient(0deg,#191b1f,transparent 38%,transparent 66%,#191b1f),linear-gradient(90deg,#191b1fb8,#191b1f99); }
 .community:global(.wc-community) :global(.wc-community-frame) { position:relative; grid-template-columns:1.1fr 1fr; gap:48px; padding:44px; overflow:hidden; border:1px solid #7196c69c; border-radius:8px; background:radial-gradient(ellipse at 7% 0%,#2b558062,transparent 70%),linear-gradient(115deg,#14223bf5,#102037ee); box-shadow:inset 0 0 0 5px #070f1c77,inset 0 1px #d6eaff40,0 0 0 5px #3b588222,0 18px 50px #0007; }
 .community:global(.wc-community) :global(.wc-community-frame:before) { content:''; position:absolute; top:0; left:8%; right:8%; height:2px; background:linear-gradient(90deg,transparent,#8fbaff,transparent); pointer-events:none; }
 .community:global(.wc-community) :global(.wc-community-copy) { padding:8px 0; }
 .community:global(.wc-community) :global(.wc-community-panel) { padding:9px; margin:0; border:1px solid #748cbb57; border-radius:8px; background:#0a1425; box-shadow:0 10px 35px #0005,inset 0 1px #e1edff18; transform:none; }
-.community:global(.wc-community) :global(.wc-community-panel iframe) { border-radius:4px; height:440px; }
+.community:global(.wc-community) :global(.wc-community-panel:before) { content:none; }
+.widget { display:grid; grid-template-rows:minmax(0,1fr) auto; height:440px; overflow:hidden; border:1px solid #394867; border-radius:5px; }
+.stage { min-height:0; }
+.community:global(.wc-community) .stage iframe { display:block; width:100%; height:100%; border:0; border-radius:0; box-shadow:none; }
+.cover { display:grid; grid-template-rows:auto 1fr; height:100%; background:radial-gradient(ellipse at 50% 62%,#233451,#131f34 72%); }
+.brand { display:flex; align-items:center; gap:9px; padding:14px 20px; background:#4d58ac; color:white; font:700 17px/1.2 system-ui,sans-serif; }
+.logo { place-self:center; width:min(200px,75%); height:auto; }
+.channels { display:flex; align-items:center; justify-content:space-between; gap:12px; width:100%; min-height:48px; padding:10px 18px; border:0; border-top:1px solid #526592; background:#233454; color:#edf3ff; text-align:start; font-weight:600; font-size:14px; }
+.channels:is(:hover,:focus-visible) { background:#324972; }
+.channels:focus-visible { outline:2px solid #c2d2ff; outline-offset:-3px; }
+.channels span { font-size:19px; }
 .community:global(.wc-community) :global(.wc-community-eyebrow) { margin-bottom:22px; gap:15px; }
 .community:global(.wc-community) :global(.wc-discord-crest) { width:48px; height:48px; border:1px solid #9ab0ff59; border-radius:12px; background:linear-gradient(135deg,#6971f3,#4147a5); box-shadow:0 0 28px #6976ed33,inset 0 1px #ffffff3d; transform:none; animation:none; }
 .community:global(.wc-community) :global(.wc-discord-crest:before),.community:global(.wc-community) :global(.wc-discord-crest:after) { display:none; }
@@ -22,11 +31,9 @@
 .community:global(.wc-community) :global(.wc-discord-button) { background:linear-gradient(135deg,#6773ed,#4955c3); border:1px solid #b1bfff80; border-radius:4px; padding:15px 23px; font-size:12px; box-shadow:inset 0 1px #ffffff30,0 6px 22px #323fad55; }
 .community:global(.wc-community) :global(.wc-discord-button:hover) { filter:brightness(1.15); box-shadow:0 0 28px #6676f355; }
 .community:global(.wc-community) :global(.wc-community-help) { max-width:47ch; font-size:13px; line-height:1.75; color:#b4c5de; }
-@keyframes community-pan { 50% { transform:scale(1.045) translateX(-8px); } }
 @keyframes discord-light { 50% { opacity:.5; } }
-@keyframes discord-beacon { 0%,100% { transform:translateY(0); box-shadow:0 0 18px #6976ed33,inset 0 1px #ffffff3d; } 50% { transform:translateY(-4px); box-shadow:0 0 32px #8a9bff66,inset 0 1px #ffffff65; } }
+@keyframes discord-beacon { 50% { transform:translateY(-3px); } }
 @media(prefers-reduced-motion:no-preference) {
- .community[data-active=true] :global(.wc-community-backdrop img) { animation:community-pan 18s ease-in-out infinite; }
  .community[data-active=true] :global(.wc-community-frame:before) { animation:discord-light 4s ease-in-out infinite; }
  .community:global(.wc-community)[data-active=true] :global(.wc-discord-crest) { animation:discord-beacon 4.5s ease-in-out infinite; }
 }
@@ -39,5 +46,5 @@
  .community:global(.wc-community) :global(.wc-community-frame) { grid-template-columns:1fr; padding:27px 23px; gap:30px; }
  .community:global(.wc-community) :global(.wc-community-copy) { padding:0; }
  .community:global(.wc-community) h2 { font-size:31px; }
- .community:global(.wc-community) :global(.wc-community-panel iframe) { height:340px; }
+ .widget { height:340px; }
 }

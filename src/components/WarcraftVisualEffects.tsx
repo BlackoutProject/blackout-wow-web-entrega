@@ -28,7 +28,7 @@ export function WarcraftVisualEffects() {
     };
     const move = (event: PointerEvent) => {
       if (media.matches || !fine.matches || event.pointerType !== "mouse") return;
-      const target = event.target instanceof Element ? event.target.closest<HTMLElement>(".wc-home-highlight, .wc-feature-scene, .wc-battle-scene, .wc-path, .wc-hero, .wc-class-figure, .wc-community-frame, .wc-system-panels") : null;
+      const target = event.target instanceof Element ? event.target.closest<HTMLElement>(".wc-home-highlight, .wc-feature-scene, .wc-battle-scene, .wc-path, .wc-hero, .wc-class-figure, .wc-system-panels") : null;
       if (current !== target) clearDepth();
       if (!target) return;
       current = target;

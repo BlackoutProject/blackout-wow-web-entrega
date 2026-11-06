@@ -37,7 +37,10 @@ for(const link of internalLinks){
 console.log('PASS: '+internalLinks.size+' internal links and section anchors resolve');
 console.log('External destinations: '+[...externalLinks].join(', '));
 const home=pages.get('/');
-assert.ok(home.includes('id="comunidad"') && home.includes('https://discord.com/widget?id=1026731303925710948&amp;theme=dark'), 'Official Discord community block missing');
+const community = home.match(/<section\b[^>]*\bid="comunidad"[^>]*>[\s\S]*?<\/section>/)?.[0] ?? '';
+assert.ok(community.includes('href="https://discord.gg/aH7cXcUUn4"'), 'Visitors must be able to join Discord directly');
+assert.ok(community.includes('aria-controls="discord-channel-panel"') && community.includes('aria-expanded="false"'), 'Channel panel must be available on demand');
+assert.doesNotMatch(community, /<iframe\b|<canvas\b|tides-original\.jpg/, 'Scrolling to Discord must not start the embed or a fullscreen animation');
 assert.ok(home.includes('/login?next=%2Fcuenta%23donor'), 'Contributions must link to account login');
 assert.ok(!/VIP Instance|VIP Mall|50 USD|200 USD/.test(home), 'Donor details must not appear on Home');
 assert.ok(!pages.get('/cuenta').includes('id="donor"'), 'Signed-out account must not render Donor details');
