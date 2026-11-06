@@ -1,9 +1,9 @@
 export const communityCopy = {
   es: {
     eyebrow: "EL CORAZÓN DE BLACKOUT",
-    title: "Tu comunidad.",
-    accent: "Tu próxima aventura.",
-    intro: "El punto de encuentro de Blackout: organiza tus próximas partidas y encuentra tu hermandad.",
+    title: "Reúne a tu grupo.",
+    accent: "La batalla continúa.",
+    intro: "Encuentra hermandad, organiza tus raids y conoce a tus próximos compañeros de arena. Todas las novedades de Blackout están en Discord.",
     badges: ["Anuncios oficiales", "Soporte por tickets", "Comunidad PvE & PvP"],
     join: "UNIRME A DISCORD",
     help: "¿Necesitas ayuda? Contacta con Blackout-WoW o abre un ticket en nuestro Discord.",
@@ -12,9 +12,9 @@ export const communityCopy = {
   },
   en: {
     eyebrow: "THE HEART OF BLACKOUT",
-    title: "Your community.",
-    accent: "Your next adventure.",
-    intro: "Blackout’s meeting place: plan your next session and find your guild.",
+    title: "Rally your group.",
+    accent: "The battle continues.",
+    intro: "Find a guild, organize your raids and meet your next arena partners. Follow all the latest Blackout news on Discord.",
     badges: ["Official announcements", "Ticket support", "PvE & PvP community"],
     join: "JOIN DISCORD",
     help: "Need help? Contact Blackout-WoW or open a ticket on our Discord.",
@@ -23,9 +23,9 @@ export const communityCopy = {
   },
   pt: {
     eyebrow: "O CORAÇÃO DE BLACKOUT",
-    title: "Sua comunidade.",
-    accent: "Sua próxima aventura.",
-    intro: "O ponto de encontro do Blackout: organize suas próximas partidas e encontre sua guilda.",
+    title: "Reúna seu grupo.",
+    accent: "A batalha continua.",
+    intro: "Encontre uma guilda, organize suas raids e conheça seus próximos parceiros de arena. Todas as novidades do Blackout estão no Discord.",
     badges: ["Anúncios oficiais", "Suporte por tickets", "Comunidade PvE & PvP"],
     join: "ENTRAR NO DISCORD",
     help: "Precisa de ajuda? Fale com Blackout-WoW ou abra um ticket no nosso Discord.",

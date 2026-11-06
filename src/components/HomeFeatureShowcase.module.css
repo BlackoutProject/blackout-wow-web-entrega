@@ -1,0 +1,58 @@
+.root { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; margin-top:40px; }
+.card { composes:card from './CardFrame.module.css'; --accent:#dfbd84; --surface:#25282d; position:relative; isolation:isolate; display:flex; flex-direction:column; overflow:hidden; background:linear-gradient(150deg,#2c3036,#1e2126); }
+.card:before { content:''; position:absolute; inset:235px 0 0; pointer-events:none; background:url('/warcraft/native/panel-dark.png') repeat; opacity:.13; }
+.card[data-feature="1"] { --surface:#25282d; }
+.card[data-feature="2"] { --accent:#bed6e5; --surface:#25282d; }
+.art { position:relative; height:235px; overflow:hidden; background:radial-gradient(ellipse at 50% 100%,#74533766,transparent 80%); }
+.art :is(img,video) { object-fit:cover; object-position:center 34%; }
+.art:after { content:''; position:absolute; inset:0; background:linear-gradient(0deg,var(--surface),transparent 40%); }
+.card[data-feature="2"] .art { background:radial-gradient(ellipse at 50% 70%,#537a984d,transparent 72%),#222225; }
+.card[data-feature="0"] .art :is(img,video) { object-position:50% 40%; }
+.card[data-feature="1"] .art :is(img,video) { object-position:45% 52%; }
+.card[data-feature="2"] .art img { object-fit:contain; object-position:center 14%; scale:1.16; transform-origin:50% 20%; }
+.copy { z-index:1; display:flex; flex:1; flex-direction:column; padding:12px 28px 26px; }
+.eyebrow { color:#d6b27e; text-transform:uppercase; letter-spacing:1.6px; font-size:11px; line-height:1.5; font-weight:700; margin:0 0 13px; }
+.copy h3 { color:#f4e5cb; font:600 clamp(25px,2.25vw,32px)/1.19 var(--font-cinzel),Georgia,serif; letter-spacing:-.025em; }
+.copy h3 span { display:block; }
+.copy h3 span+span { color:var(--accent); }
+.description { margin:18px 0 24px; color:#d0cfca; font-size:15px; line-height:1.8; text-wrap:pretty; }
+.action { display:flex; align-items:center; justify-content:space-between; gap:20px; color:var(--accent); font:600 12px/1.5 var(--font-cinzel),serif; letter-spacing:.45px; text-transform:uppercase; min-height:48px; margin-top:auto; padding-top:15px; border-top:1px solid #b5966b38; }
+.action:after { content:''; position:absolute; z-index:3; inset:0; }
+.action svg { transition:translate .25s; flex-shrink:0; }
+.card:is(:hover,:focus-within) .action svg { translate:3px -3px; }
+.action:is(:hover,:focus-visible) { color:#f8eddb; border-top-color:var(--ui-gold); }
+.action:focus-visible { outline:none; }
+.action:focus-visible:after { outline:2px solid var(--ui-gold); outline-offset:-6px; }
+.frame { composes:frame from './CardFrame.module.css'; position:absolute; z-index:2; inset:5px; pointer-events:none; }
+.frame i { position:absolute; width:21px; height:18px; background:url('/warcraft/native/gold-corner.png') center/100% 100% no-repeat; opacity:.82; }
+.frame i:nth-child(1) { top:-5px; left:-5px; }
+.frame i:nth-child(2) { top:-5px; right:-5px; transform:scaleX(-1); }
+.frame i:nth-child(3) { bottom:-5px; right:-5px; transform:rotate(180deg); }
+.frame i:nth-child(4) { bottom:-5px; left:-5px; transform:scaleY(-1); }
+@keyframes character-idle { 0%,100% { transform:translate3d(-3px,3px,0) rotate(-.6deg); } 50% { transform:translate3d(4px,-7px,0) rotate(.6deg); } }
+@media(prefers-reduced-motion:no-preference) {
+ .card[data-feature="2"] .art > img { animation:character-idle 5s ease-in-out infinite paused; }
+ .card[data-feature="2"][data-in-view=true] .art > img { animation-play-state:running; }
+ :global(#site-main[data-effects-paused=true]) .card .art img { animation-play-state:paused; }
+}
+@media(max-width:1000px) and (min-width:601px) {
+ .root { grid-template-columns:1fr; gap:20px; }
+ .card { flex-direction:row; min-height:260px; }
+ .art { position:absolute; inset:0 0 0 auto; width:47%; height:100%; }
+ .art:after { background:linear-gradient(90deg,var(--surface),transparent 55%),linear-gradient(0deg,var(--surface),transparent 25%); }
+ .card[data-feature="0"] .art :is(img,video) { object-position:58% 35%; }
+ .card[data-feature="2"] .art img { object-fit:cover; object-position:51% center; }
+ .copy { width:59%; flex:0 0 59%; padding:28px; }
+ .copy h3 { font-size:29px; }
+ .copy h3 span { display:inline; }
+ .description { margin:14px 0; }
+}
+@media(max-width:600px) {
+ .root { grid-template-columns:1fr; gap:23px; margin-top:24px; }
+ .art { height:190px; }
+ .copy { padding:8px 25px 23px; }
+ .copy h3 { font-size:29px; }
+ .copy h3 span { display:inline; }
+ .description { font-size:15px; margin:15px 0 18px; }
+}
+@media(prefers-reduced-motion:reduce) { .card,.action svg { transition:none; } }

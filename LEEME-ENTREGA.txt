@@ -26,7 +26,7 @@ Mantén los valores de tu entorno de producción:
   NEXT_PUBLIC_API_URL
   NEXT_PUBLIC_RECAPTCHA_SITE_KEY
   NEXT_PUBLIC_SITE_URL
-  NEXT_PUBLIC_PATCH_DOWNLOAD_URL (URL HTTPS del paquete de parches actualizado)
+  NEXT_PUBLIC_PATCH_DOWNLOAD_URL (opcional, enlace HTTPS adicional al paquete de parches)
 Los valores predeterminados existentes de API y reCAPTCHA se conservan.
 No se incluyen archivos .env ni credenciales privadas.
 Las variables NEXT_PUBLIC se aplican durante la compilación; recompila si cambian.
@@ -42,7 +42,7 @@ Pausa de animaciones y respeto de la preferencia de movimiento reducido.
 La información parte de la web actual e incorpora las ampliaciones del propietario.
 High Rate y estadísticas elevadas, sin multiplicadores numéricos no confirmados.
 35 raids en total, de las cuales 19 son totalmente custom, y más de 30 mapas custom.
-Parches + WoW.exe son obligatorios; su enlace está pendiente.
+Parches + WoW.exe están disponibles en MEGA y Google Drive y se requieren en ambas instalaciones.
 Las razas base son las de WotLK, con personalización y diseños custom.
 Las apariencias de otras razas se describen como morphs, con ejemplos.
 No se han añadido contadores de jugadores conectados ni actividad inventada.
@@ -69,13 +69,10 @@ Se han conservado las integraciones existentes. Los pagos, el registro con
 reCAPTCHA y las operaciones autenticadas no se han ejecutado con cuentas reales
 durante la revisión; verifica esos flujos en tu entorno antes del lanzamiento.
 
-AVISO SOBRE LOS PARCHES
-El propietario confirma que Parches + WoW.exe todavía no están disponibles.
-La tarjeta se presenta como «Próximamente» y su botón abre los anuncios del
-Discord oficial. Los enlaces ENUS y ESES son los confirmados por el propietario.
-Cuando tengas la URL de los parches, configura NEXT_PUBLIC_PATCH_DOWNLOAD_URL
-y recompila; el botón pasará a ser una descarga directa al enlace configurado.
-Los enlaces de los dos addons y de los dos clientes de Google Drive respondieron 200.
+DESCARGAS
+Cada opción de instalación incluye enlaces al paquete Parches + WoW.exe.
+El jugador elige MEGA o Google Drive para descargarlo una sola vez.
+AIO también está en ambos servicios. Druid C Fix está en Google Drive.
 
 AIO y Druid C Fix son dos addons obligatorios, con enlaces propios de descarga.
 Los clientes enUS y esES ya incluyen realmlist, AIO y Druid C Fix.

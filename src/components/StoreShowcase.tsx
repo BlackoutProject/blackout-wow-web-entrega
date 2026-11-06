@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 import { DISCORD_INVITE_URL } from "@/lib/site-config";
 import { storeShowcaseCopy } from "@/lib/store-showcase-copy";
 import { useAuth } from "@/context/AuthContext";
-import { AmbientVideo } from "./WarcraftMotion";
 
 export function StoreShowcase() {
   const { i18n } = useTranslation();
@@ -15,15 +14,18 @@ export function StoreShowcase() {
 
   return (
     <section className="wc-join wc-section wc-store-showcase" aria-labelledby="store-title">
-      <AmbientVideo className="wc-join-film" src="/cinematic/scene-03-shadow-kling.mp4" poster="/cinematic/sylvanas.jpg" />
       <div className="wc-wrap">
         <header className="wc-join-copy" id="donor">
+          <div className="wc-store-heading">
           <p className="wc-kicker">{c.eyebrow}</p>
           <h2 id="store-title">{c.title}<br /><em>{c.accent}</em></h2>
+          </div>
+          <div className="wc-store-introduction">
           <p className="wc-section-intro">{c.intro}</p>
           <div className="wc-actions">
             <Link className="wc-button" href="/tienda">{c.store}<span aria-hidden="true">›</span></Link>
             <a className="wc-button wc-button-ghost" href={DISCORD_INVITE_URL} target="_blank" rel="noopener noreferrer">{c.discord}<span aria-hidden="true">↗</span></a>
+          </div>
           </div>
         </header>
 

@@ -1,0 +1,93 @@
+[
+  {
+    "name": "ulduar",
+    "source": "ulduar-original.jpg",
+    "sourceWidth": 8588,
+    "sourceHeight": 5430,
+    "format": "webp",
+    "width": 960,
+    "height": 607,
+    "channels": 3,
+    "premultiplied": false,
+    "size": 87762,
+    "output": "public/warcraft/battle-scenes/ulduar-960.webp"
+  },
+  {
+    "name": "ulduar",
+    "source": "ulduar-original.jpg",
+    "sourceWidth": 8588,
+    "sourceHeight": 5430,
+    "format": "webp",
+    "width": 1920,
+    "height": 1214,
+    "channels": 3,
+    "premultiplied": false,
+    "size": 227702,
+    "output": "public/warcraft/battle-scenes/ulduar-1920.webp"
+  },
+  {
+    "name": "ulduar",
+    "source": "ulduar-original.jpg",
+    "sourceWidth": 8588,
+    "sourceHeight": 5430,
+    "format": "webp",
+    "width": 3840,
+    "height": 2428,
+    "channels": 3,
+    "premultiplied": false,
+    "size": 591188,
+    "output": "public/warcraft/battle-scenes/ulduar-3840.webp"
+  },
+  {
+    "name": "ulduar",
+    "source": "ulduar-original.jpg",
+    "sourceWidth": 8588,
+    "sourceHeight": 5430,
+    "format": "webp",
+    "width": 7680,
+    "height": 4856,
+    "channels": 3,
+    "premultiplied": false,
+    "size": 1479624,
+    "output": "public/warcraft/battle-scenes/ulduar-7680.webp"
+  },
+  {
+    "name": "factions",
+    "source": "faction-war-original.jpg",
+    "sourceWidth": 3840,
+    "sourceHeight": 2160,
+    "format": "webp",
+    "width": 960,
+    "height": 540,
+    "channels": 3,
+    "premultiplied": false,
+    "size": 142806,
+    "output": "public/warcraft/battle-scenes/factions-960.webp"
+  },
+  {
+    "name": "factions",
+    "source": "faction-war-original.jpg",
+    "sourceWidth": 3840,
+    "sourceHeight": 2160,
+    "format": "webp",
+    "width": 1920,
+    "height": 1080,
+    "channels": 3,
+    "premultiplied": false,
+    "size": 516086,
+    "output": "public/warcraft/battle-scenes/factions-1920.webp"
+  },
+  {
+    "name": "factions",
+    "source": "faction-war-original.jpg",
+    "sourceWidth": 3840,
+    "sourceHeight": 2160,
+    "format": "webp",
+    "width": 3840,
+    "height": 2160,
+    "channels": 3,
+    "premultiplied": false,
+    "size": 1607142,
+    "output": "public/warcraft/battle-scenes/factions-3840.webp"
+  }
+]

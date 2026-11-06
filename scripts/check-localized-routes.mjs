@@ -23,13 +23,20 @@ for (const lang of languages) {
         for(const name of customClasses[lang]) assert.ok(html.includes(name),'Missing localized class '+name+' in '+lang+path);
       }
       if(path==='/servidor') {
-        const overview=html.split('class="lore-stats">')[1]?.split('class="lore-heading"')[0] || '';
+        const overview=html.split('class="lore-stats">')[1]?.split('<nav')[0] || '';
         assert.deepEqual([...overview.matchAll(/<strong>([^<]+)<\/strong>/g)].map(match=>match[1]),['255','35','19','30+'],'Keep total raids, custom raids and maps distinct: '+lang);
         assert.ok(!/lore-watermark|lore-customization-number|0[1-4] ·/.test(html),'Decorative section numbering: '+lang);
         for(const name of wotlkClasses[lang]) assert.ok(html.includes(name),'Missing class '+name+' in '+lang);
+        for(const name of {es:['Mecagnomo','Nocheterna','Tauren Monte Alto'],en:['Mechagnome','Nightborne','Highmountain Tauren'],pt:['Gnomecânico','Filhos da Noite','Tauren Altamontês']}[lang]) assert.ok(html.includes(name),'Untranslated morph '+name);
+        for(const phrase of {es:['más opciones de apariencia','objetos de morph','jugar con ella','10 hechizos custom procedentes de expansiones posteriores'],en:['more appearance options','morph items','play with it','10 custom spells from later expansions'],pt:['mais opções de aparência','itens de morph','jogar com ela','10 feitiços custom de expansões posteriores']}[lang]) assert.ok(html.toLocaleLowerCase().includes(phrase.toLocaleLowerCase()),'Race/spell clarification missing: '+lang+' '+phrase);
+        assert.ok(!/Hechizos de WotLK|WotLK spells|Feitiços de WotLK/i.test(html),'Custom spell origin must not be mislabeled: '+lang);
         assert.ok(html.includes({es:'10 HECHIZOS CUSTOM POR CLASE',en:'10 CUSTOM SPELLS PER CLASS',pt:'10 FEITIÇOS CUSTOM POR CLASSE'}[lang]),'Custom spell count: '+lang);
       }
-      if(path==='/registro') assert.ok(new RegExp('<h[12][^>]*>'+labels[lang][0]+'</h[12]>').test(html), 'Registration heading language: '+lang);
+      if(path==='/registro') {
+        assert.ok(new RegExp('<h[12][^>]*>'+labels[lang][0]+'</h[12]>').test(html), 'Registration heading language: '+lang);
+        assert.ok(html.includes({es:'Verificación de seguridad',en:'Security verification',pt:'Verificação de segurança'}[lang]), 'Registration verification label: '+lang);
+        assert.match(html, /<button[^>]*type="submit"[^>]*disabled/, 'Registration must wait for verification');
+      }
       assert.ok(html.includes('<html lang="'+lang+'"'), 'Incorrect language: '+lang+path);
       assert.ok(/<title>[^<]+<\/title>/.test(html), 'Missing title: '+lang+path);
       if(lang!=='es') {

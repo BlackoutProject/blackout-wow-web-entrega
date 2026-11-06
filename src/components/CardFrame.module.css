@@ -1,0 +1,31 @@
+/* One frame response for Home features and PvE/PvP cards. */
+.card {
+  border: 1px solid #a3917380;
+  box-shadow: inset 0 0 0 4px #10121655, 0 14px 30px #08090d44;
+  transition: border-color 220ms ease, box-shadow 220ms ease;
+}
+.frame {
+  border: 1px solid #e5bd8026;
+  transition: border-color 220ms ease, box-shadow 220ms ease;
+}
+.card:focus-within {
+  border-color: #e5bd80;
+  box-shadow: inset 0 0 0 4px #10121655, 0 0 0 1px #e5bd8033, 0 0 24px #d58a2f38, 0 14px 30px #08090d44;
+}
+.card:focus-within .frame {
+  border-color: #e5bd8080;
+  box-shadow: inset 0 0 14px #d58a2f12;
+}
+@media (hover: hover) {
+  .card:hover {
+    border-color: #e5bd80;
+    box-shadow: inset 0 0 0 4px #10121655, 0 0 0 1px #e5bd8033, 0 0 24px #d58a2f38, 0 14px 30px #08090d44;
+  }
+  .card:hover .frame {
+    border-color: #e5bd8080;
+    box-shadow: inset 0 0 14px #d58a2f12;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card, .frame { transition: none; }
+}

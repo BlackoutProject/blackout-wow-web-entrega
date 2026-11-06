@@ -4,8 +4,7 @@ import {useDialogFocus} from "@/lib/use-dialog-focus";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import {useInterfaceCopy} from "@/lib/use-interface-copy";
-import ReCAPTCHA from "react-google-recaptcha";
+import { RegistrationCaptcha } from "@/components/RegistrationCaptcha";
 import { useTranslation } from "react-i18next";
 import {
   authInputShell,
@@ -17,18 +16,14 @@ import {
   IconSpark,
   IconUser,
 } from "@/components/AuthFormUi";
-import { AuthHeroLogoLink } from "@/components/AuthHeroLogoLink";
 import { SiteShell } from "@/components/SiteShell";
-import { publicEnv } from "@/config/public-env";
 import { useAuth } from "@/context/AuthContext";
 
 
 export default function RegisterPage() {
-  const ui=useInterfaceCopy();
   const { t, i18n } = useTranslation();
   const { register } = useAuth();
   const router = useRouter();
-  const recaptchaSiteKey = publicEnv.recaptchaSiteKey;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -39,18 +34,17 @@ export default function RegisterPage() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [showWelcomeModal, setShowWelcomeModal] = useState(false);
-  const recaptchaRef = useRef<ReCAPTCHA | null>(null);
+  const [captchaAttempt, setCaptchaAttempt] = useState(0);
   const isUsernameValid = username.trim().length >= 3;
   const isEmailValid = email.trim().length > 0;
   const isPasswordValid = password.length >= 8;
   const doPasswordsMatch = confirmPassword.length > 0 && password === confirmPassword;
-  const isRecaptchaValid = recaptchaSiteKey ? Boolean(recaptchaToken) : true;
   const canSubmit =
     isUsernameValid &&
     isEmailValid &&
     isPasswordValid &&
     doPasswordsMatch &&
-    isRecaptchaValid &&
+    Boolean(recaptchaToken) &&
     !loading;
 
   useEffect(() => {setRecaptchaToken(null);}, [i18n.language]);
@@ -58,47 +52,43 @@ export default function RegisterPage() {
   const welcomeRef=useRef<HTMLDivElement>(null);
   useDialogFocus(showWelcomeModal,welcomeRef,()=>setShowWelcomeModal(false));
 
-  function resetRecaptcha() {
-    setRecaptchaToken(null);
-    recaptchaRef.current?.reset();
-  }
-
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (loading || showWelcomeModal) return;
     setError(null);
     if (!doPasswordsMatch) {
       setError(t("auth.register.passwordMismatch"));
       return;
     }
-    if (recaptchaSiteKey && !recaptchaToken) {
-      setError(ui("Completa la verificación de seguridad para crear tu cuenta."));
+    if (!recaptchaToken) {
+      setError(t("auth.register.recaptchaHint"));
       return;
     }
     setLoading(true);
     try {
-      await register(username, password, email, recaptchaToken ?? undefined);
+      await register(username, password, email, recaptchaToken);
       setShowWelcomeModal(true);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Error");
-      if (recaptchaSiteKey) resetRecaptcha();
     } finally {
+      setRecaptchaToken(null);
+      setCaptchaAttempt(attempt => attempt + 1);
       setLoading(false);
     }
   }
 
   return (
     <SiteShell>
-      <div className="relative isolate min-h-[min(880px,calc(100dvh-160px))] overflow-hidden bg-[#030306]">
+      <div className="auth-page relative isolate min-h-[min(880px,calc(100dvh-160px))] overflow-hidden bg-[#030306]">
 
         <div className="pointer-events-none absolute inset-0 z-0 bg-linear-to-br from-black/88 via-black/72 to-[#0a1628]/90" />
         <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_110%_70%_at_50%_-10%,rgba(251,191,36,0.12),transparent_52%),radial-gradient(ellipse_at_80%_70%,rgba(56,189,248,0.09),transparent_45%)]" />
         <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(105deg,transparent_0%,rgba(0,0,0,0.2)_40%,transparent_65%)]" />
 
-        <div className="relative z-10 mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-14 lg:py-20">
-          <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_min(100%,460px)] lg:gap-14 xl:grid-cols-[minmax(0,1.1fr)_min(100%,480px)]">
-            <header className="flex flex-col justify-center space-y-8 text-center lg:sticky lg:top-8 lg:text-left">
-              <AuthHeroLogoLink />
-              <div className="lg:pr-4">
+        <div className="auth-layout relative z-10 mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-14 lg:py-20">
+          <div className="auth-grid grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_min(100%,460px)] lg:gap-14 xl:grid-cols-[minmax(0,1.1fr)_min(100%,480px)]">
+            <header className="auth-introduction flex flex-col justify-center space-y-8 text-center lg:sticky lg:top-8 lg:text-left">
+                <div className="lg:pr-4">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-amber-400/95">
                   {t("auth.register.panelKicker")}
                 </p>
@@ -125,7 +115,7 @@ export default function RegisterPage() {
               </ul>
             </header>
 
-            <div className="metal-border relative flex flex-col rounded-2xl border border-white/10 bg-zinc-950/75 p-6 shadow-[0_28px_90px_-20px_rgba(0,0,0,0.85),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-[18px] sm:p-8">
+            <div className="auth-form-panel metal-border relative flex flex-col rounded-2xl border border-white/10 bg-zinc-950/75 p-6 shadow-[0_28px_90px_-20px_rgba(0,0,0,0.85),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-[18px] sm:p-8">
               <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-amber-500/15 blur-3xl" />
               <div className="pointer-events-none absolute -bottom-12 -left-10 h-36 w-36 rounded-full bg-sky-500/10 blur-3xl" />
 
@@ -271,25 +261,7 @@ export default function RegisterPage() {
                   </div>
                 ) : null}
 
-                {recaptchaSiteKey ? (
-                  <div className="flex justify-center pt-1">
-                    <ReCAPTCHA
-                      ref={recaptchaRef}
-                      sitekey={recaptchaSiteKey}
-                      theme="dark"
-                      size="compact"
-                      hl={i18n.language}
-                      key={i18n.language}
-                      onChange={(token: string | null) => {setRecaptchaToken(token);setError(null);}}
-                      onExpired={() => {resetRecaptcha();setError(ui("La verificación ha caducado. Complétala de nuevo."));}}
-                      onErrored={() => {resetRecaptcha();setError(ui("No se ha podido cargar la verificación de seguridad. Recarga la página e inténtalo de nuevo."));}}
-                    />
-                  </div>
-                ) : (
-                  <div className="rounded-xl border border-amber-500/25 bg-amber-950/30 px-4 py-3 text-xs leading-relaxed text-amber-100/90">
-                    {ui("Completa la verificación de seguridad para crear tu cuenta.")}
-                  </div>
-                )}
+                <RegistrationCaptcha key={i18n.language + captchaAttempt} onToken={setRecaptchaToken}/>
 
                 {error && (
                   <div

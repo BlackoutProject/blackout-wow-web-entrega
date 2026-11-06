@@ -1,0 +1,522 @@
+/* Blackout materials: graphite steel, ember red and aged gold.
+   The scenery carries the detail; reading surfaces stay quiet and consistent. */
+:root {
+ --wc-canvas: #191b1f; --wc-ink: #191b1f; --wc-surface: #222325;
+ --blackout-gold: #ebc58a; --blackout-silver: #f3ecdf; --blackout-ice: #a6cee4;
+ --blackout-line: #acbaca2b; --blackout-rim: #b5976970;
+ --blackout-metal: linear-gradient(180deg,#29292c,#18181a);
+ --blackout-panel: linear-gradient(135deg,#2c3036ec,#1c1f24ef);
+ --blackout-bevel: inset 0 1px #f2d8ac26,inset 0 -1px #09090a80;
+ --wc-panel: var(--blackout-panel); --wc-field: #18191b; --wc-copy: #ccd6de;
+ --wc-action: linear-gradient(135deg,#9e3e22,#5a201b);
+ --portal-bg: var(--wc-canvas); --portal-line: var(--blackout-rim);
+}
+.site-shell-home { --wc-canvas: #191b1f; }
+.site-shell .site-header { background: var(--blackout-metal); border-bottom: 1px solid #ad8c5e8c; box-shadow: inset 0 -3px #0c0c0d99,0 3px 14px #08090955; }
+.site-shell .site-header:before { opacity: .22; }
+.site-shell .site-header:after { height: 3px; background: url('/warcraft/native/metal-top-trim.png') repeat-x center bottom; opacity: .65; }
+.site-header .site-brand > span { color: #f5e7cf; }
+.site-header .site-nav a { color: #e1e4e5; }
+.site-header .site-nav a:hover,.site-header .site-nav a[aria-current=page] { color: #f4cb8a; }
+.site-header .site-account,.site-header .language-trigger,.site-header .interface-sound-toggle { border-radius: 1px; }
+.site-header .site-account:not(.site-register),.site-header .site-sound-toggle,.site-header .site-menu-button { background: linear-gradient(150deg,#343539,#1a1b1d); border-color: #8e9aa85e; box-shadow: var(--blackout-bevel); }
+.site-header .site-register { background: var(--wc-action); border-color: #d79556; }
+.site-header .site-register:hover { background: linear-gradient(135deg,#ad582a,#713419); border-color: #edc185; }
+.site-header .site-mobile-menu:not([hidden]) { background: #1e1f21; }
+.site-shell .wc-button,.site-shell .lore-button { border-radius: 1px; border: 1px solid #c79b60; background: var(--wc-action); color: #f9eedc; box-shadow: var(--blackout-bevel),0 5px 18px #07070844; }
+.site-shell .wc-button-ghost { background: linear-gradient(135deg,#313236,#1d1e20); border-color: #8f9eae88; }
+.site-shell .wc-button:hover,.site-shell .lore-button:hover { filter: brightness(1.12); border-color: #f0cd90; transform: translateY(-2px); }
+.site-shell .wc-button:active,.site-shell .lore-button:active { transform: translateY(0); }
+.site-shell .wc-button:before,.site-shell .wc-button:after,.site-shell .lore-button:after { display: none; }
+.site-shell .wc-kicker,.site-shell .lore-kicker { color: #e9bb78; }
+.site-shell-home .wc-trailer-pending { padding-block: 22px; min-height: 125px; border-bottom: 1px solid #ae8d5c52; background: linear-gradient(100deg,#262729f5 8%,#202123eb 55%,#1d1e20eb),url('/warcraft/dark-portal.jpg') center 44% / cover; box-shadow:inset 0 1px #dfb77a18,inset 0 -1px #171419; }
+.wc-trailer-pending .wc-wrap { grid-template-columns: 40px minmax(0,1fr) auto; gap: 28px; }
+.wc-trailer-pending h2 { font-size: clamp(23px,2vw,28px); max-width: 700px; margin-top: 9px; }
+.wc-trailer-pending .wc-trailer-emblem { background: transparent; color: #ee433d; }
+.wc-trailer-pending .wc-trailer-emblem svg { width: 40px; height: 40px; }
+.wc-trailer-pending .wc-text-link { border: 1px solid #ae947175; background: #262729e0; color: #e9dbc3; padding: 16px 20px; font-size: 10px; min-height: 48px; }
+.wc-trailer-pending p:not(.wc-kicker) { color: #bac9d6; }
+.site-shell-home .wc-community { background-color: #191b1f; }
+.wc-community .wc-community-backdrop:after { background: linear-gradient(0deg,#191b1f,transparent 35%,#191b1f44 70%,#191b1f),linear-gradient(90deg,#191b1f44,#191b1f22); }
+.wc-community .wc-community-frame { border-color: #bfa06d80; background: linear-gradient(110deg,#182b48f0,#14233edb); }
+.wc-community .wc-community-border { opacity: .25; }
+.wc-community .wc-community-badges li { background: #1c334355; border-color: #a4b9c22b; }
+.wc-community .wc-discord-button { background: #334f8c; border-color: #93b4dc; }
+.site-shell-home .wc-support { background: #191b1f; border-top: 1px solid #ac916340; }
+.site-shell-home .wc-support:before { background: linear-gradient(90deg,#191b1f 5%,#191b1fed 35%,#191b1f26 74%),linear-gradient(0deg,#191b1f,transparent 35%,#191b1f); }
+.site-shell .site-footer { background: linear-gradient(180deg,#272a30,#191b1f); border-top: 1px solid #a3855b52; }
+.site-shell .site-footer:before { background: url('/warcraft/native/metal-top-trim.png') repeat-x center; opacity: .45; height: 3px; }
+.site-footer .site-community { background: #41424755; border-color: #819bad38; }
+.site-footer .site-footer-links { justify-content: center; gap: 16px 25px; }
+.portal-page .portal-shade { background: linear-gradient(0deg,#191b1f,transparent 75%),linear-gradient(90deg,#191b1ffa 4%,#191b1fb0 49%,#191b1f2b 84%); }
+.portal-page .page-section-nav { background: #222325f5; border-color: #a0865c65; }
+.portal-page :is(.metal-border,.home-card,.server-progression-grid article,.connection-guided-downloads article,.connection-filemap,.server-collections,.wc-store-plan,.wc-store-individual,.wc-store-fair,.class-spells,.server-faq details,.rules-scope,.rules-card,.lore-customization article) { background: var(--blackout-panel); border-color: var(--blackout-rim); box-shadow: inset 0 1px #d4e0e512,0 12px 35px #09090a40; }
+.portal-page .server-overview .lore-stats { background: var(--blackout-panel); }
+.portal-page .server-emblem,.portal-page .connection-option-icon { background: #323337; border-color: #b9a17b66; }
+.portal-page .wc-system-panels { background: var(--blackout-panel); }
+.portal-page .server-experience .lore-feature:before { background: linear-gradient(0deg,#1e1f21 9%,#1e1f21ef 35%,#1e1f2133 70%,transparent); }
+.portal-page .server-systems:before { background: linear-gradient(0deg,#191b1f,#191b1f7a 40%,#191b1f55 75%,#191b1f); }
+.portal-page .connection-download-actions a { background: #49342a; border-color: #b69b6e80; }
+.portal-page .portal-main :where(input:not([type=checkbox]):not([type=radio]),select,textarea) { background: #1d1f23; border-color: #aaa18d55; }
+.portal-page .portal-main button[type=submit]:not(:disabled) { background: var(--wc-action); color: #f9eedc; }
+.portal-page .rules-sanctions { background: #382a20e8; border-color: #c0905e66; }
+.portal-page .rules-card:target { background: #483129; }
+.portal-page .lore-customization li { background: #382c26; }
+@media(min-width:1201px) {
+ .portal-page:is([data-route='/registro'],[data-route='/login']) .portal-main .isolate header { max-width: 430px; }
+ .site-shell .site-header { height: 78px; }
+ .site-header-inner { grid-template-columns: minmax(230px,1fr) auto minmax(310px,1fr); gap: 22px; }
+ .site-header .site-nav { gap: clamp(22px,2.2vw,35px); }
+ .site-header .site-nav a { font-size: 13px; }
+ .site-header .site-account { height: 42px; min-height: 42px; font-size: 9px; padding-inline: 15px; }
+}
+@media(max-width:760px) {
+ .wc-trailer-pending .wc-wrap { grid-template-columns: 30px minmax(0,1fr); gap: 15px; }
+ .wc-trailer-pending .wc-trailer-emblem svg { width: 30px; height: 30px; }
+ .wc-trailer-pending h2 { font-size: 23px; }
+ .wc-trailer-pending .wc-text-link { grid-column: 2; justify-self: start; margin-top: 6px; padding: 12px 16px; }
+ .site-shell .wc-button:hover,.site-shell .lore-button:hover { transform: none; }
+ .portal-page .portal-shade { background: linear-gradient(0deg,#191b1f,transparent 80%),linear-gradient(90deg,#191b1fed,#191b1f80); }
+}
+@media(prefers-reduced-motion:reduce) { .site-shell .wc-button:hover,.site-shell .lore-button:hover { transform: none; } }
+
+/* Living hero scenes, calm reading surfaces. Keep the homepage hero unchanged. */
+.portal-page[data-route='/como-conectarme'] { --blackout-panel: linear-gradient(135deg,#242427ed,#1d1d1ff5); --blackout-rim: #a4b5a537; }
+.portal-page[data-route='/terminos-y-condiciones'] { --blackout-panel: linear-gradient(135deg,#252528f2,#1f1f22f5); --blackout-rim: #b8b6ae38; }
+.portal-page:is([data-route='/registro'],[data-route='/cuenta']) { --blackout-panel: linear-gradient(135deg,#27272af2,#1e1e20f5); --blackout-rim: #c49b643b; }
+.portal-page .portal-main :is(.metal-border,.home-card) { box-shadow: 0 12px 35px #09090a2b; }
+.portal-page .portal-main :is(.metal-border,.home-card):before,.portal-page .portal-main :is(.metal-border,.home-card):after { display: none; }
+
+/* Installation: the two complete paths stay visible; the folder reference opens on demand. */
+.portal-page[data-route='/como-conectarme'] .lore-hero { min-height: 500px; }
+.portal-page[data-route='/como-conectarme'] .connection-heading { padding-top: 35px; }
+.portal-page .connection-guided-downloads article { border: 0; border-top: 2px solid #a4b5a566; padding: 34px; box-shadow: none; }
+.portal-page .connection-guided-downloads article .connection-option-icon { background: transparent; border: 0; box-shadow: none; width: 29px; height: 29px; }
+.portal-page .connection-paths h2 { font-size: clamp(21px,2vw,28px); line-height: 1.4; }
+.portal-page .connection-download-actions a { box-shadow: none; border-color: #9caeae50; background: #313236; min-height: 49px; }
+.portal-page .connection-download-actions a:hover { background: #404145; border-color: #c4c5ae; }
+.portal-page .connection-availability { padding: 18px 23px; background: #c5ad6e09; border-left: 2px solid #bca47488; }
+.portal-page .connection-download-pending { background: #c9b77a07; border: 0; border-left: 2px solid #9c8b5b66; }
+.portal-page details.connection-filemap { margin-top: 42px; padding: 0; border: 1px solid #a7b4b32e; background: #202023; box-shadow: none; }
+.connection-filemap summary { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 27px 32px; list-style: none; }
+.connection-filemap summary::-webkit-details-marker { display: none; }
+.connection-filemap summary:focus-visible { outline: 2px solid #d9ba7e; outline-offset: 4px; }
+.connection-filemap-title { display: block; margin-top: 9px; font: 500 26px/1.35 var(--font-cinzel),Georgia,serif; color: #eae6da; }
+.connection-expand { font: 300 28px/1 var(--font-geist-sans),sans-serif; color: #c3b48e; transition: rotate .2s; }
+.connection-filemap[open] .connection-expand { rotate: 45deg; }
+.connection-filemap-intro,.connection-filemap .connection-folder-root,.connection-filemap dl { margin-inline: 32px; }
+.connection-filemap-intro { color: #becbd0; font-size: 14px; line-height: 1.8; max-width: 75ch; }
+.connection-filemap dl { margin-bottom: 28px; }
+.connection-final-steps { margin-top: 45px; }
+.connection-realm { width: min(100%, 460px); margin-top: 24px; scroll-margin-top: 120px; }
+.connection-realm h2 { margin: 0 0 8px; font: 600 16px/1.4 var(--font-cinzel), Georgia, serif; color: #f0dcc0; }
+.connection-realm-command { display: flex; align-items: center; gap: 10px; padding: 3px 3px 3px 14px; background: #1d2025f0; border: 1px solid #a3917380; }
+.connection-realm-command code { flex: 1; min-width: 0; font-size: 13px; line-height: 1.5; color: #f4e9d7; overflow-wrap: anywhere; user-select: all; }
+.connection-realm .connect-realmlist { display: grid; place-items: center; flex: 0 0 44px; width: 44px; min-height: 44px; margin: 0; padding: 0; font-size: 21px; }
+.connection-realm p { margin: 8px 0 0; color: #d0cfca; font-size: 13px; line-height: 1.6; }
+.connection-realm p[role="status"]:empty { margin: 0; }
+.connection-final-steps .connect-tips { margin: 0; max-width: none; border-top-color: #a9b4b32e; padding-top: 27px; }
+.connection-final-steps .connect-realmlist { background: #262629; border-color: #91a7ac44; }
+
+/* Rules read as one document instead of a stack of framed cards. */
+.portal-page .rules-body { background: var(--blackout-panel); border-top: 1px solid #c4a7756e; padding: 10px 36px 24px; }
+.portal-page .rules-scope { background: none; box-shadow: none; padding: 24px 0 30px; border: 0; border-bottom: 1px solid #acbaca26; margin: 0; }
+.portal-page .rules-card { background: transparent; box-shadow: none; border: 0; border-bottom: 1px solid #acbaca26; padding: 34px 0; grid-template-columns: 30px minmax(0,1fr); gap: 20px; }
+.portal-page .rules-card-emblem { width: 29px; opacity: .8; }
+.portal-page .rules-card h3 { font-size: 23px; text-wrap: pretty; }
+.portal-page .rules-card:target { background: #b9c6cf09; }
+.portal-page .rules-sanctions { margin-top: 30px; background: #b68c4510; box-shadow: none; border: 0; border-left: 2px solid #c6975b88; padding: 24px; }
+.portal-page .rules-directory a .wc-sigil { width: 20px; height: 20px; flex-basis: 20px; opacity: .65; }
+.portal-page .rules-directory a { gap: 10px; font-size: 13px; }
+
+/* Private account: one character theme, restrained dashboard surfaces. */
+.portal-page[data-route='/cuenta'] .account-introduction { min-height: 285px; padding: 45px 0; justify-content: center; }
+.account-introduction > div { align-items: flex-start; text-align: left; padding-inline: 0; }
+.account-introduction h1 { font-size: clamp(30px,3.5vw,48px); line-height: 1.2; letter-spacing: -.02em; max-width: 650px; }
+.account-introduction p { font-size: 15px; line-height: 1.8; max-width: 54ch; color: #d1d9dc; }
+.portal-page[data-route='/cuenta'] .metal-border > .pointer-events-none { display: none; }
+.portal-page[data-route='/cuenta'] .account-shortcuts a { box-shadow: none; border-color: #ac957850; }
+.portal-page .wc-store-showcase { background: #191b1f; padding-block: 65px; border-top: 1px solid #b89b6a36; }
+.portal-page .wc-store-showcase:before { display: none; }
+.portal-page .wc-store-showcase .wc-join-copy { width: 100%; max-width: none; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.25fr); align-items: center; gap: 60px; }
+.portal-page .wc-store-showcase h2 { font-size: clamp(30px,3.5vw,45px); }
+.wc-store-introduction .wc-section-intro { margin-top: 0; }
+.wc-store-heading { padding-left: 24px; border-left: 2px solid #c7995a; }
+.portal-page .wc-store-showcase .wc-store-plans { margin-top: 42px; }
+.portal-page .wc-store-showcase .wc-store-plan h3 { color: #f0dfc0; }
+.portal-page .wc-store-showcase .wc-store-plan { border: 0; border-top: 2px solid #b39b6d77; box-shadow: none; padding: 32px; }
+.portal-page .wc-store-showcase .wc-store-plan-plus { border-top-color: #d6aa62; }
+.portal-page .wc-store-showcase :is(.wc-store-individual,.wc-store-fair) { background: none; border: 0; border-top: 1px solid #a7b4c12e; box-shadow: none; padding-inline: 0; }
+.portal-page .wc-store-showcase .wc-store-plan li p { font-size: 13px; }
+.portal-page .wc-store-showcase .wc-section-intro { max-width: 69ch; }
+
+/* Give key headings breathing room without adding more decorative layers. */
+.portal-page .lore-hero > .lore-kicker { display: inline-flex; align-items: center; gap: 15px; }
+.portal-page .lore-hero > .lore-kicker:before { content: ''; width: 28px; height: 1px; background: #c89c65; }
+.portal-page :is(.lore-hero h1,.account-introduction h1) { text-wrap: balance; }
+@media(hover:hover) and (prefers-reduced-motion:no-preference) {
+ .portal-page :is(.connection-download-actions a,.account-shortcuts a) { transition: background .2s,border-color .2s,transform .2s; }
+ .portal-page :is(.connection-download-actions a,.account-shortcuts a):hover { transform: translateY(-2px); }
+}
+
+@media(max-width:760px) {
+ .portal-page[data-route='/como-conectarme'] .lore-hero { min-height: 455px; }
+ .portal-page .connection-guided-downloads article { padding: 25px 23px; }
+ .connection-filemap summary { padding: 22px; }
+ .connection-filemap-title { font-size: 22px; }
+ .connection-filemap-intro,.connection-filemap .connection-folder-root,.connection-filemap dl { margin-inline: 22px; }
+ .connection-final-steps { grid-template-columns: 1fr; gap: 30px; }
+ .portal-page .rules-body { padding: 0 20px 20px; }
+ .portal-page .rules-card { grid-template-columns: 1fr; gap: 0; padding-block: 27px; }
+ .portal-page .rules-card-emblem { display: none; }
+ .portal-page .rules-card h3 { font-size: 21px; }
+ .portal-page .rules-sanctions { padding: 20px; }
+ .portal-page[data-route='/cuenta'] .account-introduction { min-height: 220px; padding-block: 30px; }
+ .portal-page[data-route='/cuenta'] .account-shortcuts { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); width: 100%; gap: 7px; }
+ .portal-page[data-route='/cuenta'] .account-shortcuts a { padding: 11px 6px; min-height: 44px; justify-content: center; text-align: center; font-size: 9px; }
+ .portal-page[data-route='/cuenta'] .account-toolbar .account-logout { margin-left: auto; }
+ .portal-page[data-route='/cuenta'] aside nav { flex-direction: column; overflow: visible; }
+ .portal-page .wc-store-showcase .wc-store-plan { padding: 25px; }
+ .portal-page .wc-store-showcase .wc-join-copy { grid-template-columns: 1fr; gap: 24px; }
+ .wc-store-heading { padding-left: 18px; }
+}
+
+/* Shared editorial finish: one border, consistent reading type and quiet controls. */
+.portal-page .wc-system-panels { box-shadow: none; border-color: #a3b6c73d; }
+.portal-page .wc-system-panels:before,.portal-page .wc-system-panels:after { display: none; }
+.portal-page .wc-system-tabs button { min-height: 61px; border-color: #9cafbf30; background: #2e2826ed; box-shadow: none; }
+.portal-page .wc-system-tabs button:is(:hover,[aria-selected=true]) { background: #49372d; border-color: #c3a16f80; }
+.portal-page .wc-system-tabs button[aria-selected=true] { box-shadow: inset 2px 0 #d9b37b; }
+.portal-page .wc-system-tab-icon { width: 28px; height: 28px; flex-basis: 28px; }
+.portal-page .wc-system-tabs button > span:nth-child(2) { font-size: 12px; }
+.portal-page .wc-system-panel { padding: 35px 38px; }
+.portal-page .wc-system-panel h3 { font-size: clamp(26px,2.3vw,32px); line-height: 1.3; font-weight: 500; }
+.portal-page .wc-system-panel > p { font-size: 15px; line-height: 1.8; text-wrap: pretty; }
+.portal-page .wc-system-insignia { width: 49px; height: 49px; padding: 4px; margin-bottom: 24px; border: 0; background: none; box-shadow: none; transform: none; }
+.portal-page .wc-system-insignia svg { transform: none; filter: none; }
+.portal-page .wc-system-insignia:before,.portal-page .wc-system-insignia:after { display: none; }
+.portal-page .wc-system-panel:has(.wc-system-journey) .wc-system-insignia { width: 44px; height: 44px; padding: 4px; }
+.portal-page .server-progression-grid article { border: 1px solid #9cafbf30; box-shadow: none; }
+.portal-page .server-progression-grid h3 { font-weight: 500; }
+.portal-page .lore-customization article { border-color: #9cafbf38; box-shadow: none; }
+.portal-page .lore-customization article + article { border-color: #bda17260; }
+.portal-page .lore-customization li { color: #d7e0e6; border-color: #9cafbf30; }
+.portal-page .server-faq details { background: linear-gradient(100deg,#312522,#1a1b1d 70%); border-color: #9cafbf35; box-shadow: none; }
+.portal-page .server-faq details[open] { border-color: #c3a16f80; }
+.site-shell :is(.site-footer-links a,.site-footer-links button) { min-height: 32px; display: inline-flex; align-items: center; }
+.site-shell :is(.site-footer-links a,.site-footer-links button,.wc-text-link):focus-visible { outline: 2px solid #e8bf80; outline-offset: 5px; }
+@media(max-width:760px) {
+ .portal-page .wc-system-panel,.portal-page .wc-system-panel:has(.wc-system-journey) { padding: 28px 24px; min-height: 300px; }
+ .portal-page .wc-system-panel h3 { font-size: 26px; }
+ .portal-page .wc-system-panel:has(.wc-system-journey) .wc-system-insignia { width: 36px; height: 36px; right: 22px; }
+ .portal-page .wc-system-panel:has(.wc-system-journey) h3 { padding-right: 45px; }
+}
+/* Utility pages use the same steel surfaces as Home; artwork supplies their character. */
+.portal-page[data-route='/como-conectarme'] { --blackout-panel: linear-gradient(135deg,#29292cf5,#252123f5); --blackout-rim: #a4b6c33b; }
+.portal-page .connection-download-actions a { background: #49342a; border-color: #a3b8c550; }
+.portal-page .connection-download-actions a:hover { background: #5c3a2b; border-color: #c9c1ac; }
+.portal-page details.connection-filemap { background: #252123; }
+.portal-page .connection-final-steps .connect-realmlist { background: #29292c; }
+.portal-page[data-route='/cuenta'] { --blackout-panel: linear-gradient(135deg,#29292cf5,#252123f5); }
+.portal-page[data-route='/cuenta'] .account-shortcuts a,.portal-page[data-route='/cuenta'] .account-logout { background: #29292ce8; border-color: #a3b6c743; border-radius: 2px; }
+.portal-page[data-route='/cuenta'] aside nav button { background: #352b28; border: 1px solid #a3b6c72b; border-radius: 2px; font-size: 13px; font-weight: 500; color: #e0e6e9; }
+.portal-page[data-route='/cuenta'] aside nav button:hover { background: #54372a; border-color: #d3ae7460; }
+.portal-page[data-route='/cuenta'] aside nav button:focus-visible { outline: 2px solid #e6bc80; outline-offset: 3px; }
+.portal-page[data-route='/cuenta'] aside a { border-radius: 2px; font-size: 12px; line-height: 1.7; }
+.portal-page[data-route='/cuenta'] [role=dialog] { border: 1px solid #afbecb40; background: #252123; }
+.portal-page .store-introduction { border-color: #a5b7c73b; border-top: 2px solid #c1a06a7d; border-radius: 2px; background: #252123f2; box-shadow: none; }
+.portal-page .store-introduction h1 { font-size: clamp(28px,3.3vw,42px); font-weight: 500; line-height: 1.2; }
+.portal-page .store-introduction p { color: #c5d1da; line-height: 1.8; }
+.portal-page .store-introduction .rounded-lg { background: #3a302a; border-color: #a5b7c72e; border-radius: 2px; }
+.portal-page .store-empty { padding: 28px 20px; border-block: 1px solid #a5b7c733; background: #252123c9; color: #c2d0da; line-height: 1.8; }
+.portal-page:is([data-route='/tienda'],[data-route='/tienda/puntos']) .portal-main :is(input,select) { min-height: 48px; font-size: 14px; border-radius: 2px; }
+.portal-page:is([data-route='/tienda'],[data-route='/tienda/puntos']) .store-card { background: #252123f2; border: 1px solid #a5b7c73b; border-radius: 2px; box-shadow: none; }
+.portal-page:is([data-route='/registro'],[data-route='/login']) .portal-main header li { border-radius: 2px; border-color: #a5b7c72e; background: #292426b3; }
+
+/* Page composition: one material palette, a separate living scene for each route. */
+.site-shell.portal-page {
+ --wc-canvas:#191b1f;
+ --blackout-panel:linear-gradient(135deg,#2c3036f5,#202328f5);
+ --blackout-rim:#b69a6d66;
+ background:radial-gradient(ellipse at 0 1050px,#a4653220,transparent 1150px),radial-gradient(ellipse at 100% 1600px,#7895ae18,transparent 1300px),#191b1f;
+}
+/* Positive layers keep route scenery above the shell background after navigation. */
+.portal-page .portal-main { position:relative; z-index:1; padding-bottom:72px; }
+.portal-page .site-footer { position:relative; z-index:1; }
+.portal-page .lore-hero { width:min(1120px,88%); min-height:570px; padding:95px 0 62px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; }
+.portal-page .lore-hero h1 { max-width:13ch; margin:24px 0 22px; font-size:clamp(44px,4.2vw,64px); font-weight:600; line-height:1.12; letter-spacing:-.035em; color:#f5eddf; text-shadow:0 3px 25px #15161766; }
+.portal-page .lore-hero h1 em { color:#e5bc7d; }
+.portal-page .lore-hero > p { max-width:52ch; font-size:16px; line-height:1.8; color:#ded8ce; text-wrap:pretty; }
+.portal-page .lore-hero > .wc-realm-profile { font-size:10px; color:#e3be86; }
+.portal-page .lore-actions { gap:26px; margin-top:28px; }
+.portal-page .lore-actions > a:not(.lore-button) { color:#e4c79c; font-size:11px; letter-spacing:.6px; border-bottom:1px solid #b7976359; padding-block:14px; }
+.portal-page[data-route='/servidor'] .lore-hero { min-height:590px; }
+.portal-page[data-route='/como-conectarme'] .lore-hero { min-height:570px; }
+.portal-page[data-route='/terminos-y-condiciones'] .lore-hero { min-height:570px; }
+.portal-page .lore-container { width:min(1120px,88%); padding-inline:0; }
+.portal-page .lore-heading h2 { font-size:clamp(29px,3vw,42px); font-weight:600; line-height:1.22; color:#f0e4ce; letter-spacing:-.025em; }
+.portal-page .lore-heading p { color:#d0cfca; max-width:70ch; font-size:16px; line-height:1.8; text-wrap:pretty; }
+.portal-page .server-overview { margin-top:0; padding-bottom:30px; }
+.portal-page .server-overview .lore-stats { background:linear-gradient(110deg,#30343bed,#202329ed); border:1px solid #bfa47773; box-shadow:inset 0 1px #d4e5ff20,0 18px 40px #09090a55; padding-block:28px; }
+.portal-page .server-overview .lore-stats strong { font-size:43px; color:#edc68b; }
+.portal-page .server-overview .lore-stats:before,.portal-page .server-overview .lore-stats:after { opacity:.6; }
+.portal-page .page-section-nav { border-block:1px solid #c09c644a; background:linear-gradient(180deg,#38302df5,#22252af5); box-shadow:0 5px 20px #1314152b; }
+.portal-page .page-section-links { justify-content:center; }
+.portal-page .page-section-links a { font-size:12px; padding:20px 16px; }
+.portal-page .page-section-links a[aria-current=location] { color:#f3d39e; background:linear-gradient(0deg,#b685362a,transparent); box-shadow:inset 0 -2px #c6a56c; }
+.portal-page .server-progression-grid article { border:1px solid #b69a6d54; background:radial-gradient(ellipse at 0 0,#a66b3022,transparent 70%),var(--blackout-panel); box-shadow:inset 0 1px #efd4a515,0 12px 25px #1213141c; padding:32px; }
+.portal-page .server-progression-grid article:nth-child(2) { background:radial-gradient(ellipse at 100% 0,#6c94a72b,transparent 70%),var(--blackout-panel); }
+.portal-page .class-spells,.portal-page .server-collections,.portal-page .lore-customization article { border:1px solid #b69a6d54; background:var(--blackout-panel); box-shadow:inset 0 1px #efd4a515,0 12px 30px #12131422; }
+.portal-page .server-spells,.portal-page .server-progression,.portal-page .server-experience,.portal-page .server-customization { padding-block:65px; }
+.portal-page :is(.server-progression,.server-experience) > .lore-heading { padding-top:0; }
+.portal-page .server-build-note { color:#c7bba7; }
+.portal-page .wc-classes { background:#222126; border-color:#b69a6d40; }
+.portal-page .wc-class-landscape { opacity:.6; mask-image:linear-gradient(transparent,#000 12%,#000 82%,transparent); }
+.portal-page .wc-class-item { background:linear-gradient(140deg,#342e2be6,#25272de6); border-color:#a995733f; }
+.portal-page .wc-class-item[aria-selected=true] { background:linear-gradient(120deg,rgba(var(--class-rgb),.2),#292a30); border-color:rgba(var(--class-rgb),.65); }
+.portal-page .server-experience .lore-feature { border:1px solid #b69a6d66; min-height:470px; }
+.portal-page .server-experience .lore-feature:before { background:linear-gradient(0deg,#27282b 4%,#27282bf2 36%,#27282b22 80%); }
+.portal-page .server-experience .lore-feature h3 { color:#f5e6cd; }
+.portal-page .server-systems:before { background:linear-gradient(0deg,#191b1f,#191b1f88 40%,#191b1f77 72%,#191b1f); }
+.portal-page .server-systems .wc-system-panels { background:linear-gradient(120deg,#2c3036f0,#22252af2); border:1px solid #bca07166; box-shadow:inset 0 1px #efd4a515,0 12px 30px #12131433; }
+.portal-page .wc-system-tabs button { background:#26292ee8; border-color:#a28e7044; }
+.portal-page .wc-system-tabs button:is(:hover,[aria-selected=true]) { background:linear-gradient(100deg,#80623c70,#34363b); border-color:#cfb37e80; }
+.portal-page .wc-system-panel { padding:38px; }
+.portal-page .wc-system-panel h3 { color:#f1dfbf; }
+.portal-page .lore-customization li { background:#303339; border-color:#bb9d6e4d; }
+.portal-page .server-faq details { background:linear-gradient(115deg,#2d3035,#24272c); border-color:#b69a6d4d; }
+.portal-page .lore-fair,.portal-page .lore-community { border-color:#b69a6d54; background:radial-gradient(ellipse at 0 0,#b9813922,transparent 70%),linear-gradient(115deg,#2d3035,#22252a); }
+/* The installation choices remain directly beside their own downloads. */
+.portal-page[data-route='/como-conectarme'] .connection-heading { padding-top:18px; margin-bottom:25px; }
+.portal-page .connection-guided-downloads { gap:26px; align-items:start; }
+.portal-page .connection-guided-downloads article { position:relative; border:1px solid #bd9c6873; border-top:3px solid #c79755; background:linear-gradient(145deg,#30343af5,#22252af5); padding:32px; box-shadow:inset 0 1px #f1d0a01a,0 18px 40px #13131533; }
+.portal-page .connection-guided-downloads article:nth-child(2) { border-top-color:#95acbd; background:linear-gradient(145deg,#2c3036f5,#22252af5); }
+.portal-page .connection-guided-downloads h2 { color:#f0dfc1; font-size:27px; }
+.portal-page .connection-path-intro { font-size:15px; line-height:1.8; color:#d0cfca; }
+.portal-page .connection-guided-downloads li { border-color:#b1a48a2b; }
+.portal-page .connection-guided-downloads li h3 { font-size:17px; font-weight:600; color:#e9d4b0; }
+.portal-page .connection-guided-downloads li p { color:#d2ccc4; font-size:15px; line-height:1.8; text-wrap:pretty; }
+.portal-page .connection-download-actions { gap:10px; }
+.portal-page .connection-download-actions a { min-height:50px; font-size:12px; line-height:1.6; border:1px solid #c3905f80; background:linear-gradient(180deg,#973c22,#6f241b); color:#f3dfbf; box-shadow:inset 0 1px #efc28a21; }
+.portal-page .connection-download-actions a:hover { background:linear-gradient(180deg,#ad472a,#802c20); border-color:#e5c28c; }
+.portal-page .connection-availability { border:1px solid #a8916255; border-left:3px solid #b89862; background:linear-gradient(90deg,#6e573326,#292c31cc); color:#e0d3bd; }
+.portal-page .connection-download-pending { background:#d0a3630d; border:1px solid #ae97624d; color:#c3bba9; }
+.portal-page details.connection-filemap { background:linear-gradient(130deg,#30343a,#24272c); border-color:#b39c6e59; }
+.portal-page .connection-final-steps .connect-tips { background:linear-gradient(130deg,#2c3036,#22252a); border:1px solid #ad93674d; padding:28px; }
+.portal-page .connection-final-steps { gap:26px; }
+.portal-page .connection-final-steps .connect-realmlist { background:#1d2024; border-color:#bd9b6366; }
+/* Rules: readable document, warm metal frame and a distinct guardian scene. */
+.portal-page .rules-layout { padding-top:18px; gap:40px; }
+.portal-page .rules-directory { padding:24px 18px; background:linear-gradient(145deg,#2c3036d9,#27272acc); border:1px solid #b69a6d4d; }
+.portal-page .rules-directory h2 { color:#eed6af; font-size:19px; line-height:1.4; }
+.portal-page .rules-directory a { border-bottom:1px solid #ad956b20; padding:13px 0; }
+.portal-page .rules-directory a:hover { color:#f5d396; }
+.portal-page .rules-body { background:linear-gradient(130deg,#2d3035f5,#24272cf5); border:1px solid #b69a6d66; border-top:3px solid #b8965e; box-shadow:inset 0 1px #f1d5a61a,0 16px 35px #13131526; padding:8px 38px 28px; }
+.portal-page .rules-body :is(.rules-card,.rules-scope) { background:transparent; }
+.portal-page .rules-card h3 { color:#f0d9b2; font-weight:600; }
+.portal-page .rules-card li,.portal-page .rules-scope p { color:#d8d1c7; font-size:15px; line-height:1.8; text-wrap:pretty; }
+.portal-page .rules-sanctions { background:linear-gradient(110deg,#7a3c2440,#49302926); border-left-color:#c58a53; }
+/* Account and authentication keep the same frame, controls and reading surface. */
+.portal-page:is([data-route='/registro'],[data-route='/login']) .portal-main header { padding-top:210px; justify-content:flex-end; }
+.portal-page:is([data-route='/registro'],[data-route='/login']) .auth-hero-link { display:none; }
+.portal-page:is([data-route='/registro'],[data-route='/login']) .portal-main header h1 { font-size:clamp(36px,3vw,46px); font-weight:600; line-height:1.16; color:#f5e8d0; text-shadow:0 3px 25px #141416; }
+.portal-page:is([data-route='/registro'],[data-route='/login']) .portal-main header p { color:#ded4c5; }
+.portal-page:is([data-route='/registro'],[data-route='/login']) .portal-main header li { border-color:#bca4784d; background:#262629c9; }
+.portal-page .portal-main .metal-border { border:1px solid #c0a06c66; border-top:2px solid #cba66b; background:linear-gradient(140deg,#30343bf2,#202328f2); backdrop-filter:blur(10px); box-shadow:inset 0 1px #ebcf9d1a,0 20px 45px #11111233; border-radius:2px; }
+.portal-page .portal-main label { color:#d3c5b1; }
+.portal-page .portal-main input:not([type=checkbox]):not([type=radio]) { background:#17191de8; border-color:#ac946b59; border-radius:2px; }
+.portal-page .portal-main button[type=submit]:not(:disabled) { background:linear-gradient(180deg,#973c22,#6f241b); border:1px solid #d3aa6d88; color:#fff0d7; }
+.portal-page[data-route='/cuenta'] .account-introduction { min-height:345px; padding-block:50px; }
+.portal-page[data-route='/cuenta'] .account-introduction h1 { max-width:540px; font-weight:600; color:#f4e6cf; }
+.portal-page[data-route='/cuenta'] .account-introduction p { color:#d9cdbc; }
+.portal-page[data-route='/cuenta'] .account-toolbar { border-bottom:1px solid #ae93644d; padding-block:14px; }
+.portal-page[data-route='/cuenta'] .account-shortcuts a { background:#30343ae8; color:#f0d6b1; border:1px solid #bca06d66; }
+.portal-page[data-route='/cuenta'] aside nav button { background:#25282e; border-color:#ad92633d; }
+.portal-page .wc-store-showcase { background:radial-gradient(ellipse at 95% 10%,#7a94a01c,transparent 65%),radial-gradient(ellipse at 0 50%,#b3773026,transparent 60%),#191b1f; border-color:#ba9a644d; }
+.portal-page .wc-store-showcase .wc-store-plan { background:linear-gradient(135deg,#2c3036,#202329); border:1px solid #b69a6d66; border-top:3px solid #b59965; }
+.portal-page .wc-store-showcase .wc-store-plan-plus { background:radial-gradient(ellipse at 0 0,#b77e3629,transparent 70%),linear-gradient(135deg,#323337,#202329); border-top-color:#e2b66d; }
+.portal-page .store-introduction,.portal-page .store-empty { background:var(--blackout-panel); border:1px solid #b69a6d54; }
+.portal-page .store-introduction { border-top:2px solid #c5a16a; }
+@media(max-width:1000px) {
+ .portal-page .page-section-links { justify-content:flex-start; }
+ .portal-page .page-section-links a { padding-inline:13px; }
+ .portal-page .lore-hero h1 { font-size:52px; }
+ .portal-page .rules-layout { gap:24px; }
+}
+@media(max-width:760px) {
+ .portal-page .lore-hero,.portal-page[data-route='/servidor'] .lore-hero,.portal-page[data-route='/como-conectarme'] .lore-hero,.portal-page[data-route='/terminos-y-condiciones'] .lore-hero { padding:245px 0 40px; min-height:0; }
+ .portal-page .lore-hero h1 { font-size:38px; max-width:16ch; margin-block:18px; }
+ .portal-page .lore-hero > p { font-size:14px; max-width:100%; }
+ .portal-page .lore-actions { gap:18px; flex-wrap:wrap; }
+ .portal-page .lore-container { width:88%; }
+ .portal-page .lore-heading h2 { font-size:30px; }
+ .portal-page .server-overview .lore-stats { padding-block:14px; }
+ .portal-page .server-overview .lore-stats strong { font-size:34px; }
+ .portal-page .server-spells,.portal-page .server-progression,.portal-page .server-experience,.portal-page .server-customization { padding-block:42px; }
+ .portal-page .connection-guided-downloads article { padding:25px 22px; }
+ .portal-page .connection-guided-downloads h2 { font-size:25px; }
+ .portal-page .connection-final-steps .connect-tips { padding:23px; }
+ .portal-page .rules-layout { padding-top:15px; }
+ .portal-page .rules-directory { padding:22px; }
+ .portal-page .rules-body { padding:6px 23px 24px; }
+ .portal-page .rules-card h3 { font-size:22px; }
+ .portal-page:is([data-route='/registro'],[data-route='/login']) .portal-main header { padding-top:0; }
+ .portal-page:is([data-route='/registro'],[data-route='/login']) .portal-main .isolate > .relative.z-10 { padding-top:220px; }
+ .portal-page:is([data-route='/registro'],[data-route='/login']) .portal-main header h1 { font-size:36px; }
+ .portal-page:is([data-route='/registro'],[data-route='/login']) .portal-main header li { text-align:left; }
+ .portal-page[data-route='/cuenta'] .account-introduction { padding:230px 0 35px; min-height:0; }
+ .portal-page[data-route='/cuenta'] .account-introduction h1 { font-size:36px; }
+ .portal-page .portal-main { padding-bottom:44px; }
+}
+
+/* Account completion: the scene introduces the page; tools sit on a quiet surface. */
+.portal-page[data-route='/cuenta'] .account-content { padding-top:22px; }
+.portal-page[data-route='/cuenta'] .account-introduction { min-height:350px; padding:40px 0 45px; }
+.portal-page[data-route='/cuenta'] .account-toolbar { margin:0; padding:18px; background:linear-gradient(120deg,#303339ed,#22252af5); border:1px solid #ad93644d; box-shadow:inset 0 1px #f0d2a412,0 12px 30px #0003; }
+.portal-page[data-route='/cuenta'] .account-shortcuts { gap:10px; }
+.portal-page[data-route='/cuenta'] .account-shortcuts a { display:inline-flex; align-items:center; justify-content:center; gap:12px; min-height:44px; }
+.portal-page[data-route='/cuenta'] .account-stat { min-height:98px; display:flex; flex-direction:column; justify-content:center; padding:18px; }
+.portal-page[data-route='/cuenta'] .account-balance { padding:24px; }
+.portal-page[data-route='/cuenta'] .account-navigation nav { scrollbar-width:thin; }
+.portal-page[data-route='/cuenta'] .account-navigation nav button { min-height:44px; line-height:1.5; }
+.portal-page[data-route='/cuenta'] [role=dialog] { border-top:2px solid #c5a16a; background:linear-gradient(145deg,#30343b,#202328); }
+.portal-page .auth-page .auth-grid { align-items:start; }
+.portal-page .auth-page .auth-introduction { position:relative; top:auto; }
+.portal-page .auth-page .auth-form-panel { border-top:3px solid #c4a06b; background:linear-gradient(145deg,#292b30f5,#1b1d21f5); padding:34px; }
+.portal-page .auth-form-panel > .pointer-events-none { display:none; }
+.portal-page .auth-form-panel :is(input,button[type=submit]) { min-height:50px; }
+.portal-page .auth-form-panel h2 { color:#f5e5ca; }
+.portal-page .auth-form-panel form { margin-top:27px; }
+.portal-page .auth-form-panel p { text-wrap:pretty; }
+.portal-page .auth-form-panel a { color:#e3c28b; text-decoration-color:#a7895c66; }
+@media(prefers-reduced-motion:no-preference) {
+ .portal-page .auth-form-panel { animation:blackout-form-arrive .55s ease-out both; }
+ @keyframes blackout-form-arrive { from { opacity:.65; translate:0 12px; } to { opacity:1; translate:0 0; } }
+}
+@media(max-width:1023px) {
+ .portal-page .auth-page .auth-layout { max-width:680px; padding-top:230px; }
+ .portal-page .auth-page .auth-grid { gap:30px; }
+ .portal-page:is([data-route='/registro'],[data-route='/login']) .portal-main .auth-introduction { display:flex; padding-top:0; align-items:center; text-align:center; }
+ .portal-page .auth-page .auth-introduction ul { display:none; }
+}
+@media(max-width:760px) {
+ .portal-page[data-route='/cuenta'] .account-introduction { min-height:0; padding:245px 0 32px; }
+ .portal-page[data-route='/cuenta'] .account-introduction > div { padding-inline:4px; }
+ .portal-page[data-route='/cuenta'] .account-toolbar { gap:12px; padding:14px; }
+ .portal-page[data-route='/cuenta'] .account-toolbar .account-logout { width:100%; margin:0; }
+ .portal-page[data-route='/cuenta'] .account-stat { padding:15px; min-height:94px; }
+ .portal-page[data-route='/cuenta'] .account-navigation nav { display:grid; grid-template-columns:1fr; overflow:visible; }
+ .portal-page .auth-page .auth-form-panel { padding:26px 22px; }
+ .portal-page .auth-page .auth-introduction h1 { font-size:34px; }
+ .portal-page .auth-page .auth-introduction p { font-size:14px; }
+ .portal-page .auth-page .auth-grid { gap:26px; }
+}
+/* Shared components: one material system, independent of illustration colour. */
+.site-shell .site-header {
+ background:linear-gradient(110deg,#303339,#22252a 58%,#30343a);
+ box-shadow:inset 0 1px #a8b8ce17,0 8px 26px #08080870;
+ border-bottom:1px solid #a58e6277;
+}
+.site-shell .site-header:before { background:url('/warcraft/native/panel-dark.png') repeat; opacity:.16; }
+.site-shell .site-header:after { height:6px; background-size:auto 6px; opacity:.8; }
+.site-shell .site-nav a { text-shadow:0 2px 5px #000; }
+.site-shell .site-nav a[aria-current=page]:after { background:linear-gradient(90deg,transparent,#ebc88a,transparent); }
+.site-shell .wc-button,.site-shell .lore-button {
+ background:linear-gradient(180deg,#973c22,#6f241b);
+ border:1px solid #c5a168; color:#faecd2;
+ box-shadow:inset 0 0 0 3px #3e160f77,inset 0 4px 12px #ffb14d1c,0 5px 18px #0005;
+ text-shadow:0 2px 3px #280f0c;
+}
+.site-shell .wc-button-ghost { background:linear-gradient(180deg,#3b3f46,#282b31); border-color:#8a8b83; box-shadow:inset 0 0 0 3px #11111277,0 5px 18px #0005; }
+.site-shell .wc-button:hover,.site-shell .lore-button:hover { filter:brightness(1.15); border-color:#edca8a; box-shadow:inset 0 0 0 3px #29130f55,0 0 22px #d58a2f29; }
+.site-shell-home .wc-trailer-pending { background:linear-gradient(105deg,#26292ff7,#30343aeb),url('/warcraft/native/panel-dark.png'); border-color:#8093aa33; box-shadow:inset 0 1px #b7d1e212; }
+.site-shell-home .wc-trailer-pending .wc-text-link { background:#34383f; border-color:#8e9eaf55; }
+.site-shell-home .wc-trailer-pending .wc-trailer-emblem { color:#dfb67a; }
+.site-shell-home .wc-support { background:#191b1f; }
+.portal-page { background:radial-gradient(ellipse at 100% 1100px,#3456791a,transparent 1100px),#191b1f; }
+.portal-page .page-section-nav { background:#272a30f5; box-shadow:inset 0 1px #b0c7e21a,0 7px 24px #090a0a50; }
+.portal-page .lore-stats { border:1px solid #98856077; background:linear-gradient(145deg,#28292c,#1c1f24); box-shadow:inset 0 0 0 4px #0c0c0d44,0 12px 28px #02070e44; }
+.portal-page :is(.connection-guided-downloads article,.rules-body,.rules-directory,.server-progression-grid article,.lore-customization article,.server-collections) {
+ background:linear-gradient(140deg,#2b2f35f5,#202328f5);
+ border:1px solid #8f82634d;
+ box-shadow:inset 0 1px #ccdbeb12,0 14px 32px #0708083d;
+}
+.portal-page .connection-guided-downloads article { border-top:2px solid #b49a68; }
+.portal-page .connection-guided-downloads article+article { border-top-color:#91adc5; }
+.portal-page .connection-option-icon { background:linear-gradient(145deg,#3f4145,#252528); border:1px solid #a1a08066; box-shadow:inset 0 1px #b5c9e02b; }
+.portal-page .connection-final-steps .connect-tips,.portal-page .connection-filemap { background:#2b2e34; border-color:#788b9e4d; }
+.portal-page .rules-directory { border-top:2px solid #bba175; }
+.portal-page .rules-card { background:transparent; border-color:#94a6bb28; }
+.portal-page .rules-scope { background:#2d2e315e; border-color:#8aa3be33; }
+.portal-page .metal-border { background:linear-gradient(140deg,#30343bf7,#1c1f24f7); border-color:#9a896777; box-shadow:inset 0 0 0 4px #0e0e0f4d,0 20px 55px #0005; }
+.portal-page .server-progression-grid article:before { background:linear-gradient(90deg,#e2bc77,transparent); }
+.portal-page .server-customization { background:transparent; }
+.portal-page .wc-store-showcase { background:linear-gradient(125deg,#2c3036,#202328); }
+.portal-page .wc-store-showcase .wc-store-plan { background:linear-gradient(140deg,#30343b,#202329); }
+.portal-page .wc-store-showcase .wc-store-plan-plus { background:radial-gradient(ellipse at 0 0,#96723b1f,transparent 75%),linear-gradient(140deg,#35383e,#25282d); }
+.site-shell .site-footer { background:linear-gradient(180deg,#272a30,#191b1f); border-top:1px solid #9a886155; }
+.site-shell .site-footer-top { border-color:#8da2bd26; }
+.site-shell .site-footer-links { padding-block:24px; border-color:#8da2bd26; }
+.site-shell .site-footer-bottom { border-color:#8da2bd26; }
+
+/* The approved Home frame language carries through the information and account pages. */
+.portal-page :is(.server-progression-grid article,.connection-guided-downloads article,.lore-customization article) { position:relative; }
+.portal-page :is(.server-progression-grid article,.connection-guided-downloads article,.lore-customization article):after {
+ content:''; position:absolute; right:-1px; bottom:-1px; width:26px; height:26px;
+ background:url('/warcraft/native/metal-joint-trim.png') center/contain no-repeat; pointer-events:none; opacity:.8;
+}
+.portal-page .class-spells { background:var(--blackout-panel); border-color:var(--blackout-rim); }
+.portal-page .server-systems .wc-system-panels { box-shadow:inset 0 0 0 4px #10121655,0 15px 32px #0003; }
+.portal-page .wc-system-panel h3 { font-weight:600; }
+.portal-page .wc-system-tabs button { transition:background .25s,border-color .25s; }
+.portal-page .wc-system-tabs button[aria-selected=true] { background:linear-gradient(90deg,#68523766,#303339); box-shadow:inset 3px 0 #d5ac71; }
+.portal-page .wc-system-tabs button:focus-visible { outline:2px solid #e6bc80; outline-offset:3px; }
+.portal-page .wc-system-select select { background:#2b2e34; color:#f0dfc4; border-color:#a58e625e; min-height:52px; }
+.portal-page .server-feature-art { overflow:hidden; }
+.portal-page .server-experience .lore-feature { box-shadow:inset 0 0 0 4px #10121655,0 16px 35px #0004; }
+.portal-page .lore-community { text-align:center; padding:42px 30px; }
+.portal-page .lore-community :is(h2,p) { margin-inline:auto; max-width:65ch; }
+.portal-page .lore-community .lore-actions { justify-content:center; }
+.portal-page .lore-community > a { display:inline-flex; margin-top:22px; }
+.portal-page .connection-guided-downloads article:nth-child(2) { background:var(--blackout-panel); border-top-color:#aeb1b7; }
+.portal-page .connection-guided-downloads article .connection-option-icon,.portal-page .connection-guided-downloads article:nth-child(2) .connection-option-icon { width:34px; height:34px; padding:3px; color:#d8bc8e; background:transparent; border:0; box-shadow:none; }
+.portal-page .connection-option-icon svg { width:28px; height:28px; }
+.portal-page .connection-download-actions a { transition:background .25s,border-color .25s,transform .25s; }
+.portal-page .connection-download-actions a:focus-visible,.portal-page .connect-realmlist:focus-visible { outline:2px solid #ecc58a; outline-offset:4px; }
+.portal-page details.connection-filemap { background:var(--blackout-panel); }
+.portal-page .connection-final-steps .connect-realmlist { background:#1b1e22; color:#f0dfc4; }
+.portal-page .connection-final-steps .connect-realmlist:hover { border-color:#d9b77e; }
+.portal-page .rules-directory { align-self:start; }
+.portal-page .rules-directory a:hover { background:#d7b87b0b; }
+.portal-page .portal-main input:not([type=checkbox]):not([type=radio]):focus { border-color:#d7b276; outline:2px solid #d7b27633; outline-offset:2px; box-shadow:none; }
+.portal-page .portal-main input[aria-invalid=true] { border-color:#dd7a69; }
+.portal-page[data-route='/cuenta'] .account-shortcuts a,.portal-page[data-route='/cuenta'] .account-logout { background:linear-gradient(180deg,#34383e,#24272c); }
+.portal-page[data-route='/cuenta'] .account-shortcuts a:hover { border-color:#d1ad72; color:#f5dfba; }
+.portal-page[data-route='/cuenta'] aside nav button:hover { background:#3b3c3f; border-color:#d3ae7480; }
+.portal-page[data-route='/cuenta'] aside nav button[aria-expanded=true] { background:linear-gradient(90deg,#68523766,#303339); border-color:#c5a376; color:#f7e4c5; }
+.portal-page .store-introduction .rounded-lg { background:#303339; }
+.portal-page .store-contact { display:flex; align-items:center; gap:28px; padding:26px; margin-top:32px; border:1px solid #b69a6d50; border-left:2px solid #c5a16a; background:linear-gradient(130deg,#2c3036ed,#202328f5); }
+.portal-page .store-contact p { color:#bcc4ce; font-size:13px; line-height:1.8; margin:0 0 7px; }
+.portal-page .store-contact a { color:#ead1a5; font-size:13px; line-height:1.8; }
+.portal-page .store-contact-options { flex-shrink:0; display:flex; align-items:center; gap:22px; min-height:46px; padding:8px 15px; border:1px solid #b69a6d66; font-family:var(--font-cinzel),serif; background:#30343a; }
+.portal-page .store-contact a:hover { color:#ffe3b5; text-decoration:underline; text-underline-offset:5px; }
+.portal-page .store-contact a:focus-visible { outline:2px solid #e6bc80; outline-offset:5px; }
+.portal-page .wc-store-showcase { border-bottom:1px solid #ae93644d; }
+.portal-page .wc-store-showcase .wc-store-individual { padding:28px; background:var(--blackout-panel); border:1px solid var(--blackout-rim); }
+.portal-page .wc-store-plan-price { color:#f4d29d; }
+.portal-page .wc-store-commands code { background:#1c1f24; border-color:#aaa18d55; color:#efcf9a; }
+.portal-page:is([data-route='/recuperar'],[data-route='/restablecer']) .portal-main > div { margin:80px max(6%,calc((100% - 1120px)/2)); border-top:2px solid #c5a16a; box-shadow:inset 0 1px #ebcf9d1a,0 20px 45px #11101733; }
+@keyframes blackout-art-breathe { from { transform:scale(1.01) translateY(0); } to { transform:scale(1.07) translateY(-6px); } }
+@media(prefers-reduced-motion:no-preference) {
+ .portal-page .server-feature-art img { animation:blackout-art-breathe 12s ease-in-out infinite alternate paused; }
+ .portal-page .lore-feature[data-in-view=true] .server-feature-art img { animation-play-state:running; }
+ .portal-page .lore-feature:nth-child(2) .server-feature-art img { animation-delay:-6s; }
+ .portal-page .server-systems-art { animation:blackout-art-breathe 20s ease-in-out infinite alternate paused; }
+ .portal-page .server-systems[data-in-view=true] .server-systems-art { animation-play-state:running; }
+}
+@media(max-width:760px) {
+ .portal-page .store-contact { align-items:flex-start; flex-direction:column; gap:18px; padding:23px; }
+ .portal-page .lore-community { padding:32px 22px; }
+ .portal-page .wc-store-showcase .wc-store-individual { padding:24px; }
+ .portal-page:is([data-route='/recuperar'],[data-route='/restablecer']) .portal-main > div { margin:220px 6% 40px; padding:28px 22px; }
+}

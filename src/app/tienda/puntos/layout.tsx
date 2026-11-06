@@ -3,7 +3,7 @@ import { localizedPageMetadata } from "@/lib/page-metadata";
 export function generateMetadata() { return localizedPageMetadata({
   title: "Canjear puntos en el juego",
   description:
-    "Canjea tus puntos BLACKOUT WOW por recompensas para tus personajes. Requiere sesión iniciada y saldo disponible en el reino.",
+    "Canjea tus puntos de Blackout-WoW por recompensas para tus personajes. Requiere iniciar sesión y tener puntos disponibles en tu cuenta.",
   pathname: "/tienda/puntos",
   noIndex: true,
 }); }

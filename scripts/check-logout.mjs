@@ -12,7 +12,7 @@ async function load(file, mocks = {}) {
   }).outputText;
   const context = {
     exports: {},
-    require: name => name in mocks ? mocks[name] : require(name),
+    require: name => name in mocks ? mocks[name] : name.endsWith('.module.css') ? { default: new Proxy({}, { get: (_, key) => String(key) }) } : require(name),
     window: {}, localStorage: storage,
   };
   vm.runInNewContext(compiled, context);
@@ -98,7 +98,7 @@ for (language of ['es', 'en', 'pt']) {
   for (const price of ['50 USD', '200 USD', '15 USD', '5 USD', '10 USD', '20 USD']) assert.ok(text.includes(price), 'Missing price: ' + price);
   assert.ok(text.includes('VIP Instance') && text.includes('VIP Mall') && text.includes(storeShowcaseCopy[language].keys));
   assert.ok(!/T35|Tier 35|V10/.test(text), 'Donor descriptions must not contain tier or legendary-version labels');
-  assert.ok(text.includes('Blackout-WoW') && text.includes('ticket'));
+  assert.ok(text.includes('Blackout-WoW') && text.includes('(DM)'), 'Donor enquiries must direct players to a direct message to Blackout-WoW');
   assert.ok(!/arsenal/i.test(text));
   assert.ok(renderToStaticMarkup(React.createElement(SupportShowcase)).includes('/cuenta#donor'));
 }
@@ -116,6 +116,7 @@ const navigationMocks = {
   './WarcraftMotion': { WarcraftMotion: ({ children }) => children },
   './FooterSocialLinks': { FooterSocialLinks: () => null },
   './InterfaceSound': { InterfaceSoundToggle: () => null },
+  './WarcraftVisualEffects': { WarcraftVisualEffects: () => null },
 };
 const { SiteHeader } = await load('src/components/SiteHeader.tsx', navigationMocks);
 const { SiteShell } = await load('src/components/SiteShell.tsx', { ...navigationMocks, './SiteHeader': { SiteHeader } });
@@ -131,6 +132,7 @@ for (language of ['es', 'en', 'pt']) {
   for (signedIn of [false, true]) {
     const shell = renderToStaticMarkup(React.createElement(SiteShell, null));
     assert.ok(!/href="\/tienda(?:\/puntos)?"/.test(shell), 'Global navigation must not expose account shop links');
+    if (signedIn) assert.ok(!/href="\/(?:login|registro)"/.test(shell), 'Signed-in navigation must lead to the account instead of repeating sign-in links');
     const account = renderToStaticMarkup(React.createElement(AccountPage));
     const toolbar = account.match(/<nav class="account-shortcuts"[^>]*>([\s\S]*?)<\/nav>/)?.[1] ?? '';
     if (signedIn) {

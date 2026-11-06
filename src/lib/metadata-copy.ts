@@ -1,22 +1,22 @@
 export const metadataTranslations = {
   "/": {
     "en": {
-      "title": "Blackout-WoW | WoW 3.3.5a Custom 255 · Increased XP",
-      "description": "Custom level 255 WoW 3.3.5a server with increased XP for leveling and high stats. 35 raids, including 19 fully custom raids, over 30 custom maps, PvE and PvP."
+      "title": "Blackout-WoW | WoW 3.3.5a Custom 255 · PvE & PvP",
+      "description": "Level 255 WoW 3.3.5a: 3 custom classes, 35 raids, including 19 custom raids, and over 30 custom maps. Fast leveling, high stats and T1–T35 PvE/PvP progression."
     },
     "pt": {
-      "title": "Blackout-WoW | WoW 3.3.5a Custom 255 · Experiência aumentada",
-      "description": "Servidor WoW 3.3.5a custom nível 255, com experiência aumentada para subir de nível e atributos altos. 35 raids, sendo 19 totalmente custom, mais de 30 mapas custom, PvE e PvP."
+      "title": "Blackout-WoW | WoW 3.3.5a Custom 255 · PvE e PvP",
+      "description": "WoW 3.3.5a nível 255: 3 classes custom, 35 raids, sendo 19 custom, e mais de 30 mapas custom. Subida de nível rápida, atributos altos e progressão PvE/PvP T1–T35."
     }
   },
   "/servidor": {
     "en": {
       "title": "Custom WoW WotLK 3.3.5a server",
-      "description": "Blackout-WoW 255: increased XP for leveling and high stats. 35 raids, including 19 fully custom raids, over 30 custom maps, T1–T35 and three custom classes."
+      "description": "Explore Blackout 255: Evoker, Demon Hunter, Monk and 10 custom spells for each WotLK class. 35 raids, including 19 custom raids, over 30 custom maps and T1–T35 progression."
     },
     "pt": {
       "title": "Servidor WoW WotLK 3.3.5a custom",
-      "description": "Blackout-WoW 255: experiência aumentada para subir de nível e atributos altos. 35 raids, sendo 19 totalmente custom, mais de 30 mapas custom, T1–T35 e três classes custom."
+      "description": "Conheça o Blackout 255: Conjurante, Caçador de Demônios, Monge e 10 feitiços custom por classe de WotLK. 35 raids, sendo 19 custom, mais de 30 mapas custom e progressão T1–T35."
     }
   },
   "/como-conectarme": {

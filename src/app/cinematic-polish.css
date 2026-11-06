@@ -1,0 +1,255 @@
+/* Blackout: original Warcraft artwork, forged borders and layered light. */
+#site-main[data-effects-paused=true] *, #site-main[data-effects-paused=true] *:before, #site-main[data-effects-paused=true] *:after { animation-play-state: paused !important; }
+.wc-sigil { display: block; width: 100%; height: 100%; }
+.wc-hero { overflow: clip; }
+.wc-hero h1 { letter-spacing: -2px; }
+.wc-hero-intro { text-wrap: balance; }
+.wc-section-heading > p:last-child, .wc-server-invitation p, .wc-community-intro { text-wrap: pretty; }
+.wc-hero .wc-realm-profile { background: linear-gradient(90deg, transparent, #b25f1917, transparent); padding: 10px 14px; }
+.wc-hero .wc-button { min-height: 56px; }
+.wc-hero .wc-button:not(.wc-button-ghost) { border-color: #e7b273; background: linear-gradient(135deg, #ac4b25, #572316); box-shadow: inset 0 0 0 3px #1c100c, inset 0 0 0 4px #e7a5696b, 0 5px 30px #c64d233b; }
+.wc-hero .wc-button:last-child { border-color: #9b91b678; background: linear-gradient(125deg, #272235e6, #14111ee6); }
+.wc-scroll { bottom: 30px; }
+.wc-scroll i { animation: black-scroll 2.6s ease-in-out infinite; }
+
+/* A compact cinema invitation until the actual trailer is available. */
+.wc-trailer-pending { padding: 35px 0; background: linear-gradient(90deg, #100e14fa 7%, #160f16d9 55%, #100e14e8), url('/warcraft/dark-portal.jpg') center 48% / cover; border-bottom: 1px solid #c69c5d3d; }
+.wc-trailer-pending .wc-wrap { gap: 30px; max-width: 1240px; }
+.wc-trailer-emblem { position: relative; display: grid; place-items: center; width: 84px; height: 84px; flex-shrink: 0; color: #e6bb79; background: radial-gradient(ellipse, #a8522133, transparent 70%); }
+.wc-trailer-emblem svg { width: 62px; height: 62px; filter: drop-shadow(0 0 12px #e18c4955); }
+.wc-trailer-pending .wc-wrap > div { flex: 1; }
+.wc-trailer-pending .wc-text-link { padding: 15px 18px; border: 1px solid #c4985b66; background: #0d0c12a8; }
+.wc-trailer-pending h2 { color: #eedecc; }
+
+/* Three illustrated gateways, each with its own palette. */
+.wc-home-overview { padding-top: 82px; background: radial-gradient(ellipse at 50% 20%, #38455820, transparent 65%), linear-gradient(#0b0e14f5, #080b11f7); }
+.wc-home-overview .wc-section-heading { max-width: 850px; margin-bottom: 55px; }
+.wc-home-overview .wc-section-heading h2 { font-size: clamp(34px, 3.8vw, 55px); }
+.wc-home-overview .wc-section-heading > p:last-child { font-size: 15px; line-height: 1.85; max-width: 650px; margin-inline: auto; }
+.wc-ornament i { color: #f2c686; text-shadow: 0 0 20px #bd7d39aa; }
+.wc-home-highlights { gap: 25px; perspective: 1300px; align-items: stretch; }
+.wc-home-highlight { --card-accent: 159, 210, 119; position: relative; display: flex; align-items: start; padding: 0; min-height: 480px; border: 1px solid rgba(var(--card-accent), .32); background: #0b1213; isolation: isolate; transition: transform .35s ease, border-color .3s, box-shadow .3s; box-shadow: 0 20px 40px #0005, inset 0 0 0 4px #03060966; }
+.wc-highlight-1 { --card-accent: 125, 200, 225; }
+.wc-highlight-2 { --card-accent: 205, 166, 233; }
+.wc-highlight-art { position: absolute; inset: 0; z-index: -2; overflow: hidden; animation: black-art-breathe 12s ease-in-out infinite; animation-play-state: paused; }
+.wc-home-highlight[data-in-view=true] .wc-highlight-art { animation-play-state: running; }
+.wc-highlight-1 .wc-highlight-art { animation-delay: -4s; }
+.wc-highlight-2 .wc-highlight-art { animation-delay: -8s; }
+.wc-highlight-art:after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, #0b1015 0%, #0b1015f5 26%, #0b1015b8 43%, #0b101500 78%); }
+.wc-highlight-art img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; opacity: .85; transition: transform .6s ease, opacity .5s; }
+.wc-highlight-0 .wc-highlight-art { background: radial-gradient(ellipse at 50% 20%, #6a8c2e55, #0a1212 75%); }
+.wc-highlight-0 .wc-highlight-art img { height: 330px; width: 115%; max-width: none; margin-left: -7.5%; object-fit: contain; object-position: center; filter: drop-shadow(0 8px 12px #0009); }
+.wc-highlight-1 .wc-highlight-art img { object-position: 50% 12%; height: 330px; }
+.wc-highlight-2 .wc-highlight-art { background: radial-gradient(ellipse at 50% 25%, #6d558344, #10121b 75%); }
+.wc-highlight-2 .wc-highlight-art img { height: 330px; padding: 12px 8px 0; object-fit: contain; object-position: 50% 0%; filter: drop-shadow(0 8px 12px #0008); }
+.wc-highlight-copy { padding: 245px 28px 30px; width: 100%; }
+.wc-highlight-symbol { position: relative; width: 55px; height: 55px; margin: 0 0 16px; padding: 9px; color: rgb(var(--card-accent)); border-color: rgba(var(--card-accent), .4); background: linear-gradient(135deg, #1b252bd9, #080e14f7); box-shadow: inset 0 0 0 3px #080d14, 0 0 28px rgba(var(--card-accent), .1); }
+.wc-home-highlight h3 { font-size: 22px; line-height: 1.3; min-height: 2.6em; color: #f1e7d3; text-wrap: balance; transition: color .25s; }
+.wc-home-highlight p { color: #cbd0d4; font-size: 14px; line-height: 1.85; margin-top: 14px; text-wrap: pretty; }
+.wc-highlight-arrow { top: 23px; right: 23px; padding: 2px 9px; background: #060b13a8; border: 1px solid rgba(var(--card-accent), .3); color: rgb(var(--card-accent)); }
+.wc-home-highlight:after, .wc-path:after { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: 0; background: radial-gradient(ellipse at var(--light-x, 50%) var(--light-y, 30%), #ffdaa816, transparent 60%); transition: opacity .3s; }
+.wc-home-highlight:is(:hover, :focus-visible) { border-color: rgba(var(--card-accent), .85); background-color: #0b1213; box-shadow: 0 20px 50px #0007, 0 0 28px rgba(var(--card-accent), .09); }
+.wc-home-highlight:is(:hover, :focus-visible):after, .wc-path:is(:hover, :focus-visible):after { opacity: 1; }
+.wc-home-highlight:is(:hover, :focus-visible) .wc-highlight-art img { transform: scale(1.05) translateY(-4px); opacity: 1; }
+.wc-home-highlight:is(:hover, :focus-visible) h3 { color: rgb(var(--card-accent)); }
+.wc-home-highlights .wc-corners { opacity: .85; }
+.wc-home-overview .wc-paths { margin-top: 64px; gap: 30px; perspective: 1300px; }
+.wc-home-overview .wc-path { min-height: 490px; }
+.wc-home-overview .wc-path-content { padding: 235px 38px 38px; }
+.wc-home-overview .wc-path h3 { font-size: clamp(26px, 2.65vw, 38px); color: #f7e8ce; }
+.wc-home-overview .wc-path p { font-size: 14px; line-height: 1.85; color: #cbd0d4; text-wrap: pretty; }
+.wc-home-overview .wc-path-pve { border-color: #bf744c70; }
+.wc-home-overview .wc-path-pvp { border-color: #b29a626e; }
+.wc-path-art { inset: 0; mask-image: none; }
+.wc-path-art img { filter: brightness(.92); }
+.wc-home-overview .wc-path-art { bottom: auto; aspect-ratio: 16 / 9; mask-image: linear-gradient(#000 62%, transparent 100%); }
+.wc-home-overview .wc-path-art img { object-fit: contain; object-position: center top; }
+.wc-home-overview .wc-path-art:after { background: none; }
+.wc-path-art:after { background: linear-gradient(0deg, #0a0d15 1%, #0a0d15eb 26%, #0a0d1560 60%, #0a0d1500 88%); }
+.wc-path-pve .wc-path-tag { border-color: #d78959a6; color: #ffd3a4; }
+.wc-path .wc-text-link { border-top: 1px solid #c69c5d40; display: flex; justify-content: space-between; padding-top: 17px; }
+.wc-server-invitation { padding: 32px; border: 1px solid #aa87543b; background: linear-gradient(105deg, #292017b3, #141720b3), url('/warcraft/native/panel-dark.png'); box-shadow: inset 0 0 0 4px #080c1240; }
+.wc-server-invitation h3 { font-size: 25px; }
+
+/* Server chapters: bigger hierarchy, native metal, restrained arcane light. */
+.server-hero { padding-block: 100px 75px; }
+.server-hero h1 { font-size: clamp(44px, 5.1vw, 76px); line-height: 1.08; max-width: 850px; }
+.server-hero h1 em { background: linear-gradient(#fff2ca, #d4a267); background-clip: text; -webkit-text-fill-color: transparent; }
+.server-overview .lore-stats { position: relative; background: radial-gradient(ellipse at 50% 0%, #5d452d33, transparent 70%), var(--wc-panel); box-shadow: 0 20px 60px #0006, inset 0 0 0 5px #070b1380; border-color: #ac8d5e88; padding: 33px 0; }
+.server-overview .lore-stats:before, .server-overview .lore-stats:after { content: ""; position: absolute; left: 0; right: 0; height: 8px; background: url('/warcraft/native/metal-top-trim.png') repeat-x; }
+.server-overview .lore-stats:before { top: -4px; }
+.server-overview .lore-stats:after { bottom: -4px; transform: rotate(180deg); }
+.server-overview .lore-stats strong { color: #f6dfb6; text-shadow: 0 0 30px #c28e4433; }
+.server-section-nav { gap: 7px; }
+.server-section-nav a { background: linear-gradient(#1c2029cc, #0c121bcf); box-shadow: inset 0 0 0 2px #070b1377; }
+.server-progression .lore-heading h2, .server-experience .lore-heading h2 { font-size: clamp(32px, 3.5vw, 48px); }
+.server-progression-grid { gap: 23px; }
+.server-progression-grid article { --emblem-color: #dfbd81; position: relative; isolation: isolate; padding: 34px 28px; background: radial-gradient(ellipse at 50% 0%, #c4a26b10, transparent 65%), var(--wc-panel); border: 1px solid #b79a6659; box-shadow: inset 0 0 0 4px #080c122e, 0 15px 30px #0003; }
+.server-progression-grid article:before { content: ''; position: absolute; top: -1px; left: 28px; right: 28px; height: 1px; background: linear-gradient(90deg,transparent,#dfbd8199,transparent); }
+.server-emblem { position: relative; display: grid; place-items: center; width: 65px; height: 65px; padding: 10px; margin-bottom: 25px; color: var(--emblem-color, #dfbd83); border: 1px solid #b4925955; background: radial-gradient(ellipse, #b492591c, #09101bc9); box-shadow: inset 0 0 0 4px #080e1844; }
+.server-emblem:after { content: ""; position: absolute; width: 5px; height: 5px; right: -3px; top: -3px; transform: rotate(45deg); background: currentColor; box-shadow: 0 0 12px currentColor; }
+.server-progression-grid h3 { font-size: 23px; }
+.server-experience .lore-feature { padding: 270px 36px 36px; border-color: #a4875f66; min-height: 570px; }
+.server-experience .lore-feature:before, .server-experience .lore-feature:nth-child(2):before { background: linear-gradient(0deg, #211d1a 12%, #211d1af5 35%, #211d1a55 62%, transparent); opacity: 1; }
+.server-feature-art { position: absolute; inset: 0; z-index: -2; }
+.server-feature-art img { object-fit: cover; object-position: center top; }
+.server-experience .lore-feature h3 { font-size: 29px; margin-block: 12px 18px; }
+.server-experience .lore-feature .lore-kicker { padding: 7px 12px; border: 1px solid #bea16b77; background: #080d15aa; display: inline-block; }
+.server-systems-art { opacity: .6; object-position: 50% 38%; }
+.server-systems:before { background: linear-gradient(90deg, #130f15e6, #130f15a3), linear-gradient(0deg, #0b1018, transparent 30%, transparent 70%, #0b1018); }
+.server-system-cards { gap: 20px; }
+.server-system-cards article { display: flex; gap: 24px; align-items: flex-start; padding: 28px; border: 1px solid #b28a6140; background: linear-gradient(120deg, #121822ed, #161519cf); box-shadow: 0 10px 30px #0003, inset 0 0 0 3px #080c122f; }
+.server-system-cards .server-emblem { flex: 0 0 49px; width: 49px; height: 49px; padding: 6px; margin: 0; }
+.server-system-cards h3 { font-size: 20px; }
+.server-system-cards p { font-size: 14px; line-height: 1.85; text-wrap: pretty; }
+.server-feature-description, .lore-customization p, .server-faq p { text-wrap: pretty; }
+
+/* The class silhouette stands in a rotating, layered magical seal. */
+.wc-classes { overflow: clip; }
+@media (min-width: 601px) { .wc-class-figure { margin: -25px -30px -30px; } }
+.wc-class-landscape { opacity: .68; }
+.wc-class-halo { position: absolute; width: 450px; height: 450px; max-width: 90%; aspect-ratio: 1; left: 50%; top: 42%; transform: translate(-50%, -50%); color: var(--class-accent); opacity: .58; pointer-events: none; }
+.wc-class-halo:before { content: ""; position: absolute; inset: -12%; background: radial-gradient(ellipse, rgba(var(--class-rgb), .18), transparent 65%); }
+.wc-class-halo i { position: absolute; inset: 0; border: 1px solid rgba(var(--class-rgb), .38); border-radius: 50%; box-shadow: 0 0 35px rgba(var(--class-rgb), .08), inset 0 0 35px rgba(var(--class-rgb), .08); animation: black-orbit 65s linear infinite; animation-play-state: paused; }
+.wc-class-halo i:before, .wc-class-halo i:after { content: ""; position: absolute; inset: 14%; border: 1px solid rgba(var(--class-rgb), .3); transform: rotate(45deg); }
+.wc-class-halo i:after { transform: rotate(15deg); inset: 24%; }
+.wc-class-halo i + i { inset: 9%; border-style: dashed; animation-direction: reverse; animation-duration: 95s; }
+.wc-class-halo > span { position: absolute; top: -17px; left: calc(50% - 14px); font-size: 28px; text-shadow: 0 0 15px currentColor; }
+.wc-classes[data-in-view=true] .wc-class-halo i { animation-play-state: running; }
+.wc-class-copy { position: relative; }
+.wc-class-copy h2 { font-size: clamp(39px, 4.2vw, 60px); line-height: 1.12; color: var(--class-accent); text-wrap: balance; }
+.wc-class-story { min-height: 285px; }
+.wc-class-story .wc-section-intro { margin: 22px 0 28px; font-size: 15px; line-height: 1.85; color: #c9cecc; }
+.wc-class-story-content { animation: black-class-reveal .3s ease-out both; }
+@keyframes black-class-reveal { from { opacity: .3; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.wc-class-item { min-height: 105px; }
+.wc-class-preview { isolation: isolate; }
+.wc-character-caption { background: linear-gradient(90deg, transparent, #0b1115ee 20%, #0b1115ee 80%, transparent); }
+
+/* Spell panel and appearance panels have their own material and accent. */
+.class-spells { position: relative; isolation: isolate; overflow: hidden; border-color: #a69ac251; background: radial-gradient(ellipse at 0% 0%, #57477729, transparent 60%), var(--wc-panel); padding: 50px 42px; }
+.class-spells h2 { font-size: clamp(30px, 2.7vw, 39px); }
+.class-spells h2 em { color: #ceb7e8; }
+.class-spells-intro, .class-spells-classes, .class-spells-origins { position: relative; z-index: 1; }
+.wc-spell-seal { position: absolute; z-index: 0; width: 370px; height: 370px; left: -145px; bottom: -120px; color: #a295d6; opacity: .12; animation: black-orbit 90s linear infinite; animation-play-state: paused; }
+.class-spells[data-in-view=true] .wc-spell-seal { animation-play-state: running; }
+.class-spells-classes li { position: relative; padding: 14px 13px; margin: 3px 0; border: 1px solid #9789b62b; background: linear-gradient(110deg, #26233855, #11172277); color: #e6dfd2; }
+.class-spells-classes li span { color: #c3abe0; }
+.lore-customization-grid { grid-template-columns: .9fr 1.1fr; }
+.lore-customization article { border-color: #8aafbc44; background: radial-gradient(ellipse at 100% 0%, #406f831c, transparent 70%), var(--wc-panel); padding: 34px; }
+.lore-customization article + article { border-color: #a295bd55; background: radial-gradient(ellipse at 100% 0%, #8354a51f, transparent 70%), var(--wc-panel); }
+.lore-customization article:first-child .server-emblem { --emblem-color: #a6cbd9; }
+.lore-customization article + article .server-emblem { --emblem-color: #c9b2e1; }
+.lore-customization article .server-emblem { margin-bottom: 20px; }
+.lore-customization h2 { font-size: clamp(30px, 3.6vw, 48px); }
+.lore-customization h3 { font-size: 22px; }
+.lore-customization li { border-color: #9789b647; background: #181a2c; color: #dccce5; padding: 7px 10px; }
+
+/* Discord is a destination of its own, with a lit crest and an active border. */
+.wc-community { padding-block: 100px; background: radial-gradient(ellipse at 20% 40%, #5a3a6530, transparent 65%), #080c13; }
+.wc-community-frame { border-radius: 4px; border-color: #b69b7d; background: radial-gradient(ellipse at 0% 0%, #514a9133, transparent 60%), linear-gradient(#101320f2, #0b0e18f7); box-shadow: inset 0 0 0 4px #080b12, 0 0 0 1px #a4876633, 0 25px 80px #0008; overflow: hidden; }
+.wc-community-border rect { rx: 3px; stroke: #d1bbff; }
+.wc-community-border { filter: drop-shadow(0 0 6px #9484ed88); }
+.wc-community-copy { padding: 45px 42px; }
+.wc-community h2 { font-size: clamp(32px, 3.1vw, 44px); }
+.wc-community h2 em { color: #c5b9ed; }
+.wc-discord-crest { position: relative; width: 64px; height: 64px; color: #e8d5ac; display: grid; place-items: center; margin: 0 0 28px; background: linear-gradient(135deg,#51402e66,#252525); border: 1px solid #b18b5577; box-shadow: inset 0 0 0 4px #252423,0 0 30px #b18b5512; }
+.wc-discord-crest > svg { width: 32px; height: 32px; filter: drop-shadow(0 0 8px #b18b5526); }
+.wc-discord-crest i { position: absolute; inset: -9px; border: 1px solid #b18b5530; transform: rotate(8deg); animation: black-crest-breathe 6s ease-in-out infinite; animation-play-state: paused; }
+.wc-discord-crest i + i { inset: -15px; transform: rotate(-8deg); animation-delay: -3s; }
+.wc-community[data-active=true] .wc-discord-crest i { animation-play-state: running; }
+.wc-community-panel { padding: 26px; background: radial-gradient(ellipse at center, #6c5bb81c, transparent 70%); }
+.wc-community-panel iframe { border-radius: 4px; border: 1px solid #b3a5e347; }
+.wc-community-ambience:before { background: radial-gradient(ellipse at 10% 100%, #8872c438, transparent 62%), radial-gradient(ellipse at 65% 0%, #5865f22b, transparent 60%); }
+.wc-community-ambience i { background: #d0b3ff; box-shadow: 0 0 10px #9a71e0; }
+.wc-discord-button { min-height: 58px; border-radius: 2px; box-shadow: inset 0 0 0 3px #21255755, 0 8px 30px #6258e64d; }
+.wc-support { border-top: 1px solid #b89a6a3a; }
+.wc-support h2 { font-size: clamp(38px, 4vw, 57px); }
+.wc-support .wc-join-copy { padding-block: 15px; }
+
+@keyframes black-orbit { to { transform: rotate(360deg); } }
+@keyframes black-art-breathe { 50% { transform: translateY(-4px) scale(1.025); } }
+@keyframes black-scroll { 50% { transform: translateY(5px); } }
+@keyframes black-crest-breathe { 50% { opacity: .4; transform: rotate(0deg) scale(1.07); } }
+@keyframes black-arrive { from { opacity: .35; } to { opacity: 1; } }
+@media (prefers-reduced-motion: no-preference) {
+  .wc-home-highlight[data-revealed=true], .wc-path[data-revealed=true], .server-progression-grid article[data-revealed=true], .server-system-cards article[data-revealed=true], .lore-customization article[data-revealed=true] { animation: black-arrive .65s ease-out both; }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .wc-home-highlight[data-depth-active=true], .wc-path[data-depth-active=true] { transform: perspective(1100px) rotateX(var(--depth-y, 0deg)) rotateY(var(--depth-x, 0deg)) translateY(-5px); }
+}
+
+@media (max-width: 1050px) {
+  .wc-home-highlights { gap: 17px; }
+  .wc-highlight-copy { padding: 230px 22px 26px; }
+  .wc-home-highlight h3 { font-size: 20px; }
+  .wc-home-overview .wc-path-content { padding-inline: 28px; }
+  .wc-class-halo { width: 370px; height: 370px; }
+  .server-system-cards article { padding: 24px; gap: 18px; }
+  .server-system-cards .server-emblem { flex-basis: 42px; width: 42px; height: 42px; }
+  .server-system-cards h3 { font-size: 18px; }
+  .server-experience .lore-feature { padding-inline: 26px; }
+  .wc-community-copy { padding: 38px 30px; }
+}
+@media (max-width: 700px) {
+  .wc-hero h1 { letter-spacing: -1px; margin-block: 16px; }
+  .wc-hero-intro { line-height: 1.75; margin-bottom: 16px; }
+  .wc-hero .wc-realm-profile { margin-top: 14px; margin-bottom: 18px; padding-block: 6px; }
+  .wc-trailer-pending { padding: 28px 0; }
+  .wc-trailer-pending .wc-wrap { display: grid; grid-template-columns: 48px 1fr; gap: 10px 18px; }
+  .wc-trailer-emblem { width: 48px; height: 60px; }
+  .wc-trailer-emblem svg { width: 44px; height: 44px; }
+  .wc-trailer-pending h2 { font-size: 21px; }
+  .wc-trailer-pending .wc-text-link { grid-column: 2; margin-top: 10px; padding: 0; border: 0; background: none; font-size: 8px; }
+  .wc-home-overview { padding-top: 60px; }
+  .wc-home-overview .wc-section-heading h2 { font-size: 34px; }
+  .wc-home-highlights { grid-template-columns: 1fr; gap: 26px; }
+  .wc-home-highlight { min-height: 400px; }
+  .wc-highlight-art img { height: 320px; }
+  .wc-highlight-0 .wc-highlight-art img { height: 300px; width: 100%; margin: 0; object-position: 80% center; }
+  .wc-highlight-copy { padding: 165px 26px 28px; }
+  .wc-highlight-symbol { position: static; width: 48px; height: 48px; padding: 7px; margin: 0 0 14px; }
+  .wc-home-highlight h3 { font-size: 24px; min-height: 0; padding: 0; max-width: 280px; }
+  .wc-home-highlight p { font-size: 14px; max-width: 420px; }
+  .wc-home-overview .wc-paths { margin-top: 40px; gap: 28px; grid-template-columns: 1fr; }
+  .wc-home-overview .wc-path { min-height: 460px; }
+  .wc-home-overview .wc-path-content { padding: 225px 26px 30px; }
+  .wc-home-overview .wc-path h3 { font-size: 29px; }
+  .wc-server-invitation { padding: 26px; }
+  .wc-server-invitation h3 { font-size: 23px; }
+  .server-hero { padding-block: 65px 45px; }
+  .server-hero h1 { font-size: 43px; }
+  .server-overview .lore-stats { padding-block: 27px; }
+  .server-progression-grid { gap: 18px; }
+  .server-progression-grid article { padding: 29px; }
+  .server-progression-grid article + article { border-top: 1px solid #ae8e594f; }
+  .server-progression-grid h3 { font-size: 23px; }
+  .server-experience .lore-feature { padding: 240px 26px 30px; min-height: 480px; }
+  .server-experience .lore-feature h3 { font-size: 25px; }
+  .server-systems h2 { font-size: 35px; }
+  .server-system-cards { gap: 16px; }
+  .server-system-cards article { padding: 24px 20px; gap: 17px; }
+  .server-system-cards h3 { font-size: 19px; }
+  .class-spells { padding: 32px 24px; }
+  .class-spells h2 { font-size: 30px; }
+  .class-spells-classes { gap: 7px; }
+  .class-spells-classes li { font-size: 10px; padding: 11px 8px; gap: 8px; }
+  .wc-class-halo { width: 335px; height: 335px; }
+  .wc-class-copy h2 { font-size: clamp(36px, 10vw, 46px); }
+  .wc-class-story { min-height: 275px; }
+  .wc-class-story .wc-section-intro { font-size: 14px; margin-top: 18px; }
+  .wc-official-evoker img { width: 540px; bottom: 55px; transform: translateX(-34%); }
+  .lore-customization-grid { grid-template-columns: 1fr; }
+  .lore-customization article { padding: 28px; }
+  .lore-customization h2 { font-size: 32px; }
+  .lore-customization h3 { font-size: 21px; }
+  .wc-community { padding-block: 60px; }
+  .wc-community-copy { padding: 38px 26px 30px; }
+  .wc-community h2 { font-size: 34px; }
+  .wc-community-panel { padding: 20px; }
+  .wc-support h2 { font-size: 39px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wc-scroll i, .wc-class-halo i, .wc-spell-seal, .wc-discord-crest i, .wc-highlight-art, .wc-class-story-content { animation: none; }
+  .wc-home-highlight, .wc-path, .wc-highlight-art img { transition: none; transform: none; }
+}

@@ -9,6 +9,6 @@ export function LanguageProvider({children,initialLanguage}:{children:React.Reac
   const stored=document.cookie.split('; ').find(value=>value.startsWith(languageCookieName+'='))?.split('=')[1];
   const language=resolveAppLanguage(stored);void i18n.changeLanguage(language);document.documentElement.lang=language;
   const sync=(value:string)=>{document.documentElement.lang=value;};i18n.on('languageChanged',sync);return()=>{i18n.off('languageChanged',sync);};
- },[i18n]);
+ },[i18n,initialLanguage]);
  return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>;
 }

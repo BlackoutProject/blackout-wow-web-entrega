@@ -1,9 +1,9 @@
 export const serverCopy = {
   "es": {
-    "eyebrow": "EL REINO · WOTLK 3.3.5a",
-    "title": "El mundo que conoces.",
-    "accent": "Un poder sin límites.",
-    "intro": "Un reino con progresión propia, clases renovadas y contenido custom para jugar a tu manera.",
+    "eyebrow": "EL SERVIDOR · WOTLK 3.3.5a",
+    "title": "Todo sobre",
+    "accent": "Blackout 255.",
+    "intro": "Conoce las clases, los hechizos y el contenido del servidor. Explora la progresión de equipo, la competición PvP y las opciones para personalizar tu personaje.",
     "join": "CREAR CUENTA",
     "download": "CÓMO JUGAR",
     "labels": [
@@ -13,10 +13,10 @@ export const serverCopy = {
       "MAPAS CUSTOM"
     ],
     "customRaidsNote": "Incluidas en las 35 raids",
-    "experience": "Características del servidor.",
+    "experience": "Raids, World Bosses y PvP.",
     "features": [
       {
-        "title": "Conquista lo imposible.",
+        "title": "Raids y contenido de mundo.",
         "tag": "PVE",
         "items": [
           "Más de 45 World Bosses.",
@@ -26,7 +26,7 @@ export const serverCopy = {
         ]
       },
       {
-        "title": "Domina el campo de batalla.",
+        "title": "Arenas y campos de batalla.",
         "tag": "PVP",
         "items": [
           "Arenas 1v1, 2v2, 3v3 y 5v5.",
@@ -41,7 +41,7 @@ export const serverCopy = {
         "items": [
           "3 clases custom: Evocador, Cazador de demonios y Monje.",
           "Nuevas builds, Dual Wield y Titan’s Grip.",
-          "Más de 500 monturas, mascotas y morphs.",
+          "Más de 500 monturas, mascotas y morphs custom.",
           "Sets, alas, auras y efectos visuales propios."
         ]
       },
@@ -51,7 +51,7 @@ export const serverCopy = {
         "items": [
           "Sistemas AIO integrados y tienda custom.",
           "Pasivas Paragon y Battle Pass.",
-          "Transmog con más de 100.000 apariencias.",
+          "Más de 100.000 apariencias de transmog custom.",
           "Personalización de colores de las formas y morphs de druida.",
           "Teletransportador, nuevo Mall y zonas de progresión.",
           "Misiones, vendedores y tokens personalizados.",
@@ -60,19 +60,19 @@ export const serverCopy = {
         ]
       }
     ],
-    "fair": "Tu esfuerzo tiene valor.",
-    "fairText": "El equipo Donor iguala el mejor equipo disponible mediante progresión; nunca lo supera.",
-    "communityTag": "COMUNIDAD",
-    "community": "Mantente al día.",
-    "communityText": "Consulta los anuncios, participa en eventos y encuentra ayuda en el Discord oficial.",
+    "fair": "Competición con reglas claras.",
+    "fairText": "Las normas del servidor incluyen reglas de loot, multiboxing y PvP, y prohíben los cheats, el wintrading y el abuso de exploits.",
+    "communityTag": "ENTRA EN COMBATE",
+    "community": "Tu próximo personaje te espera.",
+    "communityText": "Crea tu cuenta y sigue la guía para preparar tu cliente 3.3.5a. Si necesitas ayuda, te esperamos en Discord.",
     "discord": "UNIRME A DISCORD",
     "rules": "CONSULTAR LAS NORMAS"
   },
   "en": {
-    "eyebrow": "THE REALM · WOTLK 3.3.5a",
-    "title": "The world you know.",
-    "accent": "Power without limits.",
-    "intro": "A realm with its own progression, reworked classes and custom content to play your way.",
+    "eyebrow": "THE SERVER · WOTLK 3.3.5a",
+    "title": "Explore",
+    "accent": "Blackout 255.",
+    "intro": "Get to know the server’s classes, spells and content. Explore gear progression, PvP competition and the options for customizing your character.",
     "join": "CREATE ACCOUNT",
     "download": "HOW TO PLAY",
     "labels": [
@@ -82,10 +82,10 @@ export const serverCopy = {
       "CUSTOM MAPS"
     ],
     "customRaidsNote": "Included in the 35 raids",
-    "experience": "Server features.",
+    "experience": "Raids, World Bosses and PvP.",
     "features": [
       {
-        "title": "Conquer the impossible.",
+        "title": "Raids and world content.",
         "tag": "PVE",
         "items": [
           "Over 45 World Bosses.",
@@ -95,7 +95,7 @@ export const serverCopy = {
         ]
       },
       {
-        "title": "Dominate the battlefield.",
+        "title": "Arenas and battlegrounds.",
         "tag": "PVP",
         "items": [
           "1v1, 2v2, 3v3 and 5v5 arenas.",
@@ -110,7 +110,7 @@ export const serverCopy = {
         "items": [
           "3 custom classes: Evoker, Demon Hunter and Monk.",
           "New builds, Dual Wield and Titan’s Grip.",
-          "Over 500 mounts, pets and morphs.",
+          "Over 500 custom mounts, pets and morphs.",
           "Custom sets, wings, auras and visual effects."
         ]
       },
@@ -120,7 +120,7 @@ export const serverCopy = {
         "items": [
           "Integrated AIO systems and a custom shop.",
           "Paragon passives and Battle Pass.",
-          "Transmog with over 100,000 appearances.",
+          "Over 100,000 custom transmog appearances.",
           "Color customization for Druid forms and morphs.",
           "Teleporter, new Mall and progression zones.",
           "Custom quests, vendors and tokens.",
@@ -129,19 +129,19 @@ export const serverCopy = {
         ]
       }
     ],
-    "fair": "Your effort matters.",
-    "fairText": "Donor gear matches the best gear available through progression; it never exceeds it.",
-    "communityTag": "COMMUNITY",
-    "community": "Stay up to date.",
-    "communityText": "Read announcements, join events and find help on the official Discord.",
+    "fair": "Competition with clear rules.",
+    "fairText": "Server rules cover loot, multiboxing and PvP, and prohibit cheats, wintrading and exploit abuse.",
+    "communityTag": "ENTER THE FIGHT",
+    "community": "Your next character awaits.",
+    "communityText": "Create your account and follow the guide to prepare your 3.3.5a client. If you need help, join us on Discord.",
     "discord": "JOIN DISCORD",
     "rules": "READ THE RULES"
   },
   "pt": {
-    "eyebrow": "O REINO · WOTLK 3.3.5a",
-    "title": "O mundo que você conhece.",
-    "accent": "Poder sem limites.",
-    "intro": "Um reino com progressão própria, classes renovadas e conteúdo custom para jogar do seu jeito.",
+    "eyebrow": "O SERVIDOR · WOTLK 3.3.5a",
+    "title": "Tudo sobre",
+    "accent": "Blackout 255.",
+    "intro": "Conheça as classes, os feitiços e o conteúdo do servidor. Explore a progressão de equipamento, a competição PvP e as opções para personalizar seu personagem.",
     "join": "CRIAR CONTA",
     "download": "COMO JOGAR",
     "labels": [
@@ -151,10 +151,10 @@ export const serverCopy = {
       "MAPAS CUSTOM"
     ],
     "customRaidsNote": "Incluídas nas 35 raids",
-    "experience": "Características do servidor.",
+    "experience": "Raids, World Bosses e PvP.",
     "features": [
       {
-        "title": "Conquiste o impossível.",
+        "title": "Raids e conteúdo de mundo.",
         "tag": "PVE",
         "items": [
           "Mais de 45 World Bosses.",
@@ -164,7 +164,7 @@ export const serverCopy = {
         ]
       },
       {
-        "title": "Domine o campo de batalha.",
+        "title": "Arenas e campos de batalha.",
         "tag": "PVP",
         "items": [
           "Arenas 1v1, 2v2, 3v3 e 5v5.",
@@ -179,7 +179,7 @@ export const serverCopy = {
         "items": [
           "3 classes custom: Conjurante, Caçador de Demônios e Monge.",
           "Novas builds, Dual Wield e Titan’s Grip.",
-          "Mais de 500 montarias, pets e morphs.",
+          "Mais de 500 montarias, mascotes e morphs custom.",
           "Sets, asas, auras e efeitos visuais próprios."
         ]
       },
@@ -189,7 +189,7 @@ export const serverCopy = {
         "items": [
           "Sistemas AIO integrados e loja custom.",
           "Passivas Paragon e Battle Pass.",
-          "Transmog com mais de 100.000 aparências.",
+          "Mais de 100.000 aparências de transmog custom.",
           "Personalização das cores das formas e morphs de druida.",
           "Teletransportador, novo Mall e zonas de progressão.",
           "Missões, vendedores e tokens personalizados.",
@@ -198,11 +198,11 @@ export const serverCopy = {
         ]
       }
     ],
-    "fair": "Seu esforço tem valor.",
-    "fairText": "O equipamento Donor iguala o melhor equipamento disponível na progressão; nunca o supera.",
-    "communityTag": "COMUNIDADE",
-    "community": "Fique por dentro.",
-    "communityText": "Confira os anúncios, participe de eventos e encontre ajuda no Discord oficial.",
+    "fair": "Competição com regras claras.",
+    "fairText": "As regras do servidor abrangem loot, multiboxing e PvP e proíbem cheats, wintrading e abuso de exploits.",
+    "communityTag": "ENTRE EM COMBATE",
+    "community": "Seu próximo personagem espera por você.",
+    "communityText": "Crie sua conta e siga o guia para preparar seu cliente 3.3.5a. Se precisar de ajuda, encontre a gente no Discord.",
     "discord": "ENTRAR NO DISCORD",
     "rules": "CONSULTAR AS REGRAS"
   }

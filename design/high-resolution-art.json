@@ -1,0 +1,70 @@
+{
+  "updated": "2026-10-25",
+  "origin": "Original Blizzard press artwork, no AI generation or upscaling. Illustrative artwork, not Blackout client screenshots.",
+  "assets": [
+    {
+      "file": "public/warcraft/high-resolution/ulduar-original.jpg",
+      "page": "https://blizzard.gamespress.com/en/Wrath-of-the-Lich-King-Classic-Secrets-of-Ulduar",
+      "original": "https://blizzard.gamespress.com/blob/BlizzardLive/2023/01/191714-ab635cb6/Wrath_Classic_Secrets_of_Ulduar_Key_Art.jpg",
+      "width": 8588,
+      "height": 5430,
+      "bytes": 17175490,
+      "placement": "Server information: PvE"
+    },
+    {
+      "file": "public/warcraft/high-resolution/guardians-original.jpg",
+      "page": "https://blizzard.gamespress.com/World-of-Warcraft-Dragonflight-Guardians-of-the-Dream-Launch-10828",
+      "original": "https://blizzard.gamespress.com/blob/BlizzardLive/2023/10/100312-1fef582a/WoW_Dragonflight_Guardians_of_the_Dream_(10.2)_Key_Art.jpg",
+      "width": 10922,
+      "height": 6000,
+      "bytes": 15347123,
+      "placement": "Server information: custom systems"
+    },
+    {
+      "file": "public/warcraft/high-resolution/tides-original.jpg",
+      "page": "https://blizzard.gamespress.com/en/World-of-Warcraft-Battle-for-Azeroth---Tides-of-Vengeance",
+      "original": "https://blizzard.gamespress.com/blob/BlizzardLive/2018/10/31210748-093c63c7-e597-4e9c-b54d-7029dc44ec30/WoW_ToV_KeyArt_Final.jpg",
+      "width": 10800,
+      "height": 6750,
+      "bytes": 8673818,
+      "placement": "Home: Discord community background."
+    },
+    {
+      "file": "public/warcraft/high-resolution/nzoth-original.jpg",
+      "page": "https://blizzard.gamespress.com/en/World-of-Warcraft-Battle-for-Azeroth---Visions-of-NZoth-Launch",
+      "original": "https://blizzard.gamespress.com/blob/BlizzardLive/2020/01/10222034-0f155950-c1bd-4a3a-880e-e98975f162cb/Visions_of_Nzoth_-_Key_Art.jpg",
+      "width": 12000,
+      "height": 7381,
+      "bytes": 19937317,
+      "placement": "Private account: redeem points."
+    },
+    {
+      "file": "public/warcraft/high-resolution/onyxia-raid-original.jpg",
+      "page": "https://blizzard.gamespress.com/World-of-Warcraft-Classic-Launch",
+      "original": "https://blizzard.gamespress.com/blob/BlizzardLive/2019/08/29012945-a654c458-c38f-4cc7-afc9-98491233e121/Onyxia_Key_Art.jpg",
+      "width": 5600,
+      "height": 3150,
+      "bytes": 2902643,
+      "placement": "Archived, not currently rendered."
+    },
+    {
+      "file": "public/warcraft/high-resolution/lordaeron-battle-original.jpg",
+      "page": "https://blizzard.gamespress.com/en/Blizzard-30th-Anniversary",
+      "original": "https://blizzard.gamespress.com/blob/BlizzardLive/2016/11/03184523-78bf7bd4-58a3-4acb-8770-ce85dc28c41c/WoW_BattleForAzeroth_SiegeOfLordaeron_3840x2160.jpg",
+      "width": 3840,
+      "height": 2160,
+      "bytes": 1947471,
+      "placement": "Private account: Store."
+    },
+    {
+      "file": "public/warcraft/high-resolution/faction-war-original.jpg",
+      "page": "https://blizzard.gamespress.com/Battle-for-Azeroth---April-Summit-PAX-East-2018",
+      "width": 3840,
+      "height": 2160,
+      "bytes": 2232022,
+      "placement": "Server: PvP layered scene. Display cropped below expansion wordmark. Original 4K, not 8K."
+    }
+  ],
+  "delivery": "Originals preserved. Battle scenes use precompressed WebP assets (960/1920/3840 and native-size 7680 for Ulduar). Canvas textures use 960 on mobile, 1920 on desktop; other artwork retains Next responsive delivery.",
+  "preserved_assets": "Blackout logo, hero video, transparent class cutouts, wardrobe and racial customization artwork retain their native resolution to preserve identity and accurate subject matter. These are not described as 8K."
+}
