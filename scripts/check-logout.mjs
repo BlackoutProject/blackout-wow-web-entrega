@@ -96,12 +96,12 @@ for (language of ['es', 'en', 'pt']) {
   const account = renderToStaticMarkup(React.createElement(StoreShowcase));
   const text = account.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ');
   assert.ok(!/USD|VIP Instance|VIP Mall|T35|Tier 35|V10/.test(text), 'Donor must show contact information, not a product catalog');
-  assert.ok(text.includes(storeShowcaseCopy[language].intro) && text.includes(' V '), 'Donor enquiries must direct players to V in their language');
+  assert.ok(text.includes(storeShowcaseCopy[language].intro) && text.includes(' mars049799 '), 'Donor enquiries must direct players to mars049799 in their language');
   assert.ok(account.includes('href="https://discord.gg/aH7cXcUUn4"'), 'Donor contact must link to the official Discord');
   assert.ok(!/href="\/tienda|<form|<button/.test(account), 'Donor must not initiate purchases or points redemption');
   assert.ok(renderToStaticMarkup(React.createElement(SupportShowcase)).includes('/cuenta#donor'));
 }
-console.log('PASS: authenticated Donor is contact-only, with V and the official Discord in ES/EN/PT; Home keeps its general support invitation.');
+console.log('PASS: authenticated Donor is contact-only, with mars049799 and the official Discord in ES/EN/PT; Home keeps its general support invitation.');
 
 // Account navigation must remain accessible even while the account API is loading.
 const navigationMocks = {

@@ -6,7 +6,7 @@ export const supportCopy = {
     intro: "Ayuda a que Blackout-WoW siga creciendo. Entra en tu cuenta para consultar cómo apoyar al servidor a través de Discord.",
     login: "INICIAR SESIÓN",
     account: "INFORMACIÓN EN MI CUENTA",
-    note: "Para donar o resolver dudas, escribe un mensaje directo a V en el Discord oficial de Blackout-WoW.",
+    note: "Para donar o resolver dudas, escribe un mensaje directo a mars049799 en el Discord oficial de Blackout-WoW.",
     discord: "CONTACTAR EN DISCORD",
   },
   en: {
@@ -16,7 +16,7 @@ export const supportCopy = {
     intro: "Help Blackout-WoW keep growing. Sign in to learn how to support the server through Discord.",
     login: "LOG IN",
     account: "INFORMATION IN MY ACCOUNT",
-    note: "To donate or ask a question, send V a direct message in the official Blackout-WoW Discord.",
+    note: "To donate or ask a question, send mars049799 a direct message in the official Blackout-WoW Discord.",
     discord: "CONTACT US ON DISCORD",
   },
   pt: {
@@ -26,7 +26,7 @@ export const supportCopy = {
     intro: "Ajude o Blackout-WoW a continuar crescendo. Entre na sua conta para saber como apoiar o servidor pelo Discord.",
     login: "ENTRAR NA CONTA",
     account: "INFORMAÇÕES NA MINHA CONTA",
-    note: "Para doar ou tirar dúvidas, envie uma mensagem direta a V no Discord oficial do Blackout-WoW.",
+    note: "Para doar ou tirar dúvidas, envie uma mensagem direta a mars049799 no Discord oficial do Blackout-WoW.",
     discord: "ENTRAR EM CONTATO NO DISCORD",
   },
 };
