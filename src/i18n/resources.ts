@@ -118,7 +118,7 @@ export const resources = {
       account: {
         title: "Panel de cuenta",
         heroIntro:
-          "Gestiona tu cuenta, revisa tu actividad reciente y protege tu acceso a Blackout.",
+          "Consulta los datos de tu cuenta y protege tu acceso a Blackout.",
         loadingSession: "Cargando sesión…",
         redirecting: "Redirigiendo al acceso…",
         changePassword: "Cambiar contraseña",
@@ -370,7 +370,7 @@ export const resources = {
       account: {
         title: "Account panel",
         heroIntro:
-          "Manage your account, review recent activity and protect your access to Blackout.",
+          "Review your account details and protect your access to Blackout.",
         loadingSession: "Loading session…",
         redirecting: "Redirecting to login…",
         changePassword: "Change password",
@@ -620,7 +620,7 @@ export const resources = {
       account: {
         title: "Painel da conta",
         heroIntro:
-          "Gerencie sua conta, confira a atividade recente e proteja seu acesso ao Blackout.",
+          "Confira os dados da sua conta e proteja seu acesso ao Blackout.",
         loadingSession: "Carregando sessão…",
         redirecting: "Redirecionando para login…",
         changePassword: "Alterar senha",

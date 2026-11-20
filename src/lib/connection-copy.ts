@@ -16,7 +16,7 @@ export const connectionCopy = {
       { "path": "Interface / AddOns", "title": "AIO y Druid C Fix", "text": "Coloca aquí las carpetas descomprimidas de ambos addons. Los clientes de Blackout ya los incluyen." }
     ],
     "downloads": "Descargas e instalación",
-    "downloadIntro": "Ambas opciones requieren los parches y WoW.exe de Blackout. Si un archivo está en MEGA y en Google Drive, basta con descargarlo desde uno de los dos.",
+    "downloadIntro": "Ambas opciones requieren los parches y WoW.exe de Blackout. Descarga cada archivo desde uno de sus enlaces disponibles y sigue las instrucciones de tu opción.",
     "paths": [
       {
         "id": "nuevo",
@@ -96,7 +96,7 @@ export const connectionCopy = {
       { "path": "Interface / AddOns", "title": "AIO and Druid C Fix", "text": "Place the extracted folders for both addons here. Blackout clients already include them." }
     ],
     "downloads": "Downloads and installation",
-    "downloadIntro": "Both options require the Blackout patches and WoW.exe. When a file is available on both MEGA and Google Drive, download it from either one.",
+    "downloadIntro": "Both options require the Blackout patches and WoW.exe. Download each file using one of its available links and follow the instructions for your option.",
     "paths": [
       {
         "id": "nuevo",
@@ -176,7 +176,7 @@ export const connectionCopy = {
       { "path": "Interface / AddOns", "title": "AIO e Druid C Fix", "text": "Coloque aqui as pastas extraídas dos dois addons. Os clientes do Blackout já os incluem." }
     ],
     "downloads": "Downloads e instalação",
-    "downloadIntro": "As duas opções exigem os patches e o WoW.exe do Blackout. Quando um arquivo estiver disponível no MEGA e no Google Drive, basta baixá-lo de um dos dois.",
+    "downloadIntro": "As duas opções exigem os patches e o WoW.exe do Blackout. Baixe cada arquivo por um dos links disponíveis e siga as instruções da sua opção.",
     "paths": [
       {
         "id": "nuevo",

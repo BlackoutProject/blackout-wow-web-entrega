@@ -62,11 +62,11 @@ export const metadataTranslations = {
   "/cuenta": {
     "en": {
       "title": "My account",
-      "description": "Your Blackout-WoW account: characters, purchase history, points, VIP and Donor information, and account security. Login required."
+      "description": "View your Blackout-WoW characters and account details, manage account security and contact V on Discord about VIP or Donor contributions. Login required."
     },
     "pt": {
       "title": "Minha conta",
-      "description": "Sua conta Blackout-WoW: personagens, histórico de compras, pontos, informações VIP e Donor e segurança. É necessário entrar na conta."
+      "description": "Confira seus personagens e dados da conta Blackout-WoW, gerencie sua segurança e fale com V no Discord sobre contribuições VIP ou Donor. É necessário entrar na conta."
     }
   },
   "/tienda": {

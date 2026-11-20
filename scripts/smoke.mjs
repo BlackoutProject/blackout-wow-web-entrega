@@ -50,15 +50,18 @@ for (const [path, html] of pages) {
   const footer = html.match(/<footer class="site-footer">([\s\S]*?)<\/footer>/)?.[1] || '';
   assert.ok(!/href="\/tienda(?:\/puntos)?"/.test(header + footer), 'Account-only navigation leaked into the global layout: ' + path);
 }
-for (const path of ['/tienda', '/tienda/puntos']) {
-  assert.ok(/name="robots" content="[^"]*noindex/.test(pages.get(path)), 'Private shop must not be indexed: ' + path);
-  assert.ok(!pages.get(path).includes('class="store-card'), 'Guest must not see the catalog');
+for (const path of ['/tienda', '/tienda/puntos', '/tienda/return']) {
+  const response = await fetch(base + path, { redirect: 'manual' });
+  assert.equal(response.status, 307, 'Retired store route must redirect: ' + path);
+  assert.equal(response.headers.get('location'), '/cuenta#donor', 'Retired store route must lead to Donor contact: ' + path);
+  assert.ok(/name="robots" content="[^"]*noindex/.test(pages.get(path)), 'Account must not be indexed: ' + path);
+  assert.ok(!pages.get(path).includes('class="store-card'), 'Retired store must not render a catalog');
 }
 const sitemap = await (await fetch(base + '/sitemap.xml')).text();
 assert.ok(!sitemap.includes('/tienda'), 'Shop must not appear in the public sitemap');
 assert.ok(home.match(/<header class="site-header">([\s\S]*?)<\/header>/)?.[1].includes('class="site-sound-toggle"'), 'Sound control must be visible in the header');
 assert.ok(!home.match(/<footer class="site-footer">([\s\S]*?)<\/footer>/)?.[1].includes('class="site-sound-toggle"'), 'Sound control must not be duplicated in the footer');
-console.log('PASS: account-only shop navigation, signed-out catalog guards, private search metadata and sound control');
+console.log('PASS: retired shop routes redirect to account contact, private metadata and sound control');
 // Headings may split their visible text across decorative spans.
 const homeSummary = home.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
 for(const fact of ['255','45 World Bosses','Evocador','Cazador de demonios','Monje','10 hechizos custom','Sistemas custom','Desata el caos.'])assert.ok(homeSummary.includes(fact),'Missing home summary fact: '+fact);
@@ -88,19 +91,20 @@ for(const id of ['pve','pvp','hechizos-custom','razas-y-morphs'])assert.ok(serve
 console.log('PASS: announced facts, 10 classes, expansion sources, section anchors, no online counter');
 assert.ok(!home.includes('15+'), 'Outdated raid count');
 const downloads=pages.get('/como-conectarme');
-for(const id of ['1_3-KSxI1XKdsgpOJwkeKi6gboDQ1M1Mg','15eqo-VXNtD-8JelsrHfoPnogeNKddJKE','1-w4jnu1TxzwASASyO-qEkN_JURE8NPk-','1_lURvxnmrZYuwzT5L7uGLgRV4G0CzIjd'])assert.ok(downloads.includes(id),'Missing confirmed download: '+id);
+for(const id of ['https://storage.to/aBsjp0NA6','https://storage.to/t02fgrgCn','1-w4jnu1TxzwASASyO-qEkN_JURE8NPk-','1_lURvxnmrZYuwzT5L7uGLgRV4G0CzIjd'])assert.ok(downloads.includes(id),'Missing confirmed download: '+id);
 assert.ok(downloads.includes('Instala los dos addons obligatorios'),'Required addons missing');
-assert.ok(!downloads.includes('1YXqxzPbBd5TAyLZ1yu0c0o64X8UGOtxi'),'Obsolete patch link present');
+for (const retired of ['1YXqxzPbBd5TAyLZ1yu0c0o64X8UGOtxi', '1_3-KSxI1XKdsgpOJwkeKi6gboDQ1M1Mg', '15eqo-VXNtD-8JelsrHfoPnogeNKddJKE', 'Ds4T0KaR', '18zFPYn4CBTduIFF0bO-Of_nSxX6P6nCL']) {
+  assert.ok(!downloads.includes(retired), 'Obsolete download link present: ' + retired);
+}
 console.log('PASS: both clients and both required addons linked; obsolete patch link removed');
 const freshClientPath=downloads.match(/<article[^>]+id="instalacion-nuevo"[^>]*>([\s\S]*?)<\/article>/)?.[1];
 const existingClientPath=downloads.match(/<article[^>]+id="instalacion-existente"[^>]*>([\s\S]*?)<\/article>/)?.[1];
 assert.ok(freshClientPath && existingClientPath, 'Both guided installation choices must render');
-for(const id of ['1_3-KSxI1XKdsgpOJwkeKi6gboDQ1M1Mg','15eqo-VXNtD-8JelsrHfoPnogeNKddJKE'])assert.ok(freshClientPath.includes(id) && !existingClientPath.includes(id), 'Client download must stay inside the new-client option: '+id);
+for(const id of ['https://storage.to/aBsjp0NA6','https://storage.to/t02fgrgCn'])assert.ok(freshClientPath.includes(id) && !existingClientPath.includes(id), 'Client download must stay inside the new-client option: '+id);
 for(const id of ['1-w4jnu1TxzwASASyO-qEkN_JURE8NPk-','1_lURvxnmrZYuwzT5L7uGLgRV4G0CzIjd','KshwXbJZ#4v_D_CDfwYPKqNu4KgWGRhK45HSp_9yhv8sjTgDe2F4'])assert.ok(existingClientPath.includes(id) && !freshClientPath.includes(id), 'Separate addon download must stay inside the existing-client option: '+id);
 for (const path of [freshClientPath, existingClientPath]) {
   for (const url of [
-    'https://mega.nz/file/Ds4T0KaR#tvx9ZKoLGR2ibW2YqNHM9rjxDxkw4tQtyulxLf5YpYY',
-    'https://drive.google.com/file/d/18zFPYn4CBTduIFF0bO-Of_nSxX6P6nCL/view?usp=sharing'
+    'https://storage.to/vhvKWq4Mr'
   ]) assert.ok(path.includes('href="'+url+'"'), 'Missing patch download: '+url);
 }
 assert.ok(!downloads.includes('class="connect-downloads"'), 'Downloads must be attached to their installation option, not a separate list');

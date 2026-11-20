@@ -136,7 +136,7 @@
 .account-introduction p { font-size: 15px; line-height: 1.8; max-width: 54ch; color: #d1d9dc; }
 .portal-page[data-route='/cuenta'] .metal-border > .pointer-events-none { display: none; }
 .portal-page[data-route='/cuenta'] .account-shortcuts a { box-shadow: none; border-color: #ac957850; }
-.portal-page .wc-store-showcase { background: #191b1f; padding-block: 65px; border-top: 1px solid #b89b6a36; }
+.portal-page .wc-store-showcase { background: #191b1f; min-height: auto; padding-block: 65px; border-top: 1px solid #b89b6a36; }
 .portal-page .wc-store-showcase:before { display: none; }
 .portal-page .wc-store-showcase .wc-join-copy { width: 100%; max-width: none; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.25fr); align-items: center; gap: 60px; }
 .portal-page .wc-store-showcase h2 { font-size: clamp(30px,3.5vw,45px); }

@@ -95,14 +95,13 @@ for (language of ['es', 'en', 'pt']) {
   signedIn = true;
   const account = renderToStaticMarkup(React.createElement(StoreShowcase));
   const text = account.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ');
-  for (const price of ['50 USD', '200 USD', '15 USD', '5 USD', '10 USD', '20 USD']) assert.ok(text.includes(price), 'Missing price: ' + price);
-  assert.ok(text.includes('VIP Instance') && text.includes('VIP Mall') && text.includes(storeShowcaseCopy[language].keys));
-  assert.ok(!/T35|Tier 35|V10/.test(text), 'Donor descriptions must not contain tier or legendary-version labels');
-  assert.ok(text.includes('Blackout-WoW') && text.includes('(DM)'), 'Donor enquiries must direct players to a direct message to Blackout-WoW');
-  assert.ok(!/arsenal/i.test(text));
+  assert.ok(!/USD|VIP Instance|VIP Mall|T35|Tier 35|V10/.test(text), 'Donor must show contact information, not a product catalog');
+  assert.ok(text.includes(storeShowcaseCopy[language].intro) && text.includes(' V '), 'Donor enquiries must direct players to V in their language');
+  assert.ok(account.includes('href="https://discord.gg/aH7cXcUUn4"'), 'Donor contact must link to the official Discord');
+  assert.ok(!/href="\/tienda|<form|<button/.test(account), 'Donor must not initiate purchases or points redemption');
   assert.ok(renderToStaticMarkup(React.createElement(SupportShowcase)).includes('/cuenta#donor'));
 }
-console.log('PASS: Donor details and approved prices appear only in the signed-in view; Home routes guests to login and members to their account in ES/EN/PT.');
+console.log('PASS: authenticated Donor is contact-only, with V and the official Discord in ES/EN/PT; Home keeps its general support invitation.');
 
 // Account navigation must remain accessible even while the account API is loading.
 const navigationMocks = {
@@ -120,8 +119,11 @@ const navigationMocks = {
 };
 const { SiteHeader } = await load('src/components/SiteHeader.tsx', navigationMocks);
 const { SiteShell } = await load('src/components/SiteShell.tsx', { ...navigationMocks, './SiteHeader': { SiteHeader } });
+let accountFixture = null;
+let accountStateIndex = 0;
 const { default: AccountPage } = await load('src/app/cuenta/page.tsx', {
   ...navigationMocks,
+  react: { ...React, useState: initial => React.useState(accountStateIndex++ === 0 ? accountFixture : initial) },
   '@/lib/use-dialog-focus': { useDialogFocus: () => {} },
   '@/lib/api': { apiJson: () => { throw new Error('No API requests in navigation test'); } },
   '@/components/SiteShell': { SiteShell },
@@ -133,15 +135,28 @@ for (language of ['es', 'en', 'pt']) {
     const shell = renderToStaticMarkup(React.createElement(SiteShell, null));
     assert.ok(!/href="\/tienda(?:\/puntos)?"/.test(shell), 'Global navigation must not expose account shop links');
     if (signedIn) assert.ok(!/href="\/(?:login|registro)"/.test(shell), 'Signed-in navigation must lead to the account instead of repeating sign-in links');
+    accountStateIndex = 0;
     const account = renderToStaticMarkup(React.createElement(AccountPage));
+    assert.ok(!/href="\/tienda(?:\/puntos)?"/.test(account), 'Account must not offer a shop or points redemption');
     const toolbar = account.match(/<nav class="account-shortcuts"[^>]*>([\s\S]*?)<\/nav>/)?.[1] ?? '';
     if (signedIn) {
-      for (const destination of ['/tienda', '/tienda/puntos', '#donor']) assert.ok(toolbar.includes('href="' + destination + '"'));
-      for (const label of [resources[language].translation.nav.store, resources[language].translation.nav.redeem]) assert.ok(toolbar.includes(label));
+      assert.ok(toolbar.includes('href="#donor"'), 'Donor contact remains available while account details load');
     } else {
       assert.equal(toolbar, '');
       assert.ok(!account.includes('id="donor"'));
     }
   }
 }
-console.log('PASS: store, redemption and VIP shortcuts live only in the authenticated account, including while account details load; global header/footer stay clean in ES/EN/PT.');
+// A loaded synthetic account must not expose historical balance/order data in the UI.
+signedIn = true;
+accountFixture = { username: 'SyntheticPlayer', email: 'test@example.invalid', accountId: 42, characterCount: 3, online: false, joinDate: null, lastLogin: null, donationPointsBalance: 123456789, recentOrders: [{ id: 'synthetic-order', productName: 'Obsolete catalog item' }] };
+for (language of ['es', 'en', 'pt']) {
+  accountStateIndex = 0;
+  const account = renderToStaticMarkup(React.createElement(AccountPage));
+  const text = account.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ');
+  assert.ok(account.includes('SyntheticPlayer'), 'Loaded account details must still render');
+  assert.ok(!/123456789|Obsolete catalog item|href="\/tienda/.test(account), 'Commerce data and navigation must not render');
+  assert.ok(!text.includes(resources[language].translation.account.navPurchases), 'Purchase history must not render');
+  assert.ok(text.includes(resources[language].translation.account.navAccountInfo) && text.includes(resources[language].translation.account.navSecurity.replaceAll('&', '&amp;')), 'Account information and security remain available');
+}
+console.log('PASS: account contact, loading/loaded account states and guest visibility verified in ES/EN/PT; no store, balance, redemption or purchase history.');

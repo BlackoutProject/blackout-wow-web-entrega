@@ -13,8 +13,7 @@ const patchDownloadUrl = process.env.NEXT_PUBLIC_PATCH_DOWNLOAD_URL?.trim() || "
 const realmlistCommand = "set realmlist logon.blackout-wow.com";
 const links = {
   patch: [
-    { provider: "MEGA", url: "https://mega.nz/file/Ds4T0KaR#tvx9ZKoLGR2ibW2YqNHM9rjxDxkw4tQtyulxLf5YpYY" },
-    { provider: "Google Drive", url: "https://drive.google.com/file/d/18zFPYn4CBTduIFF0bO-Of_nSxX6P6nCL/view?usp=sharing" }
+    { provider: "Storage.to", url: "https://storage.to/vhvKWq4Mr" }
   ],
   aio: [
     { provider: "MEGA", url: "https://mega.nz/file/KshwXbJZ#4v_D_CDfwYPKqNu4KgWGRhK45HSp_9yhv8sjTgDe2F4" },
@@ -23,8 +22,8 @@ const links = {
   fix: [
     { provider: "Google Drive", url: "https://drive.google.com/file/d/1_lURvxnmrZYuwzT5L7uGLgRV4G0CzIjd/view?usp=sharing" }
   ],
-  es: "https://drive.google.com/file/d/15eqo-VXNtD-8JelsrHfoPnogeNKddJKE/view?usp=sharing",
-  en: "https://drive.google.com/file/d/1_3-KSxI1XKdsgpOJwkeKi6gboDQ1M1Mg/view?usp=sharing"
+  es: "https://storage.to/t02fgrgCn",
+  en: "https://storage.to/aBsjp0NA6"
 };
 
 function DownloadSources({ file, sources, showName = false }: {

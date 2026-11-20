@@ -3,7 +3,7 @@
 import {useDialogFocus} from "@/lib/use-dialog-focus";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { SiteShell } from "@/components/SiteShell";
 import { LogoutButton } from "@/components/LogoutButton";
@@ -20,15 +20,6 @@ type GameAccountSummary = {
   joinDate: string | null;
   lastLogin: string | null;
   characterCount: number;
-  donationPointsBalance: number;
-  recentOrders: {
-    orderId: number;
-    productName: string;
-    donationPoints: number;
-    status: string;
-    paypalOrderId: string | null;
-    createdAt: string;
-  }[];
 };
 
 const statAccents = {
@@ -79,14 +70,13 @@ function StatCard({
   );
 }
 
-type AccountModalId = "info" | "security" | "orders";
+type AccountModalId = "info" | "security";
 
 function AccountModal({
   open,
   titleId,
   title,
   subtitle,
-  wide,
   closeLabel,
   onClose,
   children,
@@ -95,7 +85,6 @@ function AccountModal({
   titleId: string;
   title: string;
   subtitle?: string;
-  wide?: boolean;
   closeLabel: string;
   onClose: () => void;
   children: React.ReactNode;
@@ -119,7 +108,7 @@ function AccountModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className={`home-card metal-border relative z-10 flex max-h-[min(92dvh,900px)] w-full flex-col rounded-t-2xl border border-white/12 border-b-0 bg-zinc-950/95 shadow-2xl shadow-black/60 sm:max-h-[85vh] sm:rounded-2xl sm:border-b ${wide ? "sm:max-w-4xl" : "sm:max-w-lg"}`}
+        className={`home-card metal-border relative z-10 flex max-h-[min(92dvh,900px)] w-full flex-col rounded-t-2xl border border-white/12 border-b-0 bg-zinc-950/95 shadow-2xl shadow-black/60 sm:max-h-[85vh] sm:rounded-2xl sm:border-b sm:max-w-lg`}
       >
         <div className="flex shrink-0 items-start justify-between gap-4 border-b border-white/10 px-5 pb-4 pt-5 sm:px-6 sm:pt-6">
           <div className="min-w-0">
@@ -152,17 +141,7 @@ function AccountModal({
 }
 
 export default function AccountPage() {
-  const { t, i18n } = useTranslation();
-  const dateLocale = useMemo(
-    () =>
-      i18n.language?.startsWith("en")
-        ? "en-US"
-        : i18n.language?.startsWith("pt")
-          ? "pt-BR"
-          : "es-CL",
-    [i18n.language],
-  );
-  const ORDERS_PER_PAGE = 5;
+  const { t } = useTranslation();
   const { accessToken, isAuthReady } = useAuth();
   const router = useRouter();
   const [data, setData] = useState<GameAccountSummary | null>(null);
@@ -173,31 +152,13 @@ export default function AccountPage() {
   const [passwordMsg, setPasswordMsg] = useState<string | null>(null);
   const [passwordError, setPasswordError] = useState<string | null>(null);
   const [savingPassword, setSavingPassword] = useState(false);
-  const [ordersPage, setOrdersPage] = useState(1);
   const [openModal, setOpenModal] = useState<AccountModalId | null>(null);
   const modalTitleId = useId();
-
-  const totalOrderPages = useMemo(() => {
-    if (!data?.recentOrders?.length) return 1;
-    return Math.max(1, Math.ceil(data.recentOrders.length / ORDERS_PER_PAGE));
-  }, [data]);
-
-  const pagedOrders = useMemo(() => {
-    if (!data?.recentOrders?.length) return [];
-    const start = (ordersPage - 1) * ORDERS_PER_PAGE;
-    return data.recentOrders.slice(start, start + ORDERS_PER_PAGE);
-  }, [data, ordersPage]);
-
-  useEffect(() => {
-    if (ordersPage > totalOrderPages) {
-      setOrdersPage(totalOrderPages);
-    }
-  }, [ordersPage, totalOrderPages]);
 
   useEffect(() => {
     if (!isAuthReady) return;
     if (!accessToken) {
-      router.replace("/login");
+      router.replace(`/login?next=${encodeURIComponent("/cuenta" + window.location.hash)}`);
       return;
     }
     (async () => {
@@ -278,8 +239,6 @@ export default function AccountPage() {
 
         {accessToken && <div className="account-toolbar">
           <nav className="account-shortcuts" aria-label={t("account.navShortcuts")}>
-            <Link href="/tienda" className="account-donor-link">{t("nav.store")}</Link>
-            <Link href="/tienda/puntos" className="account-donor-link">{t("nav.redeem")}</Link>
             <a className="account-donor-link" href="#donor">VIP &amp; DONOR<span aria-hidden="true">↓</span></a>
           </nav>
           <LogoutButton />
@@ -318,14 +277,6 @@ export default function AccountPage() {
                     onClick={() => setOpenModal("security")}
                   >
                     {t("account.navSecurity")}
-                  </button>
-                  <button
-                    type="button"
-                    className={sidebarActionClass(openModal === "orders")}
-                    aria-expanded={openModal === "orders"}
-                    onClick={() => setOpenModal("orders")}
-                  >
-                    {t("account.navPurchases")}
                   </button>
                 </nav>
                 <div className="mt-5 border-t border-white/10 pt-4">
@@ -379,26 +330,6 @@ export default function AccountPage() {
                   </StatCard>
                 </div>
 
-                <div className="account-balance metal-border relative shrink-0 overflow-hidden rounded-2xl border border-amber-400/35 bg-linear-to-br from-amber-950/45 via-zinc-950/85 to-zinc-950/90 px-4 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_12px_30px_rgba(2,6,23,0.42),0_0_28px_rgba(120,53,15,0.16)] md:flex md:items-center md:justify-between md:gap-8 md:px-5 md:py-3.5">
-                  <div
-                    className="pointer-events-none absolute -right-8 top-1/2 h-28 w-28 -translate-y-1/2 rounded-full bg-amber-400/12 blur-2xl md:right-12 md:h-32 md:w-32"
-                    aria-hidden
-                  />
-                  <div className="relative z-10 shrink-0">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-amber-200/75">
-                      {t("account.donationTitle")}
-                    </p>
-                    <p className="mt-1 font-display text-xl font-bold tracking-tight text-amber-100 md:text-2xl">
-                      {data.donationPointsBalance}{" "}
-                      <span className="text-sm font-semibold text-amber-200/85 md:text-base">
-                        {t("account.donationPoints")}
-                      </span>
-                    </p>
-                  </div>
-                  <p className="relative z-10 mt-2 max-w-md text-xs leading-relaxed text-zinc-400 md:mt-0 md:flex-1 md:text-right md:text-sm">
-                    {t("account.donationHint")}
-                  </p>
-                </div>
               </div>
             </div>
 
@@ -500,143 +431,10 @@ export default function AccountPage() {
               </form>
             </AccountModal>
 
-            <AccountModal
-              open={openModal === "orders"}
-              titleId={`${modalTitleId}-orders`}
-              title={t("account.navPurchases")}
-              subtitle={t("account.modalOrdersSubtitle")}
-              wide
-              closeLabel={t("account.closeModal")}
-              onClose={() => setOpenModal(null)}
-            >
-              {data.recentOrders.length === 0 ? (
-                <div className="rounded-xl border border-dashed border-white/10 bg-black/20 px-4 py-10 text-center">
-                  <p className="text-sm text-zinc-500">
-                    {t("account.noPurchasesYet")}
-                  </p>
-                </div>
-              ) : (
-                <div className="overflow-hidden rounded-xl border border-white/7 bg-black/25">
-                  <div className="overflow-x-auto">
-                    <table className="min-w-full text-left text-sm">
-                      <thead className="border-b border-white/8 bg-white/4 text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
-                        <tr>
-                          <th className="px-4 py-3.5 font-medium">
-                            {t("account.ordersProduct")}
-                          </th>
-                          <th className="px-4 py-3.5 font-medium">
-                            {t("account.ordersPoints")}
-                          </th>
-                          <th className="px-4 py-3.5 font-medium">
-                            {t("account.ordersState")}
-                          </th>
-                          <th className="px-4 py-3.5 font-medium">
-                            {t("account.ordersDate")}
-                          </th>
-                          <th className="px-4 py-3.5 font-medium">
-                            {t("account.ordersPaypal")}
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {pagedOrders.map((order, i) => (
-                          <tr
-                            key={order.orderId}
-                            className={
-                              i % 2 === 0
-                                ? "border-t border-white/5 bg-white/2 text-zinc-300"
-                                : "border-t border-white/5 text-zinc-300"
-                            }
-                          >
-                            <td className="px-4 py-3.5 font-medium text-zinc-200">
-                              {order.productName}
-                            </td>
-                            <td className="px-4 py-3.5 tabular-nums text-amber-300/95">
-                              {order.donationPoints}
-                            </td>
-                            <td className="px-4 py-3.5">
-                              <span
-                                className={
-                                  order.status === "PAID"
-                                    ? "inline-flex rounded-full bg-emerald-500/15 px-2 py-0.5 text-xs font-medium text-emerald-300 ring-1 ring-emerald-500/25"
-                                    : order.status === "FAILED"
-                                      ? "inline-flex rounded-full bg-red-500/15 px-2 py-0.5 text-xs font-medium text-red-300 ring-1 ring-red-500/25"
-                                      : "inline-flex rounded-full bg-zinc-500/10 px-2 py-0.5 text-xs font-medium text-zinc-400 ring-1 ring-white/10"
-                                }
-                              >
-                                {order.status === "PAID"
-                                  ? t("account.orderStatusPaid")
-                                  : order.status === "FAILED"
-                                    ? t("account.orderStatusFailed")
-                                    : t("account.orderStatusOther", {
-                                        status: order.status,
-                                      })}
-                              </span>
-                            </td>
-                            <td className="px-4 py-3.5 text-zinc-400">
-                              {new Date(order.createdAt).toLocaleString(
-                                dateLocale,
-                              )}
-                            </td>
-                            <td className="px-4 py-3.5 font-mono text-xs text-zinc-500">
-                              {order.paypalOrderId ?? t("common.dash")}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                  {data.recentOrders.length > ORDERS_PER_PAGE && (
-                    <div className="flex items-center justify-end gap-3 border-t border-white/8 bg-white/2 px-4 py-3">
-                      <button
-                        type="button"
-                        disabled={ordersPage === 1}
-                        onClick={() =>
-                          setOrdersPage((p) => Math.max(1, p - 1))
-                        }
-                        className="rounded-lg border border-white/15 bg-black/30 px-3 py-1.5 text-xs font-medium text-zinc-200 transition-colors hover:border-white/25 hover:bg-white/5 disabled:opacity-50"
-                      >
-                        {t("account.ordersPrev")}
-                      </button>
-                      <span className="text-xs text-zinc-500">
-                        {t("account.ordersPageOf", {
-                          current: ordersPage,
-                          total: totalOrderPages,
-                        })}
-                      </span>
-                      <button
-                        type="button"
-                        disabled={ordersPage === totalOrderPages}
-                        onClick={() =>
-                          setOrdersPage((p) =>
-                            Math.min(totalOrderPages, p + 1),
-                          )
-                        }
-                        className="rounded-lg border border-white/15 bg-black/30 px-3 py-1.5 text-xs font-medium text-zinc-200 transition-colors hover:border-white/25 hover:bg-white/5 disabled:opacity-50"
-                      >
-                        {t("account.ordersNext")}
-                      </button>
-                    </div>
-                  )}
-                </div>
-              )}
-            </AccountModal>
           </>
         )}
         {!data && (
           <div className="mt-10 flex flex-wrap gap-4">
-            <Link
-              href="/tienda"
-              className="rounded-md border border-sky-400/40 bg-sky-950/40 px-4 py-2 text-sm font-semibold text-sky-200 hover:bg-sky-900/50"
-            >
-              {t("account.goStore")}
-            </Link>
-            <Link
-              href="/tienda/puntos"
-              className="rounded-md border border-amber-400/40 bg-amber-950/30 px-4 py-2 text-sm font-semibold text-amber-200 hover:bg-amber-900/40"
-            >
-              {t("account.redeem")}
-            </Link>
             <Link
               href="/recuperar"
               className="rounded-md border border-white/15 px-4 py-2 text-sm font-medium text-zinc-300 hover:bg-white/5"

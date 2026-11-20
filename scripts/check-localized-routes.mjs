@@ -39,9 +39,15 @@ for (const lang of languages) {
       }
       assert.ok(html.includes('<html lang="'+lang+'"'), 'Incorrect language: '+lang+path);
       assert.ok(/<title>[^<]+<\/title>/.test(html), 'Missing title: '+lang+path);
+      const metadata = copy[path.startsWith('/tienda') ? '/cuenta' : path];
+      if(path==='/como-conectarme') {
+        for (const url of ['https://storage.to/vhvKWq4Mr', 'https://storage.to/t02fgrgCn', 'https://storage.to/aBsjp0NA6']) {
+          assert.ok(html.includes('href="' + url + '"'), 'Updated download missing in ' + lang + ': ' + url);
+        }
+      }
       if(lang!=='es') {
-        assert.ok(html.includes(escapeHtml(copy[path][lang].title)), 'Untranslated title: '+lang+path);
-        assert.ok(html.includes('name="description" content="'+escapeHtml(copy[path][lang].description)+'"'), 'Untranslated description: '+lang+path);
+        assert.ok(html.includes(escapeHtml(metadata[lang].title)), 'Untranslated title: '+lang+path);
+        assert.ok(html.includes('name="description" content="'+escapeHtml(metadata[lang].description)+'"'), 'Untranslated description: '+lang+path);
       }
       const header=html.match(/<header class="site-header">([\s\S]*?)<\/header>/)?.[1];
       assert.ok(header,'Header missing: '+lang+path);
