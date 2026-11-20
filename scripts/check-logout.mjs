@@ -95,13 +95,15 @@ for (language of ['es', 'en', 'pt']) {
   signedIn = true;
   const account = renderToStaticMarkup(React.createElement(StoreShowcase));
   const text = account.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ');
-  assert.ok(!/USD|VIP Instance|VIP Mall|T35|Tier 35|V10/.test(text), 'Donor must show contact information, not a product catalog');
+  for (const price of ['50 USD', '200 USD', '15 USD', '5 USD', '10 USD', '20 USD']) assert.ok(text.includes(price), 'Missing approved donation amount: ' + price);
+  for (const benefit of ['VIP Instance', 'VIP Mall', 'Tier 5', '.vip', '.vbuff', storeShowcaseCopy[language].gear, storeShowcaseCopy[language].bags, storeShowcaseCopy[language].keys]) assert.ok(text.includes(benefit.replaceAll('&', '&amp;')), 'Missing donation benefit: ' + benefit);
+  assert.ok(!/T35|Tier 35|V10/.test(text), 'Keep Donor equivalence general, without tier/version labels');
   assert.ok(text.includes(storeShowcaseCopy[language].intro) && text.includes(' mars049799 '), 'Donor enquiries must direct players to mars049799 in their language');
   assert.ok(account.includes('href="https://discord.gg/aH7cXcUUn4"'), 'Donor contact must link to the official Discord');
   assert.ok(!/href="\/tienda|<form|<button/.test(account), 'Donor must not initiate purchases or points redemption');
   assert.ok(renderToStaticMarkup(React.createElement(SupportShowcase)).includes('/cuenta#donor'));
 }
-console.log('PASS: authenticated Donor is contact-only, with mars049799 and the official Discord in ES/EN/PT; Home keeps its general support invitation.');
+console.log('PASS: full VIP, VIP Plus and individual donation details restored in ES/EN/PT; requests go to mars049799 on Discord, without online purchase or points actions.');
 
 // Account navigation must remain accessible even while the account API is loading.
 const navigationMocks = {

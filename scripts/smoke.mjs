@@ -101,7 +101,8 @@ const freshClientPath=downloads.match(/<article[^>]+id="instalacion-nuevo"[^>]*>
 const existingClientPath=downloads.match(/<article[^>]+id="instalacion-existente"[^>]*>([\s\S]*?)<\/article>/)?.[1];
 assert.ok(freshClientPath && existingClientPath, 'Both guided installation choices must render');
 for(const id of ['https://storage.to/aBsjp0NA6','https://storage.to/t02fgrgCn'])assert.ok(freshClientPath.includes(id) && !existingClientPath.includes(id), 'Client download must stay inside the new-client option: '+id);
-for(const id of ['1-w4jnu1TxzwASASyO-qEkN_JURE8NPk-','1_lURvxnmrZYuwzT5L7uGLgRV4G0CzIjd','KshwXbJZ#4v_D_CDfwYPKqNu4KgWGRhK45HSp_9yhv8sjTgDe2F4'])assert.ok(existingClientPath.includes(id) && !freshClientPath.includes(id), 'Separate addon download must stay inside the existing-client option: '+id);
+for(const id of ['1-w4jnu1TxzwASASyO-qEkN_JURE8NPk-','1_lURvxnmrZYuwzT5L7uGLgRV4G0CzIjd'])assert.ok(existingClientPath.includes(id) && !freshClientPath.includes(id), 'Separate addon download must stay inside the existing-client option: '+id);
+assert.ok(!downloads.includes('mega.nz'), 'Addon downloads must only use their Google Drive links');
 for (const path of [freshClientPath, existingClientPath]) {
   for (const url of [
     'https://storage.to/vhvKWq4Mr'

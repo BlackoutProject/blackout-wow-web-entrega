@@ -16,7 +16,6 @@ const links = {
     { provider: "Storage.to", url: "https://storage.to/vhvKWq4Mr" }
   ],
   aio: [
-    { provider: "MEGA", url: "https://mega.nz/file/KshwXbJZ#4v_D_CDfwYPKqNu4KgWGRhK45HSp_9yhv8sjTgDe2F4" },
     { provider: "Google Drive", url: "https://drive.google.com/file/d/1-w4jnu1TxzwASASyO-qEkN_JURE8NPk-/view?usp=sharing" }
   ],
   fix: [
