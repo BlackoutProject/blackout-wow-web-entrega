@@ -25,17 +25,15 @@ const links = {
   en: "https://storage.to/aBsjp0NA6"
 };
 
-function DownloadSources({ file, sources, showName = false }: {
+function DownloadSources({ file, sources }: {
   file: string;
   sources: { provider: string; url: string }[];
-  showName?: boolean;
 }) {
   return <div className="connection-sources" role="group" aria-label={file}>
-    {showName && <strong className="connection-source-name">{file}</strong>}
     <div className="connection-download-actions">
       {sources.map(({ provider, url }) =>
         <a key={url} href={url} target="_blank" rel="noopener noreferrer" aria-label={`${file} · ${provider}`}>
-          {provider}<span aria-hidden="true">↓</span>
+          {file}{sources.length > 1 && ` · ${provider}`}<span aria-hidden="true">↓</span>
         </a>
       )}
     </div>
@@ -84,8 +82,8 @@ export default function ConnectContent() {
           {step.download === "client" && <div className="connection-download-actions"><a href={links.en} target="_blank" rel="noopener noreferrer">{c.clientEn}<span aria-hidden="true">↓</span></a><a href={links.es} target="_blank" rel="noopener noreferrer">{c.clientEs}<span aria-hidden="true">↓</span></a></div>}
           {step.download === "patch" && <DownloadSources file={c.patch} sources={patchSources}/>}
           {step.download === "addons" && <>
-            <DownloadSources file="AIO" sources={links.aio} showName/>
-            <DownloadSources file="Druid C Fix" sources={links.fix} showName/>
+            <DownloadSources file="AIO" sources={links.aio}/>
+            <DownloadSources file="Druid C Fix" sources={links.fix}/>
           </>}
           {step.download === "realmlist" && <a className="connection-realm-link" href="#realmlist">{c.realmLink}<span aria-hidden="true">↑</span></a>}
         </li>)}</ol>
